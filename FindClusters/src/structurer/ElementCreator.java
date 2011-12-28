@@ -15,14 +15,14 @@ public class ElementCreator {
 	public  void createBaseElements ( ArrayList<Table> tables,  ArrayList<Program> programs,
 	ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
 	{	
-		/*
+
 		createBaseElementsTables(tables); 
 		createBaseElementsProgramsPart1( programs);
 		createBaseElementsProgramsPart2( programs);
 		createBaseElementsProgramsPart3( programs);
 		createBaseElementsTargetIFSModules( ifsModules);
 		createBaseElementsTargetLBBModules( lbbModules);
-		*/
+	
 		
 		DefineUnitTestData (tables, programs, ifsModules, lbbModules);
 	}

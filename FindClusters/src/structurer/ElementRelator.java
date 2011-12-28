@@ -15,13 +15,13 @@ public class ElementRelator {
 	{
 		ElementRelatorData relatorData = new ElementRelatorData();
 		
-		/*
+
 		relatorData.relateTablesToProgramsPart01(tables, programs);
 		relatorData.relateTablesToProgramsPart02(tables, programs);
 		relatorData.relateTablesToProgramsPart03(tables, programs);
 		relatorData.relateTablesToProgramsPart04(tables, programs);
 		relatorData.relateTablesToIFSModules(tables, ifsModules);
-		*/
+
 		DefineUnitTestData ( tables, programs, ifsModules,  lbbModules);
 
 	}
