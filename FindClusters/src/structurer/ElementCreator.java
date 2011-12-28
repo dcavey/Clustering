@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 public class ElementCreator {
 	
-
-	
 	public ElementCreator() {
 		super();	
 		
