@@ -7,15 +7,6 @@ import java.util.Iterator;
 
 public  class MatchMaker {
 
-		
-	/*
-	 * For each Program
-	 * 		for each Module
-	 * 			ask "match coefficient" for the Program in the Module
-	 * Place Program in best fitting Module (highest match) 
-	 *  
-	 */
-
 	public MatchMaker() {
 		super();
 	}
