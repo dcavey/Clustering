@@ -7,7 +7,6 @@ public class ElementRelator {
 
 	public ElementRelator() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public  void relateBaseElements ( 	ArrayList<Table> tables,  ArrayList<Program> programs,

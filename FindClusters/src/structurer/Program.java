@@ -2,7 +2,6 @@ package structurer;
 
 import java.util.ArrayList;
 
-
 public class Program {
 	
 	private ArrayList<Table> tables;
