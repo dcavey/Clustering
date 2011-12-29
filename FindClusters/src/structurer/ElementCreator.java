@@ -6,9 +6,7 @@ public class ElementCreator {
 	
 	public ElementCreator() {
 		super();	
-		
 	}
-
 	
 	public  void createBaseElements ( ArrayList<Table> tables,  ArrayList<Program> programs,
 	ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
@@ -20,9 +18,8 @@ public class ElementCreator {
 		createBaseElementsProgramsPart3( programs);
 		createBaseElementsTargetIFSModules( ifsModules);
 		createBaseElementsTargetLBBModules( lbbModules);
-	
 		
-		DefineUnitTestData (tables, programs, ifsModules, lbbModules);
+		// DefineUnitTestData (tables, programs, ifsModules, lbbModules);
 	}
 
 	private  void createBaseElementsTargetLBBModules

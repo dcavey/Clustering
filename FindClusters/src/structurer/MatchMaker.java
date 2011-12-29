@@ -37,6 +37,9 @@ public  class MatchMaker {
 			bestModuleSoFar.addProgramToModule(program); 
 			SignalScore (bestScoreSoFar, "FIT=Y,SEL=Y", bestModuleSoFar.getType(), bestModuleSoFar.getName(), program );
 			// System.out.printf ("%s Module-Program fit BEST     : <%s>-<%s> - Score<%d> \n\n",  bestModuleSoFar.getTypedName(), program.getName(), bestScoreSoFar ); 			
+		} else
+		{
+			SignalScore (-1, "FIT=N,SEL=N", "N/A", "NO_MODULE_AT_ALL", program );	// not classifiable at all		
 		}
 	}	
 

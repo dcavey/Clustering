@@ -1,10 +1,26 @@
 package structurer;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ElementRelator {
 
+	private static final String XREFFILE = "D:/dvandeca/Documents/My LabsWork/GitRepositories/Clustering/FindClusters/src/resources/xref_table_program.csv";
+	
+	private class TableProgramXref{
+		String tableName;
+		public TableProgramXref(String tableName, String programName) {
+			super();
+			this.tableName = tableName;
+			this.programName = programName;
+		}
+		String programName;
+	}
+	
 	public ElementRelator() {
 		super();
 	}
@@ -12,17 +28,21 @@ public class ElementRelator {
 	public  void relateBaseElements ( 	ArrayList<Table> tables,  ArrayList<Program> programs,
 										ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
 	{
-		ElementRelatorData relatorData = new ElementRelatorData();
+		ElementRelator relator = new ElementRelator();
+		ElementRelatorData relatorData = new ElementRelatorData();	
 		
-
-		relatorData.relateTablesToProgramsPart01(tables, programs);
-		relatorData.relateTablesToProgramsPart02(tables, programs);
-		relatorData.relateTablesToProgramsPart03(tables, programs);
-		relatorData.relateTablesToProgramsPart04(tables, programs);
 		relatorData.relateTablesToIFSModules(tables, ifsModules);
-
-		DefineUnitTestData ( tables, programs, ifsModules,  lbbModules);
-
+		
+		ArrayList<TableProgramXref> xrefs = readXrefs();
+		TableProgramXref thisXref;
+		
+		Iterator<TableProgramXref>  xrefIterator  = xrefs.iterator();
+		while (xrefIterator.hasNext()) {
+			thisXref = xrefIterator.next();
+			relator.relateTableToProgram (tables, programs, thisXref.tableName, thisXref.programName);
+		}
+		
+		// DefineUnitTestData ( tables, programs, ifsModules,  lbbModules);
 	}
 	
 	public  void  relateTableToProgram (ArrayList<Table> tables,  ArrayList<Program> programs, String tableName, String programName)
@@ -116,6 +136,34 @@ public class ElementRelator {
 		relateTableToModule (tables, ifsModules, "Table04" ,  "Module003");
 		relateTableToModule (tables, ifsModules, "Table05" ,  "Module003");
 	}
+	
+	
+	private ArrayList<TableProgramXref> readXrefs() {
+
+		ArrayList<TableProgramXref> outputList = new ArrayList<TableProgramXref>();
+		try {
+			// Open the file
+			FileInputStream fstream = new FileInputStream(XREFFILE);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");
+				TableProgramXref currentXref = new TableProgramXref(output[0], output[2]);
+				outputList.add(currentXref);
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+		return outputList;
+	}
+
+
+	
 	
 	
 	
