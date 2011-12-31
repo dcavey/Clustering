@@ -9,17 +9,30 @@ import java.util.Iterator;
 
 public class ElementRelator {
 
-	private static final String XREFFILE = "D:/dvandeca/Documents/My LabsWork/GitRepositories/Clustering/FindClusters/src/resources/xref_table_program.csv";
-	
+	private static final String TABLE2PROGRAM_XREF = "D:/dvandeca/Documents/My LabsWork/GitRepositories/Clustering/FindClusters/src/resources/xref_table_program.csv";
+	private static final String TABLE2MODULE_XREF = "D:/dvandeca/Documents/My LabsWork/GitRepositories/Clustering/FindClusters/src/resources/xref_table_module.csv";
+
 	private class TableProgramXref{
 		String tableName;
+		String programName;
 		public TableProgramXref(String tableName, String programName) {
 			super();
 			this.tableName = tableName;
 			this.programName = programName;
 		}
-		String programName;
 	}
+	
+	private class TableModuleXref{
+		String tableName;
+		String moduleName;
+		public TableModuleXref(String tableName, String moduleName) {
+			super();
+			this.tableName = tableName;
+			this.moduleName = moduleName;
+		}
+	}
+	
+	
 	
 	public ElementRelator() {
 		super();
@@ -29,17 +42,27 @@ public class ElementRelator {
 										ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
 	{
 		ElementRelator relator = new ElementRelator();
-		ElementRelatorData relatorData = new ElementRelatorData();	
+//		ElementRelatorData relatorData = new ElementRelatorData();		
+//		relatorData.relateTablesToIFSModules(tables, ifsModules);
 		
-		relatorData.relateTablesToIFSModules(tables, ifsModules);
+		// setup relationships between Tables and Programs (from generated Table/Program XREF file)
+		ArrayList<TableProgramXref> tp_xrefs = readTableProgramXrefs();
+		TableProgramXref tp_Xref;
 		
-		ArrayList<TableProgramXref> xrefs = readXrefs();
-		TableProgramXref thisXref;
+		Iterator<TableProgramXref>  tp_xrefIterator  = tp_xrefs.iterator();
+		while (tp_xrefIterator.hasNext()) {
+			tp_Xref = tp_xrefIterator.next();
+			relator.relateTableToProgram (tables, programs, tp_Xref.tableName, tp_Xref.programName);
+		}
 		
-		Iterator<TableProgramXref>  xrefIterator  = xrefs.iterator();
-		while (xrefIterator.hasNext()) {
-			thisXref = xrefIterator.next();
-			relator.relateTableToProgram (tables, programs, thisXref.tableName, thisXref.programName);
+		// setup realtionships between Tables and target Modules (from IFS SME defined Table/Module XREF file)
+		ArrayList<TableModuleXref> tm_xrefs = readTableModuleXrefs();
+		TableModuleXref tm_Xref;
+		
+		Iterator<TableModuleXref>  tm_xrefIterator  = tm_xrefs.iterator();
+		while (tm_xrefIterator.hasNext()) {
+			tm_Xref = tm_xrefIterator.next();
+			relator.relateTableToModule (tables, ifsModules, tm_Xref.tableName, tm_Xref.moduleName);
 		}
 		
 		// DefineUnitTestData ( tables, programs, ifsModules,  lbbModules);
@@ -138,12 +161,12 @@ public class ElementRelator {
 	}
 	
 	
-	private ArrayList<TableProgramXref> readXrefs() {
+	private ArrayList<TableProgramXref> readTableProgramXrefs() {
 
 		ArrayList<TableProgramXref> outputList = new ArrayList<TableProgramXref>();
 		try {
 			// Open the file
-			FileInputStream fstream = new FileInputStream(XREFFILE);
+			FileInputStream fstream = new FileInputStream(TABLE2PROGRAM_XREF);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -152,6 +175,30 @@ public class ElementRelator {
 			while ((strLine = br.readLine()) != null) {
 				String[] output = strLine.split(";");
 				TableProgramXref currentXref = new TableProgramXref(output[0], output[2]);
+				outputList.add(currentXref);
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+		return outputList;
+	}
+
+	private ArrayList<TableModuleXref> readTableModuleXrefs() {
+
+		ArrayList<TableModuleXref> outputList = new ArrayList<TableModuleXref>();
+		try {
+			// Open the file
+			FileInputStream fstream = new FileInputStream(TABLE2MODULE_XREF);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");
+				TableModuleXref currentXref = new TableModuleXref(output[0], output[2]);
 				outputList.add(currentXref);
 			}
 			// Close the input stream

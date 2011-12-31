@@ -63,6 +63,8 @@ public class ElementCreator {
 		TargetIFSModule Financial_Markets = new TargetIFSModule ("Financial_Markets");	ifsModules.add (Financial_Markets);
 		TargetIFSModule Cash_Management = new TargetIFSModule ("Cash_Management");	ifsModules.add (Cash_Management);
 		TargetIFSModule CORE = new TargetIFSModule ("CORE");	ifsModules.add (CORE);
+		TargetIFSModule auxiliary = new TargetIFSModule ("auxiliary");	ifsModules.add (auxiliary);
+		
 	}
 	
 	private void createBaseElementsTables( ArrayList<Table> tables) {

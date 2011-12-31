@@ -75,8 +75,7 @@ public  class MatchMaker {
 	}
 	
 	private void SignalScore (int score, String scoreQualifier,  String moduleType, String moduleName, Program program )  {
-		//System.out.printf ("%s Module-Program %s : <%s>-<%s> score:%d> \n", moduleType, scoreQualifier, moduleName, program.getName(), program.getPgmType(), score );
-		System.out.printf ("[%s]program=%s %s into %s module=%s with score=%d> \n",  program.getPgmType(), program.getName(), scoreQualifier, moduleType, moduleName, score ); 
+		 System.out.printf ("[%s]program=%s %s into %s module=%s with score=%d> \n",  program.getPgmType(), program.getName(), scoreQualifier, moduleType, moduleName, score ); 
 	}
 }
 
