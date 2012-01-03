@@ -3,6 +3,8 @@
  */
 package resources;
 
+import java.net.URL;
+
 /**
  * @author TDEWEERD
  *
@@ -15,6 +17,7 @@ public class LocateResource {
 	 * @return path + filename
 	 */
 	public static String getResource(String filename) {
-		return LocateResource.class.getResource(filename).toString();
+		URL resource = LocateResource.class.getResource(filename);
+		return resource.getPath();
 	}
 }

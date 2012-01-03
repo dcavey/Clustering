@@ -6,9 +6,11 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import resources.LocateResource;
+
 public class ElementCreator {
 	
-	private static final String PROGFILE = "D:/dvandeca/Documents/My LabsWork/GitRepositories/Clustering/FindClusters/src/resources/ifs_programs.csv";
+	private static final String PROGFILE = "ifs_programs.csv";
 //	D:\DVANDECA\Desktop\My Documents\My LabsWork\GitRepositories\Clustering\FindClusters\src\resources\ifs_programs.csv
 	
 	public ElementCreator() {
@@ -572,7 +574,7 @@ public class ElementCreator {
 		//ArrayList<String> outputList = new ArrayList<String>();
 		try {
 			// Open the file
-			FileInputStream fstream = new FileInputStream(PROGFILE);
+			FileInputStream fstream = new FileInputStream(LocateResource.getResource(PROGFILE));
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
