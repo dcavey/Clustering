@@ -32,6 +32,7 @@ public class FindClusters  {
 		}
 		
 		reporter.showModules(ifsModules);
+		reporter.ShowSharedTables(ifsModules);
 		
 	}
 

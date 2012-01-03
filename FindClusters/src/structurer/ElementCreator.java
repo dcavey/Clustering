@@ -607,8 +607,8 @@ public class ElementCreator {
 		Program ProgramCCC = new Program ("ProgramCCC", "G"); 		programs.add(ProgramCCC);
 		
 		TargetModule Module001 = new TargetIFSModule ("Module001");		ifsModules.add(Module001);
-		TargetModule Module002 = new TargetLBBModule ("Module002");		ifsModules.add(Module002);
-		TargetModule Module003 = new TargetModule ("Module003"); 		ifsModules.add(Module003);
+		TargetModule Module002 = new TargetIFSModule ("Module002");		ifsModules.add(Module002);
+		TargetModule Module003 = new TargetIFSModule ("Module003"); 		ifsModules.add(Module003);
 
     }
 	

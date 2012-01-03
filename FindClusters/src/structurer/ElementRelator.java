@@ -42,10 +42,9 @@ public class ElementRelator {
 										ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
 	{
 		ElementRelator relator = new ElementRelator();
-//		ElementRelatorData relatorData = new ElementRelatorData();		
-//		relatorData.relateTablesToIFSModules(tables, ifsModules);
 		
 		// setup relationships between Tables and Programs (from generated Table/Program XREF file)
+	
 		ArrayList<TableProgramXref> tp_xrefs = readTableProgramXrefs();
 		TableProgramXref tp_Xref;
 		
@@ -65,6 +64,7 @@ public class ElementRelator {
 			relator.relateTableToModule (tables, ifsModules, tm_Xref.tableName, tm_Xref.moduleName);
 		}
 		
+		
 		// DefineUnitTestData ( tables, programs, ifsModules,  lbbModules);
 	}
 	
@@ -79,7 +79,7 @@ public class ElementRelator {
 	{
 		TargetModule myModule = findModule( modules, moduleName);
 		Table myTable  	  = findTable(tables, tableName);
-		myModule.addTable(myTable);
+		myModule.addAssignedTable(myTable);
 	}
 
 	

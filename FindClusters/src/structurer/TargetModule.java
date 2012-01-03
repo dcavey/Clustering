@@ -6,22 +6,35 @@ import java.util.Iterator;
 
 public class TargetModule {
 	
-	private ArrayList<Table> tables;
+	private ArrayList<Table> assignedTables;
+	private ArrayList<TableUsedByProgram> tablesUsedByProgram;
 	private ArrayList<Program> programs;
 	private String name;
+	
+	
+	private class TableUsedByProgram {
+		String		otherModuleName;
+		String		otherProgramName;
+		String		myProgramName;
+		String		commonTableName;
+	}
 	
 	public TargetModule(String name) {
 		super();
 		this.name = name;
-		tables = new ArrayList<Table>();
+		assignedTables = new ArrayList<Table>();
+		tablesUsedByProgram = new ArrayList<TableUsedByProgram>();
 		programs = new ArrayList<Program>();
 	}
 
-	private ArrayList<Table> getTables() {
-		return tables;
+	public ArrayList<Table> getAssignedTables() {
+		return assignedTables;
 	}
 	
-	private ArrayList<Program> getPrograms() {
+	public ArrayList<TableUsedByProgram> getTablesUsedByPrograms() {
+		return tablesUsedByProgram;
+	}
+	public ArrayList<Program> getPrograms() {
 		return programs;
 	}
 
@@ -34,8 +47,58 @@ public class TargetModule {
 		return type;
 	}
 	
-	public void addTable (Table table) {
-		tables.add(table);
+	public void addAssignedTable (Table table) {
+		assignedTables.add(table);
+	}
+	
+	
+	public void addTableUsedByProgram (TargetModule otherModule, Program otherProgram, Program myProgram, Table commonTable) {
+		
+		boolean exists = false;
+		Iterator<TableUsedByProgram>  iterator  = this.tablesUsedByProgram.iterator();
+
+		while (iterator.hasNext()) 
+		{
+			TableUsedByProgram tableUsedByProgram= iterator.next();
+			
+			if (	tableUsedByProgram.otherModuleName.equals(otherModule.getName()) &&
+					tableUsedByProgram.otherProgramName.equals(otherProgram.getName()) &&
+					tableUsedByProgram.myProgramName.equals(myProgram.getName()) &&
+					tableUsedByProgram.commonTableName.equals(commonTable.getName()) ) {
+				exists = true;
+				break;
+			}
+			
+		}   // end of loop around the module tables
+			
+		if (!exists) {
+			TableUsedByProgram tableUsed = new TableUsedByProgram();
+			tableUsed.otherModuleName = otherModule.getName();
+			tableUsed.otherProgramName = otherProgram.getName();
+			tableUsed.commonTableName = commonTable.getName();
+			tableUsed.myProgramName = myProgram.getName();
+			
+			tablesUsedByProgram.add(tableUsed);			
+		}
+	}
+	
+	
+	public void showTablesSharedWithOtherModules () {
+
+		Iterator<TableUsedByProgram>  iterator  = this.tablesUsedByProgram.iterator();
+		while (iterator.hasNext()) 
+		{
+			TableUsedByProgram tableUsedByProgram= iterator.next();	
+			
+			 System.out.printf ("M:%s P:%s has common table:%s with M:%s, P:%s \n", 
+					 this.name,
+					 tableUsedByProgram.myProgramName,
+					 tableUsedByProgram.commonTableName,
+					 tableUsedByProgram.otherModuleName,
+					 tableUsedByProgram.otherProgramName
+					   ); 
+			 					
+		}   // end of loop around the module tables			
 	}
 	
 	public void addProgram (Program program) 
@@ -52,7 +115,7 @@ public class TargetModule {
 		
 		// System.out.printf ("Considering if module <%s> is fitting for program <%s> \n", this.getName(), program.getName()); 
 
-		Iterator<Table>  moduleTableIterator  = tables.iterator();
+		Iterator<Table>  moduleTableIterator  = assignedTables.iterator();
 
 		while (moduleTableIterator.hasNext()) 
 		{
@@ -83,8 +146,7 @@ public class TargetModule {
 				}
 			} //  end of loop around the program tables
 			
-			if (commonTable) 
-			{ 
+			if (commonTable) {
 				nrOfCommonTables ++;
 			}
 		}   // end of loop around the module tables
@@ -104,7 +166,7 @@ public class TargetModule {
 	
 	public void showComposition () {
 		
-		Iterator<Table>  tableIterator = this.getTables().iterator();
+		Iterator<Table>  tableIterator = this.getAssignedTables().iterator();
 		while (tableIterator.hasNext()) 
 		{
 			Table moduleTable = tableIterator.next();
@@ -137,5 +199,7 @@ public class TargetModule {
 	{
 		System.out.printf ("GEN Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);  
 	}
+	
+	
 	
 }
