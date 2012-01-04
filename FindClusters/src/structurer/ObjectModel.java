@@ -34,12 +34,13 @@ public class ObjectModel {
 	}	
 
 	private void populateObjectModel(  ArrayList<Table> tables,  ArrayList<Program> programs,
-			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules) {
+			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules) 
+	{
 		
-		ElementCreator creator = new ElementCreator();
+		ElementCreator creator = new ElementCreator(true);
 		creator.createBaseElements(tables, programs, ifsModules, lbbModules);
 
-		ElementRelator relator = new ElementRelator ();
+		ElementRelator relator = new ElementRelator (true);
 		relator.relateBaseElements (tables, programs, ifsModules, lbbModules);
 		
 	}

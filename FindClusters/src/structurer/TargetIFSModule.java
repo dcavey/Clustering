@@ -8,12 +8,12 @@ public class TargetIFSModule extends TargetModule {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void showModuleTableCompositionLine ( String moduleName, String tableName)
+	public void signalModuleTableCompositionLine ( String moduleName, String tableName)
 	{
 		System.out.printf ("IFS Module=%s contains table=%s \n", moduleName, tableName);
 	}
 	
-	public void showModuleProgramCompositionLine (String moduleName, String programName, String pgmType)
+	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType)
 	{
 		System.out.printf ("IFS Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName); 
 	}

@@ -6,27 +6,33 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import resources.LocateResource;
-
 public class ElementCreator {
 	
-	private static final String PROGFILE = "ifs_programs.csv";
+	private static final String PROGFILE = "D:/dvandeca/Documents/My LabsWork/GitRepositories/Clustering/FindClusters/src/resources/ifs_programs.csv";
 //	D:\DVANDECA\Desktop\My Documents\My LabsWork\GitRepositories\Clustering\FindClusters\src\resources\ifs_programs.csv
 	
-	public ElementCreator() {
+	private boolean fullModel;
+	
+	public ElementCreator(boolean fullModel) {
 		super();	
+		this.fullModel = fullModel;
 	}
+	
+	
 	
 	public  void createBaseElements ( ArrayList<Table> tables,  ArrayList<Program> programs,
 	ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
 	{	
 
-		createBaseElementsTables (tables); 
-		createBaseElementsPrograms( programs);
-		createBaseElementsTargetIFSModules( ifsModules);
-		createBaseElementsTargetLBBModules( lbbModules);
-		
-		// DefineUnitTestData (tables, programs, ifsModules, lbbModules);
+		if (this.fullModel) {
+			createBaseElementsTables (tables); 
+			createBaseElementsPrograms( programs);
+			createBaseElementsTargetIFSModules( ifsModules);
+			createBaseElementsTargetLBBModules( lbbModules);		
+		} else
+		{
+			DefineUnitTestData (tables, programs, ifsModules, lbbModules);
+		}
 	}
 
 	private  void createBaseElementsTargetLBBModules
@@ -574,7 +580,7 @@ public class ElementCreator {
 		//ArrayList<String> outputList = new ArrayList<String>();
 		try {
 			// Open the file
-			FileInputStream fstream = new FileInputStream(LocateResource.getResource(PROGFILE));
+			FileInputStream fstream = new FileInputStream(PROGFILE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));

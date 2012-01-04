@@ -135,7 +135,7 @@ public class TargetModule {
 
 				if (programTable.getName().equals (moduleTable.getName()))
 				{
-					SignalMatchingData (program, programTable, this);
+					signalMatchingData (program, programTable, this);
 					
 					commonTable = true;
 					break;			// DECISION: table used by Program and by Module
@@ -170,36 +170,70 @@ public class TargetModule {
 		while (tableIterator.hasNext()) 
 		{
 			Table moduleTable = tableIterator.next();
-			showModuleTableCompositionLine (this.getName(),moduleTable.getName());
+			signalModuleTableCompositionLine (this.getName(),moduleTable.getName());
 		} 
 
 		Iterator<Program>  programIterator = this.getPrograms().iterator();
 		while (programIterator.hasNext()) 
 		{
 			Program moduleProgram = programIterator.next();
-			showModuleProgramCompositionLine (this.getName(),moduleProgram.getName(), moduleProgram.getPgmType());
+			signalModuleProgramCompositionLine (this.getName(),moduleProgram.getName(), moduleProgram.getPgmType());
 		} 
 		
 	}
 	
-	public void SignalMatchingData (Program program, Table programTable, TargetModule module) 
-	{
-		System.out.printf ("[%s]Program=%s uses table=%s of module=%s\n", program.getPgmType(), program.getName(), programTable.getName(), module.getName() );
+	
+	
+	public void showTableUsageOutsideModule () {
+		
+		Iterator<Program>  programIterator = this.getPrograms().iterator();
+		while (programIterator.hasNext()) 
+		{
+			Program moduleProgram = programIterator.next();
+			
+			// find all data usage that is not based on data in this table
+			
+			Iterator<Table>  programTableIterator = moduleProgram.getTables().iterator();
+			while (programTableIterator.hasNext()) 
+			{
+				Table programTable = programTableIterator.next();
+				
+				if (! programTable.isContainedInTableArray(this.assignedTables)) {
+						signalTableUsageOutsideModule (this, moduleProgram, programTable);
+				}
+				
+
+			}
+		} 
 	}
 	
 	
 	
+	
+	
+	public void signalMatchingData (Program program, Table programTable, TargetModule module) 
+	{
+		System.out.printf ("[%s]Program=%s uses table=%s of module=%s\n", program.getPgmType(), program.getName(), programTable.getName(), module.getName() );
+	}
+		
 	// overridden by specific module types (e.g. for IFS modules and for LBB modules)
-	public void showModuleTableCompositionLine ( String moduleName, String tableName)
+	public void signalModuleTableCompositionLine ( String moduleName, String tableName)
 	{
 		System.out.printf ("GEN Module=%s contains table=%s \n", moduleName, tableName);
 	}
 	
-	public void showModuleProgramCompositionLine (String moduleName, String programName, String pgmType)
+	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType)
 	{
 		System.out.printf ("GEN Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);  
 	}
-	
+	public void signalTableUsageOutsideModule (TargetModule module, Program program, Table table)
+	{
+		//System.out.printf ("%s %s %s\n", module, program, table );  
+
+//		System.out.printf ("cmod:%s,pgm:[%s]%s uses table:%s from pmod:%s\n",  module.getName(), program.getPgmType(), program.getName(), table.getName(),  table.getAssignedModule().getName() );  
+//	    System.out.printf ("cmod:%s,pgm:[%s]%s uses external table:%s from pmod:??\n",  module.getName(), program.getPgmType(), program.getName(), table.getName() );  
+	    System.out.printf ("cmod:%s,pgm:[%s]%s uses external table:%s \n",  module.getName(), program.getPgmType(), program.getName(), table.getName() );  
+	}
 	
 	
 }

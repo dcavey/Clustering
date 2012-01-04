@@ -25,6 +25,18 @@ public class Reporter {
 		}
 	}
 	
+	public void showTableUsageOutsideModule (ArrayList<TargetModule> modules) {
+		
+		Iterator<TargetModule>  moduleIterator  = modules.iterator();
+		
+		while (moduleIterator.hasNext()) {
+			TargetModule module = moduleIterator.next();	
+			module.showTableUsageOutsideModule();
+		}
+		
+	}
+	
+	
 	public void ShowSharedTables (ArrayList<TargetModule> modules) {
 		
 		ArrayList<CoupleOfModules> coupleOfModules = getUniqueCouplesOfModules(modules);
