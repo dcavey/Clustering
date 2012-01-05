@@ -36,11 +36,12 @@ public class ObjectModel {
 	private void populateObjectModel(  ArrayList<Table> tables,  ArrayList<Program> programs,
 			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules) 
 	{
+		boolean createRealModel = true; // Create real model or create model with test data
 		
-		ElementCreator creator = new ElementCreator(true);
+		ElementCreator creator = new ElementCreator(createRealModel);
 		creator.createBaseElements(tables, programs, ifsModules, lbbModules);
 
-		ElementRelator relator = new ElementRelator (true);
+		ElementRelator relator = new ElementRelator (createRealModel);
 		relator.relateBaseElements (tables, programs, ifsModules, lbbModules);
 		
 	}

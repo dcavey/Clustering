@@ -209,11 +209,10 @@ public class TargetModule {
 	
 	
 	
-	
-	
 	public void signalMatchingData (Program program, Table programTable, TargetModule module) 
 	{
-		System.out.printf ("[%s]Program=%s uses table=%s of module=%s\n", program.getPgmType(), program.getName(), programTable.getName(), module.getName() );
+		System.out.printf ("[%s]Program=%s uses module.table=%s.%s for %s \n", program.getPgmType(), program.getName(),module.getName(), programTable.getName(), 
+																		  program.getCRUDforTable(programTable) );
 	}
 		
 	// overridden by specific module types (e.g. for IFS modules and for LBB modules)
@@ -228,11 +227,14 @@ public class TargetModule {
 	}
 	public void signalTableUsageOutsideModule (TargetModule module, Program program, Table table)
 	{
-		//System.out.printf ("%s %s %s\n", module, program, table );  
-
-//		System.out.printf ("cmod:%s,pgm:[%s]%s uses table:%s from pmod:%s\n",  module.getName(), program.getPgmType(), program.getName(), table.getName(),  table.getAssignedModule().getName() );  
-//	    System.out.printf ("cmod:%s,pgm:[%s]%s uses external table:%s from pmod:??\n",  module.getName(), program.getPgmType(), program.getName(), table.getName() );  
-	    System.out.printf ("cmod:%s,pgm:[%s]%s uses external table:%s \n",  module.getName(), program.getPgmType(), program.getName(), table.getName() );  
+	    //if ( program.getPgmType().equals("P"))  { } else// can ignore the Profile programs 	    
+	    {
+			System.out.printf ("module.program=%s.[%s]%s uses external module.table=%s.%s for %s \n",  
+					module.getName(), program.getPgmType(), program.getName(), table.getName(),
+					table.getAssignedModule().getName() ,    program.getCRUDforTable (table));
+			
+	    	// System.out.printf ("cmod:%s,pgm:[%s]%s uses external motable:%s \n",  module.getName(), program.getPgmType(), program.getName(), table.getName() );
+	    }	
 	}
 	
 	

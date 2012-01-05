@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-
 public class Table {
 
 	private String name;
@@ -20,7 +19,6 @@ public class Table {
 	{
 		programs.add(program);
 	}
-	
 	
 	
 	public void setAssignedModule(TargetModule assignedModule) {
@@ -50,7 +48,5 @@ public class Table {
 		}
 		return found;		
 	}
-	
-	
 
 }

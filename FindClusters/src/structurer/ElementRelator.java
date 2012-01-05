@@ -14,28 +14,9 @@ public class ElementRelator {
 
 	private boolean fullModel;
 	
-	private class TableProgramXref{
-		String tableName;
-		String programName;
-		public TableProgramXref(String tableName, String programName) {
-			super();
-			this.tableName = tableName;
-			this.programName = programName;
 
-		}
-	}
 	
-	private class TableModuleXref{
-		String tableName;
-		String moduleName;
-		public TableModuleXref(String tableName, String moduleName) {
-			super();
-			this.tableName = tableName;
-			this.moduleName = moduleName;
-		}
-	}
-	
-	
+
 	
 	public ElementRelator(boolean fullModel) {
 		super();
@@ -44,9 +25,7 @@ public class ElementRelator {
 
 	public  void relateBaseElements ( 	ArrayList<Table> tables,  ArrayList<Program> programs,
 										ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
-	{
-		// ElementRelator relator = new ElementRelator();
-		
+	{		
 		if (this.fullModel) {
 			
 		// setup relationships between Tables and Programs (from generated Table/Program XREF file)
@@ -57,17 +36,17 @@ public class ElementRelator {
 		Iterator<TableProgramXref>  tp_xrefIterator  = tp_xrefs.iterator();
 		while (tp_xrefIterator.hasNext()) {
 			tp_Xref = tp_xrefIterator.next();
-			this.relateTableToProgram (tables, programs, tp_Xref.tableName, tp_Xref.programName);
+			this.relateTableToProgram (tables, programs, tp_Xref);
 		}
 		
-		// setup realtionships between Tables and target Modules (from IFS SME defined Table/Module XREF file)
+		// setup relationships between Tables and target Modules (from IFS SME defined Table/Module XREF file)
 		ArrayList<TableModuleXref> tm_xrefs = readTableModuleXrefs();
 		TableModuleXref tm_Xref;
 		
 		Iterator<TableModuleXref>  tm_xrefIterator  = tm_xrefs.iterator();
 		while (tm_xrefIterator.hasNext()) {
 			tm_Xref = tm_xrefIterator.next();
-			this.relateTableToModule (tables, ifsModules, tm_Xref.tableName, tm_Xref.moduleName);
+			this.relateTableToModule (tables, ifsModules, tm_Xref);
 		} 
 		
 		} else
@@ -76,17 +55,18 @@ public class ElementRelator {
 		}	
 	}
 	
-	public  void  relateTableToProgram (ArrayList<Table> tables,  ArrayList<Program> programs, String tableName, String programName)
+	public  void  relateTableToProgram (ArrayList<Table> tables,  ArrayList<Program> programs, TableProgramXref xref)
 	{
-		Program myProgram = findProgram( programs, programName);
-		Table myTable  	  = findTable(tables, tableName);
+		Program myProgram = findProgram( programs, xref.programName);
+		Table myTable  	  = findTable(tables, xref.tableName);
 		myProgram.addTable(myTable);
+		myProgram.addTableProgramXref(xref);
 	}
 
-	public void  relateTableToModule (ArrayList<Table> tables,  ArrayList<TargetModule> modules, String tableName, String moduleName)
+	public void  relateTableToModule (ArrayList<Table> tables,  ArrayList<TargetModule> modules, TableModuleXref xref)
 	{
-		TargetModule myModule = findModule( modules, moduleName);
-		Table myTable  	  = findTable(tables, tableName);
+		TargetModule myModule = findModule( modules, xref.moduleName);
+		Table myTable  	  = findTable(tables, xref.tableName);
 		// setup relationship in two ways
 		myModule.addAssignedTable(myTable);
 		myTable.setAssignedModule(myModule);
@@ -146,31 +126,6 @@ public class ElementRelator {
 		}
 	}
 	
-	private void DefineUnitTestData
-		( 	ArrayList<Table> tables,  ArrayList<Program> programs,
-				ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
-	{
-		relateTableToProgram (tables, programs, "Table01", "ProgramAAA");
-		relateTableToProgram (tables, programs, "Table02", "ProgramAAA");
-		relateTableToProgram (tables, programs, "Table03", "ProgramAAA");
-		relateTableToProgram (tables, programs, "Table04", "ProgramAAA");
-		
-		relateTableToProgram (tables, programs, "Table01", "ProgramBBB");
-		relateTableToProgram (tables, programs, "Table03", "ProgramBBB");
-		relateTableToProgram (tables, programs, "Table04", "ProgramBBB");
-		relateTableToProgram (tables, programs, "Table05", "ProgramBBB");		
-		
-		relateTableToProgram (tables, programs, "Table03", "ProgramCCC");
-
-		relateTableToModule (tables, ifsModules, "Table01" ,  "Module001");
-		relateTableToModule (tables, ifsModules, "Table02" ,  "Module001");
-		
-		relateTableToModule (tables, ifsModules, "Table03" ,  "Module002");
-		
-		relateTableToModule (tables, ifsModules, "Table04" ,  "Module003");
-		relateTableToModule (tables, ifsModules, "Table05" ,  "Module003");
-	}
-	
 	
 	private ArrayList<TableProgramXref> readTableProgramXrefs() {
 
@@ -185,7 +140,16 @@ public class ElementRelator {
 			// Read File Line By Line
 			while ((strLine = br.readLine()) != null) {
 				String[] output = strLine.split(";");
-				TableProgramXref currentXref = new TableProgramXref(output[0], output[2]);
+				/* column index in xref_table_program.csv
+				 *  0 = table
+				 *  1 = C 		(Create from CRUD)
+				 *  2 = R 		(Read from CRUD)
+				 *  3 = U 		(Update from CRUD)
+				 *  4 = D 		(Delete from CRUD) 
+				 *  5 = program 
+				 */
+				TableProgramXref currentXref = new TableProgramXref(output[0],output[5],
+						output[1],output[2],output[3],output[4] );
 				outputList.add(currentXref);
 			}
 			// Close the input stream
@@ -209,7 +173,8 @@ public class ElementRelator {
 			// Read File Line By Line
 			while ((strLine = br.readLine()) != null) {
 				String[] output = strLine.split(";");
-				TableModuleXref currentXref = new TableModuleXref(output[0], output[2]);
+				// index: 0 = table, 1 = LBB module, 2= IFS Module
+				TableModuleXref currentXref = new TableModuleXref(output[0], output[2],"","","","");  
 				outputList.add(currentXref);
 			}
 			// Close the input stream
@@ -220,9 +185,34 @@ public class ElementRelator {
 		return outputList;
 	}
 
-
+	private void DefineUnitTestData
+	( 	ArrayList<Table> tables,  ArrayList<Program> programs,
+			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
+	{
+		final boolean read = true; boolean delete = true; boolean update = true; boolean create = true;
+		final boolean noRead = false; boolean noDelete = true; boolean noUpdate = true; boolean noCreate = true;		
 	
+		
+		relateTableToProgram (tables, programs, new TableProgramXref("Table01", "ProgramAAA", "C", "R", "U", ""));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramAAA", "C", "R", "", ""));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table03", "ProgramAAA", "", "R", "", "D"));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table04", "ProgramAAA", "", "R", "U", "D"));
 	
+		relateTableToProgram (tables, programs, new TableProgramXref("Table03", "ProgramBBB", "C", "R", "", "D"));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table04", "ProgramBBB", "C", "R", "", "D"));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table05", "ProgramBBB", "", "R", "U", ""));	
 	
+		relateTableToProgram (tables, programs, new TableProgramXref("Table01", "ProgramCCC", "C", "R", "U", "D"));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramCCC", "C", "R", "U", "D"));
+		
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table01","Module001","","","","")) ;
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table02","Module001","","","","")) ;
+	
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table03","Module002","","","","")) ;
+	
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table04","Module003","","","","")) ; 
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table05","Module003","","","","")) ;
+	
+	}	
 	
 }

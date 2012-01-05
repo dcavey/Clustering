@@ -589,7 +589,16 @@ public class ElementCreator {
 			while ((strLine = br.readLine()) != null) {
 				String[] output = strLine.split(";");
 				
-				Program  programToAdd = new Program (output[1],output[0]);	programs.add (programToAdd);
+				/*
+				 * index 
+				 * 	0 = Type of program (I, R, P, G) 
+				 * 	1 = Program Name
+				 * 
+				 */
+				// if (output[0].equals("P"))  {	} else 
+				{
+					Program  programToAdd = new Program (output[1],output[0]);	programs.add (programToAdd);	
+				}
 
 			}
 			// Close the input stream

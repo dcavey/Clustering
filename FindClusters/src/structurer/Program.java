@@ -1,10 +1,12 @@
 package structurer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Program {
 	
 	private ArrayList<Table> tables;
+	private ArrayList<TableProgramXref> tableProgramXrefs;
 	private String name;
 	private String pgmType;
 	
@@ -13,6 +15,7 @@ public class Program {
 		this.name = name;
 		this.pgmType = pType;
 		tables = new ArrayList<Table>();
+		tableProgramXrefs = new ArrayList<TableProgramXref>();
 	}
 
 	public ArrayList<Table> getTables() {
@@ -30,6 +33,28 @@ public class Program {
 	public void addTable (Table table) {
 		tables.add(table);
 	}
-	
+
+	public String getCRUDforTable(Table table) {
+		// TODO Auto-generated method stub
+		
+		String strCRUD = "" ;
+		
+		Iterator<TableProgramXref>  xrefIterator  = tableProgramXrefs.iterator();
+		
+		while (xrefIterator.hasNext()) {
+			TableProgramXref thisXref = xrefIterator.next();
+			
+			if (thisXref.getTableName().equals(table.getName()))
+			{		
+				strCRUD = '[' + thisXref.getCreate() + thisXref.getRead() + thisXref.getUpdate() + thisXref.getDelete() + ']' ;
+			}	
+			
+		}
+		return strCRUD;		
+	}
+
+	public void addTableProgramXref(TableProgramXref xref) {
+		tableProgramXrefs.add(xref);
+	}
 
 }
