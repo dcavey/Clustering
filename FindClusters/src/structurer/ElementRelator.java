@@ -7,10 +7,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import resources.LocateResource;
+
 public class ElementRelator {
 
-	private static final String TABLE2PROGRAM_XREF = "D:/dvandeca/Documents/My LabsWork/GitRepositories/Clustering/FindClusters/src/resources/xref_table_program.csv";
-	private static final String TABLE2MODULE_XREF = "D:/dvandeca/Documents/My LabsWork/GitRepositories/Clustering/FindClusters/src/resources/xref_table_module.csv";
+	private static final String TABLE2PROGRAM_XREF = "xref_table_program.csv";
+	private static final String TABLE2MODULE_XREF = "xref_table_module.csv";
 
 	private boolean fullModel;
 	
@@ -132,7 +134,7 @@ public class ElementRelator {
 		ArrayList<TableProgramXref> outputList = new ArrayList<TableProgramXref>();
 		try {
 			// Open the file
-			FileInputStream fstream = new FileInputStream(TABLE2PROGRAM_XREF);
+			FileInputStream fstream = new FileInputStream(LocateResource.getResource(TABLE2PROGRAM_XREF));
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -165,7 +167,7 @@ public class ElementRelator {
 		ArrayList<TableModuleXref> outputList = new ArrayList<TableModuleXref>();
 		try {
 			// Open the file
-			FileInputStream fstream = new FileInputStream(TABLE2MODULE_XREF);
+			FileInputStream fstream = new FileInputStream(LocateResource.getResource(TABLE2MODULE_XREF));
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
