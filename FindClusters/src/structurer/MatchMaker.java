@@ -1,5 +1,9 @@
 package structurer;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,7 +20,15 @@ public  class MatchMaker {
 		int	bestScoreSoFar = 0 ;
 		int	score = 0 ;
 		TargetModule bestModuleSoFar = null;
-		boolean needToAdaptBestScore = false;
+		TargetModule definedModule;
+		boolean needToAdaptBestScore;
+				
+		definedModule = getDefinedOwner (program, modules);
+		
+		if (definedModule != null) {
+			SignalScore (999, "FIT=Y,SEL=Y", definedModule.getType(), definedModule.getName(), program );	
+			return;
+		}
 		
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
 		
@@ -77,5 +89,66 @@ public  class MatchMaker {
 	private void SignalScore (int score, String scoreQualifier,  String moduleType, String moduleName, Program program )  {
 		 System.out.printf ("program=%s %s into %s module=%s with score=%d> \n",  program.getPgmNameAndType(), scoreQualifier, moduleType, moduleName, score ); 
 	}
+	
+	private TargetModule getDefinedOwner (Program program, ArrayList<TargetModule> modules) {
+		
+		TargetModule definedModule = null;
+		
+		try 
+		{
+			// Open the file
+			InputStream fstream = this.getClass().getResourceAsStream(Constants.PROGRAM2MODULE_XREF);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) 
+			{
+				String[] output = strLine.split(";");
+				
+				/*
+				 * index 
+				 * 	0 = Program Name
+				 * 	1 = Module Name
+				 * 
+				 */
+				if (program.getName().equals(output[0])) {
+
+					if (definedModule != null) {
+						SignalScore (998, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );							
+					}
+					
+					definedModule = findModule(modules, output[1]);
+				}	
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+		
+		return definedModule;
+		
+	}
+	
+	private TargetModule findModule (ArrayList<TargetModule> modules, String moduleName) {
+		Iterator<TargetModule>  moduleIterator  = modules.iterator();
+		TargetModule thisModule = null;
+		boolean found = false;	
+		while (moduleIterator.hasNext()) {
+			thisModule = moduleIterator.next();
+			if (thisModule.getName().equals(moduleName))
+			{ found= true; break;  }
+		}
+		if (found) 
+		{ return thisModule; } 
+		else {
+			System.out.printf("failed to find module %s \n", moduleName);
+			return null;
+		}
+	}
+	
+	
 }
 

@@ -106,7 +106,7 @@ public class ElementRelator {
 		
 	}
 	
-	public TargetModule findModule (ArrayList<TargetModule> modules, String moduleName) {
+	private TargetModule findModule (ArrayList<TargetModule> modules, String moduleName) {
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
 		TargetModule thisModule = null;
 		boolean found = false;	

@@ -51,7 +51,7 @@ public class Program {
 			
 			if (thisXref.getTableName().equals(table.getName()))
 			{		
-				strCRUD = "CRUD=" + thisXref.getCreate() + thisXref.getRead() + thisXref.getUpdate() + thisXref.getDelete() ;
+				strCRUD = "OPS=" + thisXref.getCreate() + thisXref.getRead() + thisXref.getUpdate() + thisXref.getDelete() ;
 			}	
 			
 		}

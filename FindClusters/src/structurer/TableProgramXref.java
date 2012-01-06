@@ -8,11 +8,10 @@ public class TableProgramXref{
 			super();
 			this.tableName = tableName;
 			this.programName = programName;
-			if (! create.equals("")) { this.create = create; } else { this.create=".";}
-			if (! read.equals("")) { this.read = read; } else { this.read=".";}
-			if (! update.equals("")) { this.update = update; } else { this.update=".";}
-			if (! delete.equals("")) { this.delete = delete; } else { this.delete=".";}
-
+			if (! create.equals("")) { this.create = create; } else { this.create="_";}
+			if (! read.equals("")) { this.read = read; } else { this.read="_";}
+			if (! update.equals("")) { this.update = update; } else { this.update="_";}
+			if (! delete.equals("")) { this.delete = delete; } else { this.delete="_";}
 		}
 		public String getTableName() {
 			return tableName;

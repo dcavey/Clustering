@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class ElementCreator {
 	
 
-	private static final String PROGFILE = "list_programs.csv";
-	private static final String TABLEFILE = "list_tables.csv";
+	//private static final String PROGFILE = "list_programs.csv";
+	//private static final String TABLEFILE = "list_tables.csv";
 //	D:\DVANDECA\Desktop\My Documents\My LabsWork\GitRepositories\Clustering\FindClusters\src\resources\ifs_programs.csv
 	
 
@@ -614,7 +614,7 @@ public class ElementCreator {
 	private void createBaseElementsTables_NEW(ArrayList<Table> tables) {
 		try {
 			// Open the file
-			InputStream fstream = this.getClass().getResourceAsStream(TABLEFILE);
+			InputStream fstream = this.getClass().getResourceAsStream(Constants.TABLEFILE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
