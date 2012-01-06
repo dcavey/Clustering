@@ -614,7 +614,7 @@ public class ElementCreator {
 	private void createBaseElementsTables_NEW(ArrayList<Table> tables) {
 		try {
 			// Open the file
-			FileInputStream fstream = new FileInputStream(LocateResource.getResource(TABLEFILE));
+			InputStream fstream = this.getClass().getResourceAsStream(TABLEFILE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
