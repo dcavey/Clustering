@@ -2,17 +2,11 @@ package structurer;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import resources.LocateResource;
-
 public class ElementCreator {
-	
-	private static final String PROGFILE = "ifs_programs.csv";
-//	D:\DVANDECA\Desktop\My Documents\My LabsWork\GitRepositories\Clustering\FindClusters\src\resources\ifs_programs.csv
 	
 	private boolean fullModel;
 	
@@ -583,7 +577,7 @@ public class ElementCreator {
 		//ArrayList<String> outputList = new ArrayList<String>();
 		try {
 			// Open the file
-			FileInputStream fstream = new FileInputStream(LocateResource.getResource(PROGFILE));
+			InputStream fstream = this.getClass().getResourceAsStream(Constants.PROGFILE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
