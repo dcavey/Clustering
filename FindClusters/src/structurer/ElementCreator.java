@@ -11,7 +11,8 @@ import resources.LocateResource;
 
 public class ElementCreator {
 	
-	private static final String PROGFILE = "ifs_programs.csv";
+	private static final String PROGFILE = "list_programs.csv";
+	private static final String TABLEFILE = "list_tables.csv";
 //	D:\DVANDECA\Desktop\My Documents\My LabsWork\GitRepositories\Clustering\FindClusters\src\resources\ifs_programs.csv
 	
 	private boolean fullModel;
@@ -611,6 +612,31 @@ public class ElementCreator {
 		}
 	}
 	
+	private void createBaseElementsTables_NEW(ArrayList<Table> tables) {
+		try {
+			// Open the file
+			FileInputStream fstream = new FileInputStream(LocateResource.getResource(TABLEFILE));
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");			
+				/*
+				 * index 
+				 * 	0 = Table Name
+				 * 
+				 */
+				Table  tableToAdd = new Table (output[0]);	tables.add (tableToAdd);	
+
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+	}
 	
 	private void DefineUnitTestData
 	( 	ArrayList<Table> tables,  ArrayList<Program> programs,
@@ -630,9 +656,6 @@ public class ElementCreator {
 		TargetModule Module002 = new TargetIFSModule ("Module002");		ifsModules.add(Module002);
 		TargetModule Module003 = new TargetIFSModule ("Module003"); 		ifsModules.add(Module003);
 
-    }
-	
-	
-	
+    }	
 	
 }

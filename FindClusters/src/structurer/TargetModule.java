@@ -112,6 +112,7 @@ public class TargetModule {
 		Table moduleTable ;
 		boolean commonTable;
 		boolean moduleHasTables = false;
+		boolean readingParamTable = false;
 		
 		// System.out.printf ("Considering if module <%s> is fitting for program <%s> \n", this.getName(), program.getName()); 
 
@@ -136,18 +137,26 @@ public class TargetModule {
 				if (programTable.getName().equals (moduleTable.getName()))
 				{
 					signalMatchingData (program, programTable, this);
+					commonTable = true;					
+					readingParamTable = readingOfParameterTable(this, program, programTable);
 					
-					commonTable = true;
 					break;			// DECISION: table used by Program and by Module
+					
 				}
 				else
 				{
 					// System.out.printf ("Table <%s> is not common \n", moduleTable.getName()); 
 				}
+				
+				
 			} //  end of loop around the program tables
 			
 			if (commonTable) {
-				nrOfCommonTables ++;
+				
+				if ( readingParamTable ) {	  } // ParameterFiles are not counted 
+				{	
+					nrOfCommonTables ++;				
+				}
 			}
 		}   // end of loop around the module tables
 		
@@ -155,8 +164,16 @@ public class TargetModule {
 			// System.out.printf ("Module <%s> has no tables at all \n", this.getName() );	
 		}
 
-		
 		return nrOfCommonTables;
+	}
+	
+	private boolean readingOfParameterTable (TargetModule module, Program program, Table table)
+	{
+		if ( module.getPrograms().equals ("CORE") && program.getCRUDforTable(table).contains("R") ) {
+			System.out.printf ("Program=%s reads parameter table=%s \n", program.getName(), table.getName() );	 
+		}	
+		
+		return false;
 	}
 	
 	public void addProgramToModule (Program program)
@@ -181,7 +198,6 @@ public class TargetModule {
 		} 
 		
 	}
-	
 	
 	
 	public void showTableUsageOutsideModule () {
@@ -211,7 +227,7 @@ public class TargetModule {
 	
 	public void signalMatchingData (Program program, Table programTable, TargetModule module) 
 	{
-		System.out.printf ("[%s]Program=%s uses module.table=%s.%s for %s \n", program.getPgmType(), program.getName(),module.getName(), programTable.getName(), 
+		System.out.printf ("Program=%s uses module.table=%s.%s for %s \n",  program.getPgmNameAndType(),module.getName(), programTable.getName(), 
 																		  program.getCRUDforTable(programTable) );
 	}
 		
@@ -229,9 +245,9 @@ public class TargetModule {
 	{
 	    //if ( program.getPgmType().equals("P"))  { } else// can ignore the Profile programs 	    
 	    {
-			System.out.printf ("module.program=%s.[%s]%s uses external module.table=%s.%s for %s \n",  
-					module.getName(), program.getPgmType(), program.getName(), table.getName(),
-					table.getAssignedModule().getName() ,    program.getCRUDforTable (table));
+			System.out.printf ("module.program=%s.%s uses external module.table=%s.%s for %s \n",  
+					module.getName(), program.getPgmNameAndType(),  table.getAssignedModule().getName() , 
+					table.getName(),   program.getCRUDforTable (table));
 			
 	    	// System.out.printf ("cmod:%s,pgm:[%s]%s uses external motable:%s \n",  module.getName(), program.getPgmType(), program.getName(), table.getName() );
 	    }	

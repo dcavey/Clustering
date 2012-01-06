@@ -29,6 +29,11 @@ public class Program {
 	public String getPgmType() {
 		return pgmType;
 	}
+	
+	public String getPgmNameAndType() {
+		return name + " [" + pgmType + "]";
+	}
+	
 
 	public void addTable (Table table) {
 		tables.add(table);
@@ -46,7 +51,7 @@ public class Program {
 			
 			if (thisXref.getTableName().equals(table.getName()))
 			{		
-				strCRUD = '[' + thisXref.getCreate() + thisXref.getRead() + thisXref.getUpdate() + thisXref.getDelete() + ']' ;
+				strCRUD = "CRUD=" + thisXref.getCreate() + thisXref.getRead() + thisXref.getUpdate() + thisXref.getDelete() ;
 			}	
 			
 		}
