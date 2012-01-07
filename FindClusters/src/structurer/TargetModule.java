@@ -1,5 +1,9 @@
 package structurer;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -244,13 +248,18 @@ public class TargetModule {
 	public void signalTableUsageOutsideModule (TargetModule module, Program program, Table table)
 	{
 	    //if ( program.getPgmType().equals("P"))  { } else// can ignore the Profile programs 	    
-	    {
+	 
+		try {
+		{
 			System.out.printf ("module.program=%s.%s uses external module.table=%s.%s for %s \n",  
 					module.getName(), program.getPgmNameAndType(),  table.getAssignedModule().getName() , 
 					table.getName(),   program.getCRUDforTable (table));
 			
 	    	// System.out.printf ("cmod:%s,pgm:[%s]%s uses external motable:%s \n",  module.getName(), program.getPgmType(), program.getName(), table.getName() );
 	    }	
+		} catch (Exception e) {// Catch exception if any
+			System.out.printf("Error for table %s \n", table.getName()   );
+		}
 	}
 	
 	

@@ -16,7 +16,7 @@ public class FindClusters  {
 
 	public void run() /* throws IOException */ {
 		MatchMaker matchMaker = new MatchMaker ();
-		ObjectModel model = new ObjectModel();
+		ObjectModel model = new ObjectModel( true);		// true >> real model, false => test model
 		Reporter reporter = new Reporter();
 		
 		ArrayList<Program> programs = model.getPrograms();

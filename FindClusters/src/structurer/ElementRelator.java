@@ -106,7 +106,7 @@ public class ElementRelator {
 		
 	}
 	
-	private TargetModule findModule (ArrayList<TargetModule> modules, String moduleName) {
+	public TargetModule findModule (ArrayList<TargetModule> modules, String moduleName) {
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
 		TargetModule thisModule = null;
 		boolean found = false;	
@@ -159,6 +159,7 @@ public class ElementRelator {
 
 	private ArrayList<TableModuleXref> readTableModuleXrefs() {
 
+		int		counter = 0;
 		ArrayList<TableModuleXref> outputList = new ArrayList<TableModuleXref>();
 		try {
 			// Open the file
@@ -166,13 +167,14 @@ public class ElementRelator {
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String strLine = br.readLine();
+			String strLine = br.readLine();			// BEWARE: Read of header line here. Make sure the input file has a header line!!! 
 			// Read File Line By Line
 			while ((strLine = br.readLine()) != null) {
 				String[] output = strLine.split(";");
 				// index: 0 = table, 1 = LBB module, 2= IFS Module
 				TableModuleXref currentXref = new TableModuleXref(output[0], output[2],"","","","");  
 				outputList.add(currentXref);
+				counter++;
 			}
 			// Close the input stream
 			in.close();

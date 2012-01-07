@@ -5,15 +5,18 @@ import java.util.ArrayList;
 
 public class ObjectModel {
 	
+	boolean createRealModel; // Create real model or create model with test data
+	
 	private ArrayList<Program> 		programs;
 	private ArrayList<Table> 		tables;	
 	private ArrayList<TargetModule> ifsModules;
 	private ArrayList<TargetModule> lbbModules;
 	
 	
-	public ObjectModel() {
+	public ObjectModel(boolean realModel) {
 	
 		super();
+		this.createRealModel = realModel;
 		this.programs = new ArrayList<Program>();
 		this.tables = new ArrayList<Table>();
 		this.ifsModules = new ArrayList<TargetModule>();
@@ -36,8 +39,6 @@ public class ObjectModel {
 	private void populateObjectModel(  ArrayList<Table> tables,  ArrayList<Program> programs,
 			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules) 
 	{
-		boolean createRealModel = true; // Create real model or create model with test data
-		
 		ElementCreator creator = new ElementCreator(createRealModel);
 		creator.createBaseElements(tables, programs, ifsModules, lbbModules);
 
