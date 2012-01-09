@@ -33,7 +33,7 @@ public class FindClusters  {
 		
 		reporter.showModules(ifsModules);
 		// reporter.ShowSharedTables(ifsModules);
-		reporter.showTableUsageOutsideModule(ifsModules);
+		reporter.showTableUsageAcrossModules(ifsModules, true);
 		
 	}
 

@@ -204,7 +204,7 @@ public class TargetModule {
 	}
 	
 	
-	public void showTableUsageOutsideModule () {
+	public void showTableUsageAcrossModules (boolean showAll) {
 		
 		Iterator<Program>  programIterator = this.getPrograms().iterator();
 		while (programIterator.hasNext()) 
@@ -216,13 +216,15 @@ public class TargetModule {
 			Iterator<Table>  programTableIterator = moduleProgram.getTables().iterator();
 			while (programTableIterator.hasNext()) 
 			{
+				boolean external;
 				Table programTable = programTableIterator.next();
 				
 				if (! programTable.isContainedInTableArray(this.assignedTables)) {
-						signalTableUsageOutsideModule (this, moduleProgram, programTable);
+						signalTableUsageAcrossModules (this, moduleProgram, programTable, external = true);
+				} else
+				{
+					signalTableUsageAcrossModules (this, moduleProgram, programTable, external = false);
 				}
-				
-
 			}
 		} 
 	}
@@ -245,20 +247,23 @@ public class TargetModule {
 	{
 		System.out.printf ("GEN Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);  
 	}
-	public void signalTableUsageOutsideModule (TargetModule module, Program program, Table table)
+	public void signalTableUsageAcrossModules (TargetModule module, Program program, Table table, boolean external)
 	{
 	    //if ( program.getPgmType().equals("P"))  { } else// can ignore the Profile programs 	    
 	 
 		try {
 		{
-			System.out.printf ("module.program=%s.%s uses external module.table=%s.%s for %s \n",  
-					module.getName(), program.getPgmNameAndType(),  table.getAssignedModule().getName() , 
-					table.getName(),   program.getCRUDforTable (table));
+			String usageType;
+			if (external) 
+			{usageType = "external"; 	}
+			else {usageType = "internal";}
 			
-	    	// System.out.printf ("cmod:%s,pgm:[%s]%s uses external motable:%s \n",  module.getName(), program.getPgmType(), program.getName(), table.getName() );
+			System.out.printf ("module.program=%s.%s uses %s module.table=%s.%s for %s \n",  
+					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
+					table.getName(),   program.getCRUDforTable (table));
 	    }	
 		} catch (Exception e) {// Catch exception if any
-			System.out.printf("Error for table %s \n", table.getName()   );
+			System.out.printf("Error tp place table %s in a module \n", table.getName()   );
 		}
 	}
 	

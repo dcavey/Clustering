@@ -25,13 +25,13 @@ public class Reporter {
 		}
 	}
 	
-	public void showTableUsageOutsideModule (ArrayList<TargetModule> modules) {
+	public void showTableUsageAcrossModules (ArrayList<TargetModule> modules, boolean showAll) {
 		
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
 		
 		while (moduleIterator.hasNext()) {
 			TargetModule module = moduleIterator.next();	
-			module.showTableUsageOutsideModule();
+			module.showTableUsageAcrossModules(true);
 		}
 		
 	}
