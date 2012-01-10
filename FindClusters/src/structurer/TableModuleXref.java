@@ -2,12 +2,13 @@ package structurer;
 
 public class TableModuleXref{
 	String tableName;
-	String moduleName;
+	String physModuleName;
+	String logModuleName;
 	String create; String read; String update; String delete;
-	public TableModuleXref(String tableName, String moduleName, String create, String read, String update, String delete) {
+	public TableModuleXref(String tableName, String logModuleName, String physModuleName,  String create, String read, String update, String delete) {
 		super();
 		this.tableName = tableName;
-		this.moduleName = moduleName;
+		this.physModuleName = physModuleName;
 		this.create = create;
 		this.read = read;
 		this.update = update;
@@ -19,11 +20,18 @@ public class TableModuleXref{
 	public void setTableName(String tableName) {
 		this.tableName = tableName;
 	}
-	public String getModuleName() {
-		return moduleName;
+	public String getPhysModuleName() {
+		return physModuleName;
 	}
-	public void setModuleName(String moduleName) {
-		this.moduleName = moduleName;
+	public void setPhysModuleName(String moduleName) {
+		this.physModuleName = moduleName;
+	}
+	
+	public String getLogModuleName() {
+		return logModuleName;
+	}
+	public void setLogModuleName(String logModuleName) {
+		this.logModuleName = logModuleName;
 	}
 	public String getCreate() {
 		return create;

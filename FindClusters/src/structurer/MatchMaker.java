@@ -51,7 +51,7 @@ public  class MatchMaker {
 			// System.out.printf ("%s Module-Program fit BEST     : <%s>-<%s> - Score<%d> \n\n",  bestModuleSoFar.getTypedName(), program.getName(), bestScoreSoFar ); 			
 		} else
 		{
-			SignalScore (-1, "FIT=N,SEL=N", "N/A", "NO_MODULE_AT_ALL", program );	// not classifiable at all		
+			SignalScore (-1, "FIT=N,SEL=N", "N/A", "N/A", program );	// not classifiable at all		
 		}
 	}	
 
@@ -125,7 +125,7 @@ public  class MatchMaker {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.err.println("Error: " + e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 		}
 		
 		return definedModule;
@@ -144,7 +144,7 @@ public  class MatchMaker {
 		if (found) 
 		{ return thisModule; } 
 		else {
-			System.out.printf("failed to find module %s \n", moduleName);
+			System.out.printf("MATCHMAKER: failed to find module %s /n", moduleName);
 			return null;
 		}
 	}

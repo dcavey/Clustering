@@ -14,7 +14,7 @@ public class Constants {
 	static final String PROGRAM2MODULE_XREF = "/resources/xref_program_module.csv";
 	static final String PROGFILE = "/resources/list_programs.csv";
 	static final String TABLEFILE = "/resources/list_tables.csv";
+	static final String LBBMODULEFILE = "/resources/list_lbb_modules.csv";
+	static final String IFSMODULEFILE = "/resources/list_ifs_modules.csv";
 	
-	//	D:\DVANDECA\Desktop\My Documents\My LabsWork\GitRepositories\Clustering\FindClusters\src\resources\ifs_programs.csv
-
 }

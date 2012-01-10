@@ -11,6 +11,7 @@ public class ObjectModel {
 	private ArrayList<Table> 		tables;	
 	private ArrayList<TargetModule> ifsModules;
 	private ArrayList<TargetModule> lbbModules;
+	private ArrayList<TargetModule> targetModules;
 	
 	
 	public ObjectModel(boolean realModel) {
@@ -32,8 +33,20 @@ public class ObjectModel {
 		return programs;
 	}
 	
+	public ArrayList<TargetModule> getTargetModules() {
+		return targetModules;
+	}
+
+	public void setTargetModules(ArrayList<TargetModule> targetModules) {
+		this.targetModules = targetModules;
+	}
+
 	public ArrayList<TargetModule> getIFSModules(){
 		return ifsModules;
+	}	
+	
+	public ArrayList<TargetModule> getLBBModules(){
+		return lbbModules;
 	}	
 
 	private void populateObjectModel(  ArrayList<Table> tables,  ArrayList<Program> programs,

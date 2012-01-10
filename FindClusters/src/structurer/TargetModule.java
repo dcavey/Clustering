@@ -249,8 +249,6 @@ public class TargetModule {
 	}
 	public void signalTableUsageAcrossModules (TargetModule module, Program program, Table table, boolean external)
 	{
-	    //if ( program.getPgmType().equals("P"))  { } else// can ignore the Profile programs 	    
-	 
 		try {
 		{
 			String usageType;
@@ -263,7 +261,7 @@ public class TargetModule {
 					table.getName(),   program.getCRUDforTable (table));
 	    }	
 		} catch (Exception e) {// Catch exception if any
-			System.out.printf("Error tp place table %s in a module \n", table.getName()   );
+			System.out.printf("Error to place table %s in a module \n", table.getName()   );
 		}
 	}
 	

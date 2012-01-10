@@ -54,19 +54,27 @@ public class ElementRelator {
 	
 	public  void  relateTableToProgram (ArrayList<Table> tables,  ArrayList<Program> programs, TableProgramXref xref)
 	{
-		Program myProgram = findProgram( programs, xref.programName);
-		Table myTable  	  = findTable(tables, xref.tableName);
-		myProgram.addTable(myTable);
-		myProgram.addTableProgramXref(xref);
+		try {
+			Program myProgram = findProgram( programs, xref.programName);
+			Table myTable  	  = findTable(tables, xref.tableName);
+			myProgram.addTable(myTable);
+			myProgram.addTableProgramXref(xref);
+		} catch (Exception e) {// Catch exception if any
+		System.out.printf("Error:  failed to relate program %s to table %s", xref.programName, xref.tableName);
+		}
 	}
 
 	public void  relateTableToModule (ArrayList<Table> tables,  ArrayList<TargetModule> modules, TableModuleXref xref)
 	{
-		TargetModule myModule = findModule( modules, xref.moduleName);
-		Table myTable  	  = findTable(tables, xref.tableName);
-		// setup relationship in two ways
-		myModule.addAssignedTable(myTable);
-		myTable.setAssignedModule(myModule);
+		try {
+			TargetModule myModule = findModule( modules, xref.physModuleName);
+			Table myTable  	  = findTable(tables, xref.tableName);
+			// setup relationship in two ways
+			myModule.addAssignedTable(myTable);
+			myTable.setAssignedModule(myModule);
+		} catch (Exception e) {// Catch exception if any
+			System.out.printf("Error:  failed to relate table %s to module %s", xref.tableName, xref.physModuleName);
+		}
 	}
 
 	
@@ -118,7 +126,7 @@ public class ElementRelator {
 		if (found) 
 		{ return thisModule; } 
 		else {
-			System.out.printf("failed to find module %s \n", moduleName);
+			System.out.printf("RELATOR: failed to find module %s /n", moduleName);
 			return null;
 		}
 	}
@@ -152,7 +160,7 @@ public class ElementRelator {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.err.println("Error: " + e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 		}
 		return outputList;
 	}
@@ -172,14 +180,14 @@ public class ElementRelator {
 			while ((strLine = br.readLine()) != null) {
 				String[] output = strLine.split(";");
 				// index: 0 = table, 1 = LBB module, 2= IFS Module
-				TableModuleXref currentXref = new TableModuleXref(output[0], output[2],"","","","");  
+				TableModuleXref currentXref = new TableModuleXref(output[0], output[1], output[2],"","","","");  
 				outputList.add(currentXref);
 				counter++;
 			}
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.err.println("Error: " + e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 		}
 		return outputList;
 	}
@@ -204,13 +212,13 @@ public class ElementRelator {
 		relateTableToProgram (tables, programs, new TableProgramXref("Table01", "ProgramCCC", "C", "R", "U", "D"));
 		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramCCC", "C", "R", "U", "D"));
 		
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table01","Module001","","","","")) ;
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table02","Module001","","","","")) ;
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table01","LBBModule01", "Module001","","","","")) ;
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table02","LBBModule01", "Module001","","","","")) ;
 	
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table03","Module002","","","","")) ;
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table03","LBBModule02", "Module002","","","","")) ;
 	
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table04","Module003","","","","")) ; 
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table05","Module003","","","","")) ;
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table04","LBBModule003","Module003","","","","")) ; 
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table05","LBBModule003","Module003","","","","")) ;
 	
 	}	
 	
