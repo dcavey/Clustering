@@ -25,7 +25,6 @@ public class Matcher {
 	}
 
 	
-	
 	public ArrayList<String> grepSources() {
 		ArrayList<String> outputList = new ArrayList<String>();
 		try {
@@ -37,7 +36,10 @@ public class Matcher {
 			String strLine = br.readLine();
 			// Read File Line By Line
 			while ((strLine = br.readLine()) != null) {
-				match(strLine);		
+				// matchAndReport(strLine);	
+				matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(strLine);			// remove comment as required
+				// matchAndReport_FIND_LINC_PROGRAMS(strLine);				// remove comment as required
+				
 			}
 			// Close the input stream
 			in.close();
@@ -49,7 +51,7 @@ public class Matcher {
 	
 
 
-	public void match(String strLine) {
+	public void matchAndReport_FIND_LINC_PROGRAMS(String strLine) {
 			
 		if (strLine.startsWith("10") ) {
 			System.out.printf ("ISPEC  : %1s \n", strLine.substring(2,7));
@@ -68,6 +70,38 @@ public class Matcher {
 					} 
 				}
 			}
+		}
+	}
+	
+	
+	public void matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(String strLine) {
+
+		if ( (strLine.contains("BP-") ) && 
+			 (strLine.contains("INS") ) )	{			
+			int beginIndex = strLine.indexOf("BP-"); 
+			int endIndex = beginIndex + 12;
+			String callee= strLine.substring(beginIndex, endIndex);
+			
+			String tempString = strLine.substring(2,19); 
+			endIndex = tempString.indexOf (" ");
+			String caller = strLine.substring(2, 2+endIndex);
+			
+			String tacsyType;
+			if (callee.contains("SAG")) {
+				tacsyType = "SAGE";
+			} else
+			{
+				tacsyType = "EASY";
+			}
+			
+			// System.out.printf ("TACSY: CALLER=%s; CALLEE=%s LINE=%s\n", caller, callee, strLine );
+			//System.out.printf ("TACSY: CALLER=%s; CALLEE=%s, TACSYTYPE=%s \n", caller, callee, tacsyType );
+			
+		}
+		
+		if (strLine.contains   ("IFSYS/WF/TDFXFB"))  // ("XFB") )//
+		{
+			System.out.printf ("XFB: CALLER=%s \n", strLine.substring(2,12), strLine );
 		}
 	}
 
