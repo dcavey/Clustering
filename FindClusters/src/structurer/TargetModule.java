@@ -113,10 +113,10 @@ public class TargetModule {
 	public int getMatchingScoreForProgram(Program program)
 	{
 		int	nrOfCommonTables = 0 ;
+		int finalScore = 0 ;
 		Table moduleTable ;
 		boolean commonTable;
 		boolean moduleHasTables = false;
-		boolean readingParamTable = false;
 		
 		// System.out.printf ("Considering if module <%s> is fitting for program <%s> \n", this.getName(), program.getName()); 
 
@@ -141,8 +141,7 @@ public class TargetModule {
 				if (programTable.getName().equals (moduleTable.getName()))
 				{
 					signalMatchingData (program, programTable, this);
-					commonTable = true;					
-					readingParamTable = readingOfParameterTable(this, program, programTable);
+					commonTable = true;			
 					
 					break;			// DECISION: table used by Program and by Module
 					
@@ -155,30 +154,38 @@ public class TargetModule {
 				
 			} //  end of loop around the program tables
 			
-			if (commonTable) {
-				
-				if ( readingParamTable ) {	  } // ParameterFiles are not counted 
-				{	
-					nrOfCommonTables ++;				
-				}
+			if (commonTable) {				
+				nrOfCommonTables ++;				
 			}
 		}   // end of loop around the module tables
 		
 		if (!moduleHasTables) {
 			// System.out.printf ("Module <%s> has no tables at all \n", this.getName() );	
 		}
+		else
+		{
+			// Adapt score 
+			finalScore = AdaptScore(nrOfCommonTables, this);
+		}
 
-		return nrOfCommonTables;
+		return finalScore;
 	}
 	
-	private boolean readingOfParameterTable (TargetModule module, Program program, Table table)
-	{
-		if ( module.getPrograms().equals ("TECHNICAL_KERNEL") && program.getCRUDforTable(table).contains("R") ) {
-			System.out.printf ("Program=%s reads parameter table=%s \n", program.getName(), table.getName() );	 
-		}	
-		
-		return false;
+	private int AdaptScore(int nrOfCommonTables, TargetModule targetModule) {
+
+		if (targetModule.getName().contains("TECHNICAL_KERNEL") ||
+		    (targetModule.getName().contains("MDM_MANAGEMENT")) ||
+		    (targetModule.getName().contains("UNUSED"))
+		    )
+		{
+			return nrOfCommonTables;
+		}
+		else
+		{
+			return nrOfCommonTables +10 ;
+		}
 	}
+
 	
 	public void addProgramToModule (Program program)
 	{

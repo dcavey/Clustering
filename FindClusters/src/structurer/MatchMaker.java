@@ -27,7 +27,8 @@ public  class MatchMaker {
 		
 		if (definedModule != null) {
 			SignalScore (999, "FIT=Y,SEL=Y", definedModule.getType(), definedModule.getName(), program );	
-			return;
+			bestScoreSoFar = score;
+			// return;		// commented out to also get the other scoring 
 		}
 		
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
