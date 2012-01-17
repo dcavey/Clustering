@@ -173,7 +173,7 @@ public class TargetModule {
 	
 	private boolean readingOfParameterTable (TargetModule module, Program program, Table table)
 	{
-		if ( module.getPrograms().equals ("CORE") && program.getCRUDforTable(table).contains("R") ) {
+		if ( module.getPrograms().equals ("TECHNICAL_KERNEL") && program.getCRUDforTable(table).contains("R") ) {
 			System.out.printf ("Program=%s reads parameter table=%s \n", program.getName(), table.getName() );	 
 		}	
 		
