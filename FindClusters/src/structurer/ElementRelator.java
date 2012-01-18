@@ -212,13 +212,25 @@ public class ElementRelator {
 		relateTableToProgram (tables, programs, new TableProgramXref("Table01", "ProgramCCC", "C", "R", "U", "D"));
 		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramCCC", "C", "R", "U", "D"));
 		
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table01","LBBModule01", "Module001","","","","")) ;
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table02","LBBModule01", "Module001","","","","")) ;
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table01","IFSModule01", "Module101","","","","")) ;
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table02","IFSModule01", "Module101","","","","")) ;
 	
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table03","LBBModule02", "Module002","","","","")) ;
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table03","IFSModule02", "Module102","","","","")) ;
 	
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table04","LBBModule003","Module003","","","","")) ; 
-		relateTableToModule (tables, ifsModules, new TableModuleXref("Table05","LBBModule003","Module003","","","","")) ;
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table04","IFSModule003","Module103","","","","")) ; 
+		relateTableToModule (tables, ifsModules, new TableModuleXref("Table05","IFSModule003","Module103","","","","")) ;
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				
+		relateTableToModule (tables, lbbModules, new TableModuleXref("Table01","LBBModule01", "Module201","","","","")) ;
+		relateTableToModule (tables, lbbModules, new TableModuleXref("Table02","LBBModule01", "Module201","","","","")) ;
+		
+		relateTableToModule (tables, lbbModules, new TableModuleXref("Table03","LBBModule02", "Module202","","","","")) ;
+		
+		relateTableToModule (tables, lbbModules, new TableModuleXref("Table04","LBBModule003","Module203","","","","")) ; 
+		relateTableToModule (tables, lbbModules, new TableModuleXref("Table05","LBBModule003","Module203","","","","")) ;
 	
 	}	
 	
