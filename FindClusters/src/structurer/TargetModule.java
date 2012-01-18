@@ -180,6 +180,9 @@ public class TargetModule {
 		{
 			return nrOfCommonTables;
 		}
+		else if (targetModule.getName().toUpperCase().contains("ACCOUNT_MANAGEMENT")) {
+			return nrOfCommonTables +5 ;
+		}
 		else
 		{
 			return nrOfCommonTables +10 ;
