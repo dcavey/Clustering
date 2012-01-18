@@ -37,9 +37,9 @@ public  class MatchMaker {
 		definedModule = getDefinedOwner (program, modules);
 		
 		if (definedModule != null) {
-			SignalScore (999, "FIT=Y,SEL=Y", definedModule.getType(), definedModule.getName(), program );	
-			bestScoreSoFar = score;
-			// return;    // commented out so that we also get the reasoning and other scoring in the output  
+			SignalScore (999, "FIT=Y,SEL=Y", definedModule.getType(), definedModule.getName(), program );
+			// TO SEE OTHER REASONING, PUT LINE IN COMMENT BUT BE AWARE FOR MISMATCHES
+			bestScoreSoFar = 999;  
 		}
 		
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
@@ -65,6 +65,8 @@ public  class MatchMaker {
 		{
 			SignalScore (-1, "FIT=N,SEL=N", "N/A", "N/A", program );	// not classifiable at all		
 		}
+		
+		
 	}	
 
 	private boolean HandleNewScore ( int bestScoreSoFar, int newScore, TargetModule bestModuleSoFar, TargetModule newModule, Program program ) {
