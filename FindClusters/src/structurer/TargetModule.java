@@ -173,9 +173,9 @@ public class TargetModule {
 	
 	private int AdaptScore(int nrOfCommonTables, TargetModule targetModule) {
 
-		if (targetModule.getName().contains("TECHNICAL_KERNEL") ||
-		    (targetModule.getName().contains("MDM_MANAGEMENT")) ||
-		    (targetModule.getName().contains("UNUSED"))
+		if (targetModule.getName().toUpperCase().contains("TECHNICAL_KERNEL") ||
+		    (targetModule.getName().toUpperCase().contains("MDM_MANAGEMENT")) ||
+		    (targetModule.getName().toUpperCase().contains("UNUSED"))
 		    )
 		{
 			return nrOfCommonTables;
@@ -263,7 +263,10 @@ public class TargetModule {
 			{usageType = "external"; 	}
 			else {usageType = "internal";}
 			
-			System.out.printf ("module.program=%s.%s uses %s module.table=%s.%s for %s \n",  
+//			System.out.printf ("module.program=%s.%s uses %s module.table=%s.%s for %s \n",  
+//					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
+//					table.getName(),   program.getCRUDforTable (table));
+			System.out.printf ("%s %s %s %s %s %s \n",  
 					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
 					table.getName(),   program.getCRUDforTable (table));
 	    }	
