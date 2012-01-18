@@ -45,7 +45,7 @@ public  class MatchMaker {
 			
 			TargetModule module = moduleIterator.next();
 					
-			score = module.getMatchingScoreForProgram(program, printUse);
+			score = module.getMatchingScoreForProgram(program);
 			
 			if (needToAdaptBestScore = HandleNewScore ( bestScoreSoFar, score, bestModuleSoFar, module, program )) 
 			{
