@@ -174,6 +174,7 @@ public class TargetModule {
 	}
 	
 	private int AdaptScore(int nrOfCommonTables, TargetModule targetModule) {
+		if(nrOfCommonTables != 0){
 
 		if (targetModule.getName().toUpperCase().contains("TECHNICAL_KERNEL") ||
 		    (targetModule.getName().toUpperCase().contains("MDM_MANAGEMENT")) ||
@@ -189,6 +190,8 @@ public class TargetModule {
 		{
 			return nrOfCommonTables +10 ;
 		}
+		}
+		return nrOfCommonTables;
 	}
 
 	
