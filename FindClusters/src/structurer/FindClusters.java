@@ -8,8 +8,18 @@ import reporter.Reporter;
 
 
 public class FindClusters  {
+	/**
+	 * If you want the output "out_TablesAndProgramsContainedInModules" (still in console)
+	 * 			use TEST=false; PRINTSCORE=false; PRINTUSE=false; PRINTCONTAINS=1
+	 * 
+	 * If you want output "out_TablesAndProgramsUsedByModules" - ProgramModuleUsesTableModule (still in console)
+	 * 			use TEST=false; PRINTSCORE=false; PRINTUSE=true; PRINTCONTAINS=0
+	 * 
+	 * @Tom: If you want complete output
+	 * 			use TEST=false; PRINTSCORE=true; PRINTUSE=true; PRINTCONTAINS=0
+	 */
 	private static boolean TEST = false; 			// true => test model, false => real model
-	private static boolean PRINTSCORE = true;		// true => print score, false => no scores displayed
+	private static boolean PRINTSCORE = false;		// true => print score, false => no scores displayed
 	private static boolean PRINTUSE = true;		// true => print use, false => no use displayed
 	private static int PRINTCONTAINS = 0;			// 0 => nothing displayed
 													// 1 => showModules

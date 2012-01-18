@@ -158,7 +158,7 @@ public  class MatchMaker {
 		if (found) 
 		{ return thisModule; } 
 		else {
-			System.out.printf("MATCHMAKER: failed to find module %s /n", moduleName);
+			System.out.printf("MATCHMAKER: failed to find module %s \n", moduleName);
 			return null;
 		}
 	}
