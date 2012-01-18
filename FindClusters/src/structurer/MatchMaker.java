@@ -10,9 +10,20 @@ import java.util.Iterator;
 
 
 public  class MatchMaker {
+	
+	private boolean printScore = true;
+	private boolean printUse = true;
 
+	/*
 	public MatchMaker() {
 		super();
+	}
+	*/
+	
+	public MatchMaker(boolean printScore, boolean printUse) {
+		super();
+		this.printScore = printScore;
+		this.printUse = printUse;
 	}
 
 	public void findBestFittingModuleForProgram (Program program, ArrayList<TargetModule> modules) {
@@ -28,7 +39,7 @@ public  class MatchMaker {
 		if (definedModule != null) {
 			SignalScore (999, "FIT=Y,SEL=Y", definedModule.getType(), definedModule.getName(), program );	
 			bestScoreSoFar = score;
-			// return;		// commented out to also get the other scoring 
+			// return;    // commented out so that we also get the reasoning and other scoring in the output  
 		}
 		
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
@@ -64,13 +75,13 @@ public  class MatchMaker {
 
 		if (newScore != 0) 
 		{
-			if (newScore >= bestScoreSoFar) {
+			if (newScore > bestScoreSoFar) {
 				fitMessage = "FIT=Y,SEL=u";
 				update = true;
 				signal = false;  // will be signalled later (when better is found or at end of search)  
 			}
 			
-			if (newScore < bestScoreSoFar) {
+			if (newScore <= bestScoreSoFar) {
 				fitMessage = "FIT=Y,SEL=N";
 			}
 		} else
@@ -88,7 +99,9 @@ public  class MatchMaker {
 	}
 	
 	private void SignalScore (int score, String scoreQualifier,  String moduleType, String moduleName, Program program )  {
-		 System.out.printf ("program=%s %s into %s module=%s with score=%d> \n",  program.getPgmNameAndType(), scoreQualifier, moduleType, moduleName, score ); 
+		if(printScore){
+			System.out.printf ("program=%s %s into %s module=%s with score=%d> \n",  program.getPgmNameAndType(), scoreQualifier, moduleType, moduleName, score );
+		}
 	}
 	
 	private TargetModule getDefinedOwner (Program program, ArrayList<TargetModule> modules) {
@@ -150,5 +163,6 @@ public  class MatchMaker {
 		}
 	}
 	
+	
 }
-
+//>>>>>>> f189fdb8e73eb0d8b6268ee6d7a2b3a87c0d4073

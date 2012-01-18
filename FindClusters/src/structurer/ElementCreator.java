@@ -156,9 +156,13 @@ public class ElementCreator {
 		Program ProgramBBB = new Program ("ProgramBBB", "I"); 		programs.add(ProgramBBB);
 		Program ProgramCCC = new Program ("ProgramCCC", "G"); 		programs.add(ProgramCCC);
 		
-		TargetModule Module001 = new TargetIFSModule ("Module001");		ifsModules.add(Module001);
-		TargetModule Module002 = new TargetIFSModule ("Module002");		ifsModules.add(Module002);
-		TargetModule Module003 = new TargetIFSModule ("Module003"); 		ifsModules.add(Module003);
+		TargetModule Module101 = new TargetIFSModule ("Module101");		ifsModules.add(Module101);
+		TargetModule Module102 = new TargetIFSModule ("Module102");		ifsModules.add(Module102);
+		TargetModule Module103 = new TargetIFSModule ("Module103"); 	ifsModules.add(Module103);
+		
+		TargetModule Module201 = new TargetLBBModule ("Module201");		lbbModules.add(Module201);
+		TargetModule Module202 = new TargetLBBModule ("Module202");		lbbModules.add(Module202);
+		TargetModule Module203 = new TargetLBBModule ("Module203"); 	lbbModules.add(Module203);
 
     }	
 	
