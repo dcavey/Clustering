@@ -40,6 +40,7 @@ public  class MatchMaker {
 			SignalScore (999, "FIT=Y,SEL=Y", definedModule.getType(), definedModule.getName(), program );
 			// TO SEE OTHER REASONING, PUT LINE IN COMMENT BUT BE AWARE FOR MISMATCHES
 			bestScoreSoFar = 999;  
+			bestModuleSoFar = definedModule;
 		}
 		
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
@@ -57,7 +58,7 @@ public  class MatchMaker {
 			}			
 		}
 
-		if ((bestScoreSoFar > 0) && (bestScoreSoFar != 0 )) {
+		if ((bestScoreSoFar > 0) && (bestScoreSoFar != 0 ) /* && (bestModuleSoFar != null) */ ) {
 			bestModuleSoFar.addProgramToModule(program); 
 			SignalScore (bestScoreSoFar, "FIT=Y,SEL=Y", bestModuleSoFar.getType(), bestModuleSoFar.getName(), program );
 			// System.out.printf ("%s Module-Program fit BEST     : <%s>-<%s> - Score<%d> \n\n",  bestModuleSoFar.getTypedName(), program.getName(), bestScoreSoFar ); 			
