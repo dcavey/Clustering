@@ -21,7 +21,7 @@ public class FindClusters  {
 	private static boolean TEST = false; 			// true => test model, false => real model
 	private static boolean PRINTSCORE = true;		// true => print score, false => no scores displayed
 	private static boolean PRINTUSE = true;		// true => print use, false => no use displayed
-	private static int PRINTCONTAINS = 0;			// 0 => nothing displayed
+	private static int PRINTCONTAINS = 3;			// 0 => nothing displayed
 													// 1 => showModules
 													// 2 => ShowSharedTables
 													// 3 => showTableUsageAcrossModules
@@ -35,7 +35,7 @@ public class FindClusters  {
 		ObjectModel model = new ObjectModel(!TEST);		
 		
 		DoForModules ( model.getPrograms(), model.getIFSModules());
-		//DoForModules ( model.getPrograms(), model.getLBBModules());
+		DoForModules ( model.getPrograms(), model.getLBBModules());
 	}
 	
 	

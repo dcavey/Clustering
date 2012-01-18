@@ -271,9 +271,9 @@ public class TargetModule {
 			{usageType = "external"; 	}
 			else {usageType = "internal";}
 			
-//			System.out.printf ("module.program=%s.%s uses %s module.table=%s.%s for %s \n",  
-//					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
-//					table.getName(),   program.getCRUDforTable (table));
+			System.out.printf ("module.program=%s.%s uses %s module.table=%s.%s for %s \n",  
+					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
+					table.getName(),   program.getCRUDforTable (table));
 			System.out.printf ("%s %s %s %s %s %s \n",  
 					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
 					table.getName(),   program.getCRUDforTable (table));
