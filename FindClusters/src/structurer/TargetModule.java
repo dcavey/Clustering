@@ -110,7 +110,7 @@ public class TargetModule {
 		programs.add(program);
 	}
 	
-	public int getMatchingScoreForProgram(Program program)
+	public int getMatchingScoreForProgram(Program program, boolean printUse)
 	{
 		int	nrOfCommonTables = 0 ;
 		int finalScore = 0 ;
@@ -140,7 +140,9 @@ public class TargetModule {
 
 				if (programTable.getName().equals (moduleTable.getName()))
 				{
-					signalMatchingData (program, programTable, this);
+					if(printUse){
+						signalMatchingData (program, programTable, this);
+					}
 					commonTable = true;			
 					
 					break;			// DECISION: table used by Program and by Module
