@@ -35,35 +35,34 @@ public  class MatchMaker {
 		boolean needToAdaptBestScore;
 				
 		definedModule = getDefinedOwner (program, modules);
-		
+
+		// Check to see if program is already classified
 		if (definedModule != null) {
 			SignalScore (999, "FIT=Y,SEL=Y", definedModule.getType(), definedModule.getName(), program );
-			// TO SEE OTHER REASONING, PUT LINE IN COMMENT BUT BE AWARE FOR MISMATCHES
 			bestScoreSoFar = 999;  
 			bestModuleSoFar = definedModule;
-		}
+		}		
 		
+		// Do reasoning on all possible modules and check number of uses to set score
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
-		
 		while (moduleIterator.hasNext()) {
-			
 			TargetModule module = moduleIterator.next();
-					
+			// Score depends on #used tables from module AND fact if module == TK/MDM/UNUSED or module == AM
 			score = module.getMatchingScoreForProgram(program,printUse);
 			
-			if (needToAdaptBestScore = HandleNewScore ( bestScoreSoFar, score, bestModuleSoFar, module, program )) 
-			{
+			// Check the score for this specific module for a fit and a selection
+			if (needToAdaptBestScore = HandleNewScore ( bestScoreSoFar, score, bestModuleSoFar, module, program )) {
 				bestScoreSoFar = score;
 				bestModuleSoFar = module;
 			}			
 		}
-
+		
+		// Assign program to best fitting module
 		if ((bestScoreSoFar > 0) && (bestScoreSoFar != 0 ) /* && (bestModuleSoFar != null) */ ) {
 			bestModuleSoFar.addProgramToModule(program); 
 			SignalScore (bestScoreSoFar, "FIT=Y,SEL=Y", bestModuleSoFar.getType(), bestModuleSoFar.getName(), program );
 			// System.out.printf ("%s Module-Program fit BEST     : <%s>-<%s> - Score<%d> \n\n",  bestModuleSoFar.getTypedName(), program.getName(), bestScoreSoFar ); 			
-		} else
-		{
+		} else {
 			SignalScore (-1, "FIT=N,SEL=N", "N/A", "N/A", program );	// not classifiable at all		
 		}
 		

@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import reporter.CSVWriter;
+
 
 public class TargetModule {
 	
@@ -200,26 +202,26 @@ public class TargetModule {
 		programs.add(program);		// TODO check for program already added
 	}
 	
-	public void showComposition () {
+	public void showComposition (boolean tocsv) {
 		
 		Iterator<Table>  tableIterator = this.getAssignedTables().iterator();
 		while (tableIterator.hasNext()) 
 		{
 			Table moduleTable = tableIterator.next();
-			signalModuleTableCompositionLine (this.getName(),moduleTable.getName());
+			signalModuleTableCompositionLine (this.getName(),moduleTable.getName(), tocsv);
 		} 
 
 		Iterator<Program>  programIterator = this.getPrograms().iterator();
 		while (programIterator.hasNext()) 
 		{
 			Program moduleProgram = programIterator.next();
-			signalModuleProgramCompositionLine (this.getName(),moduleProgram.getName(), moduleProgram.getPgmType());
+			signalModuleProgramCompositionLine (this.getName(),moduleProgram.getName(), moduleProgram.getPgmType(), tocsv);
 		} 
 		
 	}
 	
 	
-	public void showTableUsageAcrossModules (boolean showAll) {
+	public void showTableUsageAcrossModules (boolean showAll, boolean tocsv) {
 		
 		Iterator<Program>  programIterator = this.getPrograms().iterator();
 		while (programIterator.hasNext()) 
@@ -235,10 +237,10 @@ public class TargetModule {
 				Table programTable = programTableIterator.next();
 				
 				if (! programTable.isContainedInTableArray(this.assignedTables)) {
-						signalTableUsageAcrossModules (this, moduleProgram, programTable, external = true);
+						signalTableUsageAcrossModules (this, moduleProgram, programTable, external = true, tocsv);
 				} else
 				{
-					signalTableUsageAcrossModules (this, moduleProgram, programTable, external = false);
+					signalTableUsageAcrossModules (this, moduleProgram, programTable, external = false, tocsv);
 				}
 			}
 		} 
@@ -253,16 +255,27 @@ public class TargetModule {
 	}
 		
 	// overridden by specific module types (e.g. for IFS modules and for LBB modules)
-	public void signalModuleTableCompositionLine ( String moduleName, String tableName)
+	public void signalModuleTableCompositionLine ( String moduleName, String tableName, boolean tocsv)
 	{
-		System.out.printf ("GEN Module=%s contains table=%s \n", moduleName, tableName);
+		if(tocsv){
+			CSVWriter writer = new CSVWriter();
+			String lineToWrite = "GEN Module;" + moduleName + ";contains;table;" + tableName;
+			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
+		} else {
+			System.out.printf ("GEN Module=%s contains table=%s \n", moduleName, tableName);
+		}
 	}
-	
-	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType)
+	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType, boolean tocsv)
 	{
-		System.out.printf ("GEN Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);  
+		if(tocsv){
+			CSVWriter writer = new CSVWriter();
+			String lineToWrite = "GEN Module;" + moduleName + ";contains;["+ pgmType +"]program;" + programName;
+			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
+		} else {
+			System.out.printf ("GEN Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);
+		}
 	}
-	public void signalTableUsageAcrossModules (TargetModule module, Program program, Table table, boolean external)
+	public void signalTableUsageAcrossModules (TargetModule module, Program program, Table table, boolean external, boolean tocsv)
 	{
 		try {
 		{
@@ -275,9 +288,23 @@ public class TargetModule {
 					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getType(),
 					table.getAssignedModule().getName() , 
 					table.getName(),   program.getCRUDforTable (table));
-			System.out.printf ("%s %s %s %s %s %s \n",  
-					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
-					table.getName(),   program.getCRUDforTable (table));
+
+// Output to csv-file or to console
+			if(tocsv){
+				String line = "module;program;" 
+							+ module.getName() + ";" + program.getName() +";" + program.getPgmType() 
+							+ ";uses;" + usageType +";module;table;" + table.getAssignedModule().getName() 
+							+ ";" + table.getName() + ";for;" + program.getCRUDforTable (table);
+				CSVWriter writer = new CSVWriter();
+				writer.writeLineToFile("out_TablesAndProgramsUsedByModules.csv", line);
+			} else {
+				System.out.printf ("module.program=%s.%s uses %s module.table=%s.%s for %s \n",  
+						module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
+						table.getName(),   program.getCRUDforTable (table));
+				System.out.printf ("%s %s %s %s %s %s \n",
+						module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
+						table.getName(),   program.getCRUDforTable (table));
+			}
 	    }	
 		} catch (Exception e) {// Catch exception if any
 			System.out.printf("Error to place table %s in a module \n", table.getName()   );
