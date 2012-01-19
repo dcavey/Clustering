@@ -248,8 +248,8 @@ public class TargetModule {
 	
 	public void signalMatchingData (Program program, Table programTable, TargetModule module) 
 	{
-		System.out.printf ("Program=%s uses module.table=%s.%s for %s \n",  program.getPgmNameAndType(),module.getName(), programTable.getName(), 
-																		  program.getCRUDforTable(programTable) );
+		System.out.printf ("Program=%s uses %s module.table=%s.%s for %s \n",  program.getPgmNameAndType(),module.getType(), 
+				module.getName(),  programTable.getName(), program.getCRUDforTable(programTable) );
 	}
 		
 	// overridden by specific module types (e.g. for IFS modules and for LBB modules)
@@ -271,8 +271,9 @@ public class TargetModule {
 			{usageType = "external"; 	}
 			else {usageType = "internal";}
 			
-			System.out.printf ("module.program=%s.%s uses %s module.table=%s.%s for %s \n",  
-					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
+			System.out.printf ("module.program=%s.%s uses %s %s module.table=%s.%s for %s \n",  
+					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getType(),
+					table.getAssignedModule().getName() , 
 					table.getName(),   program.getCRUDforTable (table));
 			System.out.printf ("%s %s %s %s %s %s \n",  
 					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
