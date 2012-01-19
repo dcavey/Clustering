@@ -11,14 +11,16 @@ import structurer.TargetModule;
 
 public class Reporter {
 	private boolean tocsv = false;
-
+	private boolean toStdOut = false;
+	
 	public Reporter() {
 		super();
 	}
 	
-	public Reporter(boolean tocsv) {
+	public Reporter(boolean tocsv, boolean toStdOut) {
 		super();
 		this.tocsv = tocsv;
+		this.toStdOut = toStdOut;
 	}
 	
 	public void showModules (ArrayList<TargetModule> modules) {
@@ -27,7 +29,7 @@ public class Reporter {
 		
 		while (moduleIterator.hasNext()) {
 			TargetModule module = moduleIterator.next();	
-			module.showComposition(tocsv);
+			module.showComposition(tocsv,toStdOut);
 		}
 	}
 	
@@ -37,7 +39,7 @@ public class Reporter {
 		
 		while (moduleIterator.hasNext()) {
 			TargetModule module = moduleIterator.next();	
-			module.showTableUsageAcrossModules(true,tocsv);
+			module.showTableUsageAcrossModules(true,tocsv, toStdOut);
 		}
 		
 	}
