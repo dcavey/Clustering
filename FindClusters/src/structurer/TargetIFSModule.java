@@ -1,5 +1,7 @@
 package structurer;
 
+import reporter.CSVWriter;
+
 
 public class TargetIFSModule extends TargetModule {
 
@@ -8,14 +10,26 @@ public class TargetIFSModule extends TargetModule {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void signalModuleTableCompositionLine ( String moduleName, String tableName)
+	public void signalModuleTableCompositionLine ( String moduleName, String tableName, boolean tocsv)
 	{
-		System.out.printf ("IFS Module=%s contains table=%s \n", moduleName, tableName);
+		if(tocsv){
+			CSVWriter writer = new CSVWriter();
+			String lineToWrite = "IFS Module;" + moduleName + ";contains;table;" + tableName;
+			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
+		} else {
+			System.out.printf ("IFS Module=%s contains table=%s \n", moduleName, tableName);
+		}
 	}
 	
-	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType)
+	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType, boolean tocsv)
 	{
-		System.out.printf ("IFS Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName); 
+		if(tocsv){
+			CSVWriter writer = new CSVWriter();
+			String lineToWrite = "IFS Module;" + moduleName + ";contains;["+ pgmType +"]program;" + programName;
+			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
+		} else {
+			System.out.printf ("IFS Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName); 
+		}
 	}
 	
 	public String getType() {
