@@ -257,22 +257,22 @@ public class TargetModule {
 	// overridden by specific module types (e.g. for IFS modules and for LBB modules)
 	public void signalModuleTableCompositionLine ( String moduleName, String tableName, boolean tocsv)
 	{
+		System.out.printf ( this.getType() + " module=%s contains table=%s \n", moduleName, tableName);
+		
 		if(tocsv){
 			CSVWriter writer = new CSVWriter();
 			String lineToWrite = this.getType() + " module;" + moduleName + ";contains;table;" + tableName;
 			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
-		} else {
-			System.out.printf ( this.getType() + " module=%s contains table=%s \n", moduleName, tableName);
 		}
 	}
 	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType, boolean tocsv)
 	{
+		System.out.printf ( this.getType() + " module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);
+		
 		if(tocsv){
 			CSVWriter writer = new CSVWriter();
 			String lineToWrite = this.getType() +  " module;" + moduleName + ";contains;["+ pgmType +"]program;" + programName;
 			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
-		} else {
-			System.out.printf ( this.getType() + " module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);
 		}
 	}
 	public void signalTableUsageAcrossModules (TargetModule module, Program program, Table table, boolean external, boolean tocsv)
@@ -289,21 +289,14 @@ public class TargetModule {
 					table.getAssignedModule().getName() , 
 					table.getName(),   program.getCRUDforTable (table));
 
-// Output to csv-file or to console
+// Output to csv-file  as well
 			if(tocsv){
 				String line = "module;program;" 
 							+ module.getName() + ";" + program.getName() +";" + program.getPgmType() 
-							+ ";uses;" + usageType +";module;table;" + table.getAssignedModule().getName() 
+							+ ";uses;" + table.getAssignedModule().getType() + ";"+  usageType +";module;table;" + table.getAssignedModule().getName() 
 							+ ";" + table.getName() + ";for;" + program.getCRUDforTable (table);
 				CSVWriter writer = new CSVWriter();
 				writer.writeLineToFile("out_TablesAndProgramsUsedByModules.csv", line);
-			} else {
-				System.out.printf ("module.program=%s.%s uses %s module.table=%s.%s for %s \n",  
-						module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
-						table.getName(),   program.getCRUDforTable (table));
-				System.out.printf ("%s %s %s %s %s %s \n",
-						module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getName() , 
-						table.getName(),   program.getCRUDforTable (table));
 			}
 	    }	
 		} catch (Exception e) {// Catch exception if any

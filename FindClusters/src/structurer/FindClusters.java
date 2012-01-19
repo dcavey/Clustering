@@ -23,7 +23,7 @@ public class FindClusters  {
 	 * 			use PRINTSCORE=true; PRINTUSE=true; PRINTCONTAINS=3
 	 */
 	private static boolean TEST = false; 			// true => test model, false => real model
-	private static boolean TOCSV = false;			// true => change output from console to csv (!delete old file first)
+	private static boolean TOCSV = true;			// true => change output from console to csv (!delete old file first)
 	private static boolean PRINTSCORE = true;		// true => print score, false => no scores displayed
 	private static boolean PRINTUSE = true; 		// true => print use, false => no use displayed
 	private static int PRINTCONTAINS = 4;			// 0 => nothing displayed
