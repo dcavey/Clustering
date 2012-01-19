@@ -259,20 +259,20 @@ public class TargetModule {
 	{
 		if(tocsv){
 			CSVWriter writer = new CSVWriter();
-			String lineToWrite = "GEN Module;" + moduleName + ";contains;table;" + tableName;
+			String lineToWrite = this.getType() + " module;" + moduleName + ";contains;table;" + tableName;
 			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
 		} else {
-			System.out.printf ("GEN Module=%s contains table=%s \n", moduleName, tableName);
+			System.out.printf ( this.getType() + " module=%s contains table=%s \n", moduleName, tableName);
 		}
 	}
 	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType, boolean tocsv)
 	{
 		if(tocsv){
 			CSVWriter writer = new CSVWriter();
-			String lineToWrite = "GEN Module;" + moduleName + ";contains;["+ pgmType +"]program;" + programName;
+			String lineToWrite = this.getType() +  " module;" + moduleName + ";contains;["+ pgmType +"]program;" + programName;
 			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
 		} else {
-			System.out.printf ("GEN Module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);
+			System.out.printf ( this.getType() + " module=%s contains [%s]program=%s \n", moduleName, pgmType, programName);
 		}
 	}
 	public void signalTableUsageAcrossModules (TargetModule module, Program program, Table table, boolean external, boolean tocsv)

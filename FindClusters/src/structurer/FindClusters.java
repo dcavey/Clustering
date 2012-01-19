@@ -23,13 +23,14 @@ public class FindClusters  {
 	 * 			use PRINTSCORE=true; PRINTUSE=true; PRINTCONTAINS=3
 	 */
 	private static boolean TEST = false; 			// true => test model, false => real model
-	private static boolean TOCSV = true;			// true => change output from console to csv (!delete old file first)
-	private static boolean PRINTSCORE = false;		// true => print score, false => no scores displayed
-	private static boolean PRINTUSE = false;		// true => print use, false => no use displayed
-	private static int PRINTCONTAINS = 3;			// 0 => nothing displayed
+	private static boolean TOCSV = false;			// true => change output from console to csv (!delete old file first)
+	private static boolean PRINTSCORE = true;		// true => print score, false => no scores displayed
+	private static boolean PRINTUSE = true; 		// true => print use, false => no use displayed
+	private static int PRINTCONTAINS = 4;			// 0 => nothing displayed
 													// 1 => showModules
 													// 2 => ShowSharedTables
 													// 3 => showTableUsageAcrossModules
+													// 4 => showModules + showTableUsageAcrossModules 
 	
 	public FindClusters(){
 		super();
@@ -41,7 +42,7 @@ public class FindClusters  {
 		
 		// Pick the right Modules
 		DoForModules ( model.getPrograms(), model.getIFSModules());
-		// DoForModules ( model.getPrograms(), model.getLBBModules());
+		DoForModules ( model.getPrograms(), model.getLBBModules());
 	}
 	
 	
@@ -63,6 +64,9 @@ public class FindClusters  {
 			case 2: reporter.ShowSharedTables(modules);
 					break;
 			case 3: reporter.showTableUsageAcrossModules(modules, true);
+					break;
+			case 4: reporter.showModules(modules);						// put option to get both (same as original version)
+					reporter.showTableUsageAcrossModules(modules, true);
 					break;
 			default: break;
 		}
