@@ -16,7 +16,7 @@ public class FindClusters  {
 	 * 			use TEST=false; PRINTSCORE=false; PRINTUSE=true; PRINTCONTAINS=0
 	 * 
 	 * @Tom: If you want complete output
-	 * 			use TEST=false; PRINTSCORE=true; PRINTUSE=true; PRINTCONTAINS=0
+	 * 			use TEST=false; PRINTSCORE=true; PRINTUSE=true; PRINTCONTAINS=3
 	 */
 	private static boolean TEST = false; 			// true => test model, false => real model
 	private static boolean PRINTSCORE = true;		// true => print score, false => no scores displayed
