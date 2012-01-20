@@ -16,6 +16,7 @@ public class FindClusters  {
 	 * 			use PRINTSCORE=false; PRINTUSE=false; PRINTCONTAINS=3
 	 * 
 	 * If you want any of these two outputs in csv, put TOCSV = true, otherwise TOCSV = false
+	 * If you want any of these two outputs in std out, put TOSTDOUT = true, otherwise STDOUT = false
 	 * 
 	 * If you want to run it only with testdata, put TEST = true, otherwise TEST = false
 	 * 
@@ -35,18 +36,15 @@ public class FindClusters  {
 	 */
 	
 	private static boolean TEST = false; 			// true => test model, false => real model
-	private static boolean TOCSV = true;			// true => change output from console to csv (!delete old file first)
-	private static boolean TOSTDOUT = true;		// true => change output from console to csv (!delete old file first)
-	private static boolean PRINTSCORE = true;		// true => print score, false => no scores displayed
-	private static boolean PRINTUSE = true; 		// true => print use, false => no use displayed
-	private static int PRINTCONTAINS = 4;			// 0 => nothing displayed
+	private static boolean TOCSV = false;			// true => change output from console to csv (!delete old file first)
+	private static boolean TOSTDOUT = true;		// true => change output from console to std out
+	private static boolean PRINTSCORE = false;		// true => print score, false => no scores displayed
+	private static boolean PRINTUSE = false; 		// true => print use, false => no use displayed
+	private static int PRINTCONTAINS = 0;			// 0 => nothing displayed
 													// 1 => showModules
 													// 2 => ShowSharedTables
 													// 3 => showTableUsageAcrossModules
 													// 4 => showModules + showTableUsageAcrossModules 
-
-	
-	
 	
 	
 	public FindClusters(){
