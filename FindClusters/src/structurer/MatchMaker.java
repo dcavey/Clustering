@@ -109,6 +109,7 @@ public  class MatchMaker {
 	private TargetModule getDefinedOwner (Program program, ArrayList<TargetModule> modules) {
 		
 		TargetModule definedModule = null;
+		String type = modules.get(0).getType();
 		
 		try 
 		{
@@ -126,7 +127,7 @@ public  class MatchMaker {
 				/*
 				 * index 
 				 * 	0 = Program Name
-				 * 	1 = Module Name
+				 * 	1/2/... = Module Name
 				 * 
 				 */
 				if (program.getName().equals(output[0])) {
@@ -135,7 +136,11 @@ public  class MatchMaker {
 						SignalScore (998, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );							
 					}
 					
-					definedModule = findModule(modules, output[1]);
+					if(type.equals("IFS")){
+						definedModule = findModule(modules, output[1]);
+					} else if(type.equals("LBB")){
+						definedModule = findModule(modules, output[2]);
+					}
 				}	
 			}
 			// Close the input stream
