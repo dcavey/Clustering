@@ -61,7 +61,7 @@ public class ElementRelator {
 			myProgram.addTable(myTable);
 			myProgram.addTableProgramXref(xref);
 		} catch (Exception e) {// Catch exception if any
-		System.out.printf("Error:  failed to relate program %s to table %s", xref.programName, xref.tableName);
+		System.out.printf("Error:  failed to relate program %s to table %s \n", xref.programName, xref.tableName);
 		}
 	}
 
@@ -74,7 +74,7 @@ public class ElementRelator {
 			myModule.addAssignedTable(myTable);
 			myTable.setAssignedModule(myModule);
 		} catch (Exception e) {// Catch exception if any
-			System.out.printf("Error:  failed to relate table %s to module %s", xref.tableName, xref.physModuleName);
+			System.out.printf("Error:  failed to relate table %s to module %s \n", xref.tableName, xref.physModuleName);
 		}
 	}
 

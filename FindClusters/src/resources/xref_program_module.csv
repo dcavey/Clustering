@@ -1250,7 +1250,7 @@ BLACJUSPOR;Financial_Markets;Financial_Markets_Trade_engine;Portfolio account ju
 BIS2C;Financial_Markets;Financial_Markets_Trade_engine;Additional Info on Issuances 
 IULDTRPTRA;Financial_Markets;Financial_Markets_Trade_engine;transported BTS transactions report (L&D)
 CBFM5;UNUSED;;ANALYS. FORTUNE MANAGEMENT BXL
-CLSECINVRE;Lending;Collateral_management;Security History Report  
+CLSECINVRE;Lending;Collateral_Management;Security History Report  
 CURTRFILL;Lending;Business_Lending_Engine;UPDATE STRUCURES IN CRTRO 
 CLCUSTLND1;Lending;Consumer_Loans_Engine;Customer Detailed Loan Report
 CLCUSTLOA1;Lending;Business_Lending_Engine;Cond.Loan Report Cust. CRTRO 
@@ -1382,8 +1382,8 @@ CRMIC;Lending;Business_Lending_Engine;Reimb.inc. comm. loans CHG
 CRMO1;Lending;Business_Lending_Engine;Reimb. outg. comm.loans Inq.
 CRMOC;Lending;Business_Lending_Engine;Reimb. outg. comm.loans CHG 
 CCME5;Lending;Business_Lending_Engine;Contract events Comm.Loan Cont
-CLSHRSECVL;Financial_Markets;Collateral_management;List securities held by PB
-CLSECCOMP;Financial_Markets;Collateral_management;Securities composition report
+CLSHRSECVL;Financial_Markets;Collateral_Management;List securities held by PB
+CLSECCOMP;Financial_Markets;Collateral_Management;Securities composition report
 CLSHRPORTF;Financial_Markets;Financial_Markets_Trade_engine;Share portfolio report
 CPBC5;Financial_Markets;Financial_Markets_Trade_engine;Private Banking Cust. Mult.inq
 CPBGM;Financial_Markets;Party_Management;PB ctpy grouping
@@ -1396,20 +1396,20 @@ CLCROCO;Lending;Business_Lending_Engine;Lists RAROC info for Facilities
 CURTRRISCH;Lending;Product_Management;Update Product Info in CRTRO
 ALDLCBITCS;Finance;Local_Regulatory_Reporting_Layer;CBI Customer Download 
 CLFACCRCS;Lending;;CARCASSE FOR FCR
-CLSECFIMAT;Lending;Collateral_management;?
-CLSECFLFCR;Lending;Collateral_management;Securities Flat-file Creation
-CLSECMAT2M;Lending;Collateral_management;Securities Expiring in 2 month
-CLSECMATRE;Lending;Collateral_management;Maturity History Report 
-CLSECMEMRE;Lending;Collateral_management;Securities Warning Report Memo
-CLSECTYP2C;Lending;Collateral_management;Securities per type / CCY (2
-CLSECTYP2M;Lending;Collateral_management;Securities per type/ccy/relat.
+CLSECFIMAT;Lending;Collateral_Management;?
+CLSECFLFCR;Lending;Collateral_Management;Securities Flat-file Creation
+CLSECMAT2M;Lending;Collateral_Management;Securities Expiring in 2 month
+CLSECMATRE;Lending;Collateral_Management;Maturity History Report 
+CLSECMEMRE;Lending;Collateral_Management;Securities Warning Report Memo
+CLSECTYP2C;Lending;Collateral_Management;Securities per type / CCY (2
+CLSECTYP2M;Lending;Collateral_Management;Securities per type/ccy/relat.
 CSE3C;Lending;Business_Lending_Engine;Additional info CSECS
-CSEC1;Lending;Collateral_management;Sec Inv Inq
-CSEC5;Lending;Collateral_management;Securities Multiple Inquiry
-CSEC6;Lending;Collateral_management;
-CSEC4;Lending;Collateral_management;Securities per Security-giver
-CSEI5;Lending;Collateral_management;List all securities
-CLSECINT;Lending;Collateral_management;List securities
+CSEC1;Lending;Collateral_Management;Sec Inv Inq
+CSEC5;Lending;Collateral_Management;Securities Multiple Inquiry
+CSEC6;Lending;Collateral_Management;
+CSEC4;Lending;Collateral_Management;Securities per Security-giver
+CSEI5;Lending;Collateral_Management;List all securities
+CLSECINT;Lending;Collateral_Management;List securities
 CLCPSHR;Financial_Markets;Financial_Markets_Trade_engine;MIS CPD Download Shares 
 CSH2A;Financial_Markets;Financial_Markets_Trade_engine;share trading swift messages
 CLSHRVOL;Financial_Markets;Financial_Markets_Trade_engine;Share Trading Volume Report
@@ -1792,7 +1792,7 @@ IUREMRCNV;Financial_Markets;Financial_Markets_Trade_engine; REMOVE OLD REUTERS C
 IRCL5;Financial_Markets;Financial_Markets_Trade_engine;Mult. Inq. on confirmations 
 ISIF5;Financial_Markets;Financial_Markets_Trade_engine;Mult. inquiry on SSI free text
 CLDLLISIMO;Lending;Business_Lending_Engine;Download of ISIMO for SIN
-ILCONSELSC;Lending;Collateral_management;List securities report
+ILCONSELSC;Lending;Collateral_Management;List securities report
 ILDOCTMAT;Lending;Arrangement_Management;list deals by maturity date
 ILSIMPMEM;Lending;Arrangement_Management;List simplified inventory memo dates
 ILSIMPREP;Lending;Arrangement_Management;simplified inv. Report

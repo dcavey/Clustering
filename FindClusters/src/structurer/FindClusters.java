@@ -56,7 +56,7 @@ public class FindClusters  {
 		ObjectModel model = new ObjectModel(!TEST);		
 		
 		// Pick the right Modules
-		//DoForModules ( model.getPrograms(), model.getIFSModules());
+		DoForModules ( model.getPrograms(), model.getIFSModules());
 		DoForModules ( model.getPrograms(), model.getLBBModules());
 	}
 	
