@@ -22,6 +22,18 @@ public class FindClusters  {
 	 * @Tom: If you want complete output
 	 * 			use PRINTSCORE=true; PRINTUSE=true; PRINTCONTAINS=3
 	 */
+
+	/* COMPLETE OUTPUT settings 
+	 * 	
+	private static boolean TEST = false; 			
+	private static boolean TOCSV = true;			
+	private static boolean TOSTDOUT = true;		
+	private static boolean PRINTSCORE = true;	
+	private static boolean PRINTUSE = true; 	
+	private static int PRINTCONTAINS = 4;		
+	 * 
+	 */
+	
 	private static boolean TEST = false; 			// true => test model, false => real model
 	private static boolean TOCSV = true;			// true => change output from console to csv (!delete old file first)
 	private static boolean TOSTDOUT = true;		// true => change output from console to csv (!delete old file first)
@@ -32,6 +44,10 @@ public class FindClusters  {
 													// 2 => ShowSharedTables
 													// 3 => showTableUsageAcrossModules
 													// 4 => showModules + showTableUsageAcrossModules 
+
+	
+	
+	
 	
 	public FindClusters(){
 		super();
