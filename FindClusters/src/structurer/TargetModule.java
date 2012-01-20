@@ -164,7 +164,7 @@ public class TargetModule {
 		}   // end of loop around the module tables
 		
 		if (!moduleHasTables) {
-			// System.out.printf ("Module <%s> has no tables at all \n", this.getName() );	
+			 System.out.printf ("Module <%s> has no tables at all \n", this.getName() );	
 		}
 		else
 		{

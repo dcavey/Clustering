@@ -43,7 +43,8 @@ public class ElementRelator {
 		Iterator<TableModuleXref>  tm_xrefIterator  = tm_xrefs.iterator();
 		while (tm_xrefIterator.hasNext()) {
 			tm_Xref = tm_xrefIterator.next();
-			this.relateTableToModule (tables, ifsModules, tm_Xref);
+			this.relateTableToModule (tables, ifsModules, tm_Xref.physModuleName, tm_Xref);
+			this.relateTableToModule (tables, lbbModules, tm_Xref.logModuleName, tm_Xref);
 		} 
 		
 		} else
@@ -64,10 +65,10 @@ public class ElementRelator {
 		}
 	}
 
-	public void  relateTableToModule (ArrayList<Table> tables,  ArrayList<TargetModule> modules, TableModuleXref xref)
+	public void  relateTableToModule (ArrayList<Table> tables,  ArrayList<TargetModule> modules, String moduleName, TableModuleXref xref)
 	{
 		try {
-			TargetModule myModule = findModule( modules, xref.physModuleName);
+			TargetModule myModule = findModule( modules, moduleName);
 			Table myTable  	  = findTable(tables, xref.tableName);
 			// setup relationship in two ways
 			myModule.addAssignedTable(myTable);
@@ -126,7 +127,7 @@ public class ElementRelator {
 		if (found) 
 		{ return thisModule; } 
 		else {
-			System.out.printf("RELATOR: failed to find module %s /n", moduleName);
+			System.out.printf("RELATOR: failed to find module %s \n", moduleName);
 			return null;
 		}
 	}
@@ -213,7 +214,7 @@ public class ElementRelator {
 		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramCCC", "C", "R", "U", "D"));
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
+		/*
 		relateTableToModule (tables, ifsModules, new TableModuleXref("Table01","IFSModule01", "Module101","","","","")) ;
 		relateTableToModule (tables, ifsModules, new TableModuleXref("Table02","IFSModule01", "Module101","","","","")) ;
 	
@@ -231,7 +232,7 @@ public class ElementRelator {
 		
 		relateTableToModule (tables, lbbModules, new TableModuleXref("Table04","LBBModule003","Module203","","","","")) ; 
 		relateTableToModule (tables, lbbModules, new TableModuleXref("Table05","LBBModule003","Module203","","","","")) ;
-	
+	*/
 	}	
 	
 }

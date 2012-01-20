@@ -9,6 +9,7 @@ public class TableModuleXref{
 		super();
 		this.tableName = tableName;
 		this.physModuleName = physModuleName;
+		this.logModuleName = logModuleName;
 		this.create = create;
 		this.read = read;
 		this.update = update;

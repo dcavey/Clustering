@@ -37,9 +37,9 @@ public class FindClusters  {
 	
 	private static boolean TEST = false; 			// true => test model, false => real model
 	private static boolean TOCSV = false;			// true => change output from console to csv (!delete old file first)
-	private static boolean TOSTDOUT = true;		// true => change output from console to std out
-	private static boolean PRINTSCORE = false;		// true => print score, false => no scores displayed
-	private static boolean PRINTUSE = false; 		// true => print use, false => no use displayed
+	private static boolean TOSTDOUT = false;		// true => change output from console to std out
+	private static boolean PRINTSCORE = true;		// true => print score, false => no scores displayed
+	private static boolean PRINTUSE = true; 		// true => print use, false => no use displayed
 	private static int PRINTCONTAINS = 0;			// 0 => nothing displayed
 													// 1 => showModules
 													// 2 => ShowSharedTables
