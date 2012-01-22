@@ -11,15 +11,73 @@ public class ElementRelator {
 
 	private boolean fullModel;
 	
-
-	
-
-	
 	public ElementRelator(boolean fullModel) {
 		super();
 		this.fullModel = fullModel;
 	}
 
+	
+	public void relateImplementationModelInternally (ArrayList<Table> tables,  ArrayList<Program> programs)
+	{
+		if (this.fullModel) {
+			// setup relationships between Tables and Programs (from generated Table/Program XREF file)	
+			ArrayList<TableProgramXref> tp_xrefs = readTableProgramXrefs();
+			TableProgramXref tp_Xref;
+		
+			Iterator<TableProgramXref>  tp_xrefIterator  = tp_xrefs.iterator();
+			while (tp_xrefIterator.hasNext()) {
+				tp_Xref = tp_xrefIterator.next();
+				this.relateTableToProgram (tables, programs, tp_Xref);
+			}
+		} else
+		{
+			RelateImplementationModelInternallyForTestData ( tables, programs);
+		}
+	}
+
+	
+	public void relateImplementationToPhysicalModel (ArrayList<Table> tables, 
+										ArrayList<TargetModule> physicalModules)
+	{
+		if (this.fullModel) {
+			// setup relationships between Tables and target Modules (from IFS SME defined Table/Module XREF file)
+			ArrayList<TableModuleXref> tm_xrefs = readTableModuleXrefs();
+			TableModuleXref tm_Xref;
+		
+			Iterator<TableModuleXref>  tm_xrefIterator  = tm_xrefs.iterator();
+			while (tm_xrefIterator.hasNext()) {
+				tm_Xref = tm_xrefIterator.next();
+				this.relateTableToModule (tables, physicalModules, tm_Xref.physModuleName, tm_Xref);
+			} 
+		
+		} else
+		{
+			relateImplementationToPhysicalModelForTestData ( tables, physicalModules);
+		}
+		
+	}
+	
+	public void relateImplementationToLogicalModel (ArrayList<Table> tables, 
+			ArrayList<TargetModule> logicalModules)
+	{
+		if (this.fullModel) {
+			// setup relationships between Tables and target Modules (from IFS SME defined Table/Module XREF file)
+			ArrayList<TableModuleXref> tm_xrefs = readTableModuleXrefs();
+			TableModuleXref tm_Xref;
+		
+			Iterator<TableModuleXref>  tm_xrefIterator  = tm_xrefs.iterator();
+			while (tm_xrefIterator.hasNext()) {
+				tm_Xref = tm_xrefIterator.next();
+				this.relateTableToModule (tables, logicalModules, tm_Xref.logModuleName, tm_Xref);
+			} 
+		
+		} else
+		{
+			relateImplementationToLogicalModelForTestData ( tables, logicalModules);
+		}
+	}
+	
+	
 	public  void relateBaseElements ( 	ArrayList<Table> tables,  ArrayList<Program> programs,
 										ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
 	{		
@@ -227,5 +285,46 @@ public class ElementRelator {
 		relateTableToModule (tables, lbbModules, "ModuleLBB_CC", new TableModuleXref("Table05","IFSModule003","ModuleLBB_CC","","","","")) ;
 
 	}	
+	
+	private void RelateImplementationModelInternallyForTestData 
+	( 	ArrayList<Table> tables,  ArrayList<Program> programs)
+	{
+		relateTableToProgram (tables, programs, new TableProgramXref("Table01", "ProgramAAA", "C", "R", "U", ""));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramAAA", "C", "R", "", ""));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table03", "ProgramAAA", "", "R", "", "D"));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table04", "ProgramAAA", "", "R", "U", "D"));
+	
+		relateTableToProgram (tables, programs, new TableProgramXref("Table03", "ProgramBBB", "C", "R", "", "D"));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table04", "ProgramBBB", "C", "R", "", "D"));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table05", "ProgramBBB", "", "R", "U", ""));	
+	
+		relateTableToProgram (tables, programs, new TableProgramXref("Table01", "ProgramCCC", "C", "R", "U", "D"));
+		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramCCC", "C", "R", "U", "D"));
+	}
+	
+	public void relateImplementationToPhysicalModelForTestData (ArrayList<Table> tables,  
+			ArrayList<TargetModule> physicalModules)
+	{
+		relateTableToModule (tables, physicalModules, "ModuleIFS_AA", new TableModuleXref("Table01","ModuleIFS_AA", "LBBModuleAA","","","","")) ;
+		relateTableToModule (tables, physicalModules, "ModuleIFS_AA", new TableModuleXref("Table02","ModuleIFS_AA", "LBBModuleAA","","","","")) ;
+	
+		relateTableToModule (tables, physicalModules, "ModuleIFS_BB", new TableModuleXref("Table03","ModuleIFS_BB", "LBBModuleBB","","","","")) ;
+	
+		relateTableToModule (tables, physicalModules, "ModuleIFS_CC", new TableModuleXref("Table04","ModuleIFS_CC", "LBBModuleCC","","","","")) ; 
+		relateTableToModule (tables, physicalModules, "ModuleIFS_CC", new TableModuleXref("Table05","ModuleIFS_CC", "LBBModuleCC","","","","")) ;
+	}
+	
+	public void relateImplementationToLogicalModelForTestData (ArrayList<Table> tables,  
+			ArrayList<TargetModule> logicalModules)
+	{
+		relateTableToModule (tables, logicalModules, "ModuleLBB_AA", new TableModuleXref("Table01","ModuleIFS_AA", "ModuleLBB_AA","","","","")) ;
+		relateTableToModule (tables, logicalModules, "ModuleLBB_AA", new TableModuleXref("Table02","ModuleIFS_AA", "ModuleLBB_AA","","","","")) ;
+		
+		relateTableToModule (tables, logicalModules, "ModuleLBB_BB", new TableModuleXref("Table03","ModuleIFS_BB", "ModuleLBB_BB","","","","")) ;
+		
+		relateTableToModule (tables, logicalModules, "ModuleLBB_CC", new TableModuleXref("Table04","IFSModule03", "ModuleLBB_CC","","","","")) ; 
+		relateTableToModule (tables, logicalModules, "ModuleLBB_CC", new TableModuleXref("Table05","IFSModule003","ModuleLBB_CC","","","","")) ;
+	}
+	
 	
 }

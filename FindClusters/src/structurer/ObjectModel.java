@@ -53,10 +53,17 @@ public class ObjectModel {
 			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules) 
 	{
 		ElementCreator creator = new ElementCreator(createRealModel);
-		creator.createBaseElements(tables, programs, ifsModules, lbbModules);
+		//creator.createBaseElements(tables, programs, ifsModules, lbbModules);
+		creator.createBaseElementsImplementation (tables,programs);
+		creator.createBaseElementsPhysicalModel(ifsModules);
+		creator.createBaseElementsLogicalModel(lbbModules);
 
 		ElementRelator relator = new ElementRelator (createRealModel);
-		relator.relateBaseElements (tables, programs, ifsModules, lbbModules);
+		
+		relator.relateImplementationModelInternally(tables, programs);
+		relator.relateImplementationToPhysicalModel(tables, ifsModules);	
+		relator.relateImplementationToLogicalModel(tables, lbbModules);
 		
 	}
+	
 }

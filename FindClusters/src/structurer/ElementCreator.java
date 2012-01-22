@@ -15,23 +15,42 @@ public class ElementCreator {
 		this.fullModel = fullModel;
 	}
 	
-	
-	
-	public  void createBaseElements ( ArrayList<Table> tables,  ArrayList<Program> programs,
-	ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
-	{	
 
+	public void createBaseElementsImplementation (ArrayList<Table> tables, ArrayList<Program> programs)
+	{
 		if (this.fullModel) {
 			createBaseElementsTables (tables); 
-			createBaseElementsPrograms( programs);
-			createBaseElementsTargetIFSModules( ifsModules);
-			createBaseElementsTargetLBBModules( lbbModules);		
-		} else
+			createBaseElementsPrograms( programs);			
+		}
+		else
 		{
-			DefineUnitTestData (tables, programs, ifsModules, lbbModules);
+			createBaseElementsImplementationTestData (tables, programs);	
 		}
 	}
+	
 
+	public  void createBaseElementsPhysicalModel ( ArrayList<TargetModule> modules)
+	{
+		if (this.fullModel) {
+			createBaseElementsTargetIFSModules( modules);			
+		}
+		else
+		{
+			createBaseElementsPhysicalModelTestData (modules);			
+		}
+	}
+	
+	public  void createBaseElementsLogicalModel ( ArrayList<TargetModule> modules)
+	{
+		if (this.fullModel) {
+			createBaseElementsTargetLBBModules( modules);			
+		}
+		else
+		{
+			createBaseElementsLogicalModelTestData (modules);			
+		}
+	}	
+	
 	
 	private  void createBaseElementsTargetLBBModules
 	(  ArrayList<TargetModule> lbbModules)
@@ -116,6 +135,7 @@ public class ElementCreator {
 		}
 	}
 	
+	
 	private void createBaseElementsTables(ArrayList<Table> tables) {
 		try {
 			// Open the file
@@ -142,9 +162,8 @@ public class ElementCreator {
 		}
 	}
 	
-	private void DefineUnitTestData
-	( 	ArrayList<Table> tables,  ArrayList<Program> programs,
-			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
+	private void createBaseElementsImplementationTestData
+	( 	ArrayList<Table> tables,  ArrayList<Program> programs  )
     {
 		Table Table01 = new Table ("Table01");		tables.add(Table01);
 		Table Table02 = new Table ("Table02");		tables.add(Table02);
@@ -154,16 +173,23 @@ public class ElementCreator {
 		
 		Program ProgramAAA = new Program ("ProgramAAA", "R"); 		programs.add(ProgramAAA);
 		Program ProgramBBB = new Program ("ProgramBBB", "I"); 		programs.add(ProgramBBB);
-		Program ProgramCCC = new Program ("ProgramCCC", "G"); 		programs.add(ProgramCCC);
-		
-		TargetModule ModuleIFS_AA = new TargetIFSModule ("ModuleIFS_AA");		ifsModules.add(ModuleIFS_AA);
-		TargetModule ModuleIFS_BB = new TargetIFSModule ("ModuleIFS_BB");		ifsModules.add(ModuleIFS_BB);
-		TargetModule ModuleIFS_CC = new TargetIFSModule ("ModuleIFS_CC"); 		ifsModules.add(ModuleIFS_CC);
-		
-		TargetModule ModuleLBB_AA = new TargetLBBModule ("ModuleLBB_AA");		lbbModules.add(ModuleLBB_AA);
-		TargetModule ModuleLBB_BB = new TargetLBBModule ("ModuleLBB_BB");		lbbModules.add(ModuleLBB_BB);
-		TargetModule ModuleLBB_CC = new TargetLBBModule ("ModuleLBB_CC"); 		lbbModules.add(ModuleLBB_CC);
-
+		Program ProgramCCC = new Program ("ProgramCCC", "G"); 		programs.add(ProgramCCC);	
     }	
+	
+	private void createBaseElementsPhysicalModelTestData
+	( 	ArrayList<TargetModule> modules)
+    {
+		TargetModule ModuleIFS_AA = new TargetIFSModule ("ModuleIFS_AA");		modules.add(ModuleIFS_AA);
+		TargetModule ModuleIFS_BB = new TargetIFSModule ("ModuleIFS_BB");		modules.add(ModuleIFS_BB);
+		TargetModule ModuleIFS_CC = new TargetIFSModule ("ModuleIFS_CC"); 		modules.add(ModuleIFS_CC);
+    }
+	
+	private void createBaseElementsLogicalModelTestData
+	( 	ArrayList<TargetModule> modules)
+    {
+		TargetModule ModuleLBB_AA = new TargetLBBModule ("ModuleLBB_AA");		modules.add(ModuleLBB_AA);
+		TargetModule ModuleLBB_BB = new TargetLBBModule ("ModuleLBB_BB");		modules.add(ModuleLBB_BB);
+		TargetModule ModuleLBB_CC = new TargetLBBModule ("ModuleLBB_CC"); 		modules.add(ModuleLBB_CC);
+    }
 	
 }
