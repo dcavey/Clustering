@@ -68,7 +68,7 @@ public class ElementCreator {
 				/* index 
 				 * 	0 = Module Name
 				 */
-				TargetLBBModule  targetModule = new TargetLBBModule (output[0]);	lbbModules.add (targetModule);	
+				TargetLogicalModule  targetModule = new TargetLogicalModule (output[0]);	lbbModules.add (targetModule);	
 			}
 			// Close the input stream
 			in.close();
@@ -94,7 +94,7 @@ public class ElementCreator {
 				/* index 
 				 * 	0 = Module Name
 				 */
-				TargetIFSModule  targetModule = new TargetIFSModule (output[0]);	ifsModules.add (targetModule);	
+				TargetPhysicalModule  targetModule = new TargetPhysicalModule (output[0]);	ifsModules.add (targetModule);	
 			}
 			// Close the input stream
 			in.close();
@@ -179,17 +179,17 @@ public class ElementCreator {
 	private void createBaseElementsPhysicalModelTestData
 	( 	ArrayList<TargetModule> modules)
     {
-		TargetModule ModuleIFS_AA = new TargetIFSModule ("ModuleIFS_AA");		modules.add(ModuleIFS_AA);
-		TargetModule ModuleIFS_BB = new TargetIFSModule ("ModuleIFS_BB");		modules.add(ModuleIFS_BB);
-		TargetModule ModuleIFS_CC = new TargetIFSModule ("ModuleIFS_CC"); 		modules.add(ModuleIFS_CC);
+		TargetModule ModuleIFS_AA = new TargetPhysicalModule ("ModuleIFS_AA");		modules.add(ModuleIFS_AA);
+		TargetModule ModuleIFS_BB = new TargetPhysicalModule ("ModuleIFS_BB");		modules.add(ModuleIFS_BB);
+		TargetModule ModuleIFS_CC = new TargetPhysicalModule ("ModuleIFS_CC"); 		modules.add(ModuleIFS_CC);
     }
 	
 	private void createBaseElementsLogicalModelTestData
 	( 	ArrayList<TargetModule> modules)
     {
-		TargetModule ModuleLBB_AA = new TargetLBBModule ("ModuleLBB_AA");		modules.add(ModuleLBB_AA);
-		TargetModule ModuleLBB_BB = new TargetLBBModule ("ModuleLBB_BB");		modules.add(ModuleLBB_BB);
-		TargetModule ModuleLBB_CC = new TargetLBBModule ("ModuleLBB_CC"); 		modules.add(ModuleLBB_CC);
+		TargetModule ModuleLBB_AA = new TargetLogicalModule ("ModuleLBB_AA");		modules.add(ModuleLBB_AA);
+		TargetModule ModuleLBB_BB = new TargetLogicalModule ("ModuleLBB_BB");		modules.add(ModuleLBB_BB);
+		TargetModule ModuleLBB_CC = new TargetLogicalModule ("ModuleLBB_CC"); 		modules.add(ModuleLBB_CC);
     }
 	
 }

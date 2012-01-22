@@ -8,17 +8,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-
 public  class MatchMaker {
 	
 	private boolean printScore = true;
 	private boolean printUse = true;
-
-	/*
-	public MatchMaker() {
-		super();
-	}
-	*/
 	
 	public MatchMaker(boolean printScore, boolean printUse) {
 		super();
@@ -106,10 +99,9 @@ public  class MatchMaker {
 		}
 	}
 	
-	private TargetModule getDefinedOwner (Program program, ArrayList<TargetModule> modules) {
-		
+	
+	private TargetModule getDefinedPhysicalOwner (Program program, ArrayList<TargetModule> modules) {
 		TargetModule definedModule = null;
-		String type = modules.get(0).getType();
 		
 		try 
 		{
@@ -136,11 +128,7 @@ public  class MatchMaker {
 						SignalScore (998, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );							
 					}
 					
-					if(type.equals("IFS")){
-						definedModule = findModule(modules, output[1]);
-					} else if(type.equals("LBB")){
-						definedModule = findModule(modules, output[2]);
-					}
+					definedModule = findModule(modules, output[1]);
 				}	
 			}
 			// Close the input stream
@@ -151,6 +139,57 @@ public  class MatchMaker {
 		
 		return definedModule;
 		
+	}
+	
+	private TargetModule getDefinedLogicalOwner (Program program, ArrayList<TargetModule> modules) {
+		TargetModule definedModule = null;
+	
+		try 
+		{
+			// Open the file
+			InputStream fstream = this.getClass().getResourceAsStream(Constants.PROGRAM2MODULE_XREF);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) 
+			{
+				String[] output = strLine.split(";");
+				
+				/*
+				 * index 
+				 * 	0 = Program Name
+				 * 	1/2/... = Module Name
+				 * 
+				 */
+				if (program.getName().equals(output[0])) {
+
+					if (definedModule != null) {
+						SignalScore (998, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );							
+					}				
+					definedModule = findModule(modules, output[2]);
+				}	
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.out.println("Error: " + e.getMessage());
+		}
+		
+		return definedModule;
+		}
+	
+	private TargetModule getDefinedOwner (Program program, ArrayList<TargetModule> modules) {
+		
+		TargetModule definedModule = null;
+		String type = modules.get(0).getType();
+		if(type.equals("IFS")){
+			definedModule = getDefinedPhysicalOwner (program, modules); 
+		} else if(type.equals("LBB")){
+			definedModule = getDefinedLogicalOwner (program, modules); 
+		}
+		return definedModule;
 	}
 	
 	private TargetModule findModule (ArrayList<TargetModule> modules, String moduleName) {
@@ -170,6 +209,5 @@ public  class MatchMaker {
 		}
 	}
 	
-	
 }
-//>>>>>>> f189fdb8e73eb0d8b6268ee6d7a2b3a87c0d4073
+

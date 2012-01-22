@@ -1,7 +1,5 @@
 package grepper;
 
-import java.io.FileInputStream;
-
 public class Grepper {
 
 	/**

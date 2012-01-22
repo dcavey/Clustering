@@ -6,7 +6,6 @@ import java.util.Iterator;
 
 import structurer.Program;
 import structurer.Table;
-import structurer.TargetIFSModule;
 import structurer.TargetModule;
 
 public class Reporter {
