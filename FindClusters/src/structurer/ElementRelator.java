@@ -41,13 +41,13 @@ public class ElementRelator {
 	{
 		if (this.fullModel) {
 			// setup relationships between Tables and target Modules (from IFS SME defined Table/Module XREF file)
-			ArrayList<TableModuleXref> tm_xrefs = readTableModuleXrefs();
+			ArrayList<TableModuleXref> tm_xrefs = readTablePhysicalModuleXrefs();
 			TableModuleXref tm_Xref;
 		
 			Iterator<TableModuleXref>  tm_xrefIterator  = tm_xrefs.iterator();
 			while (tm_xrefIterator.hasNext()) {
 				tm_Xref = tm_xrefIterator.next();
-				this.relateTableToModule (tables, physicalModules, tm_Xref.physModuleName, tm_Xref);
+				this.relateTableToModule (tables, physicalModules, tm_Xref);
 			} 
 		
 		} else
@@ -62,54 +62,20 @@ public class ElementRelator {
 	{
 		if (this.fullModel) {
 			// setup relationships between Tables and target Modules (from IFS SME defined Table/Module XREF file)
-			ArrayList<TableModuleXref> tm_xrefs = readTableModuleXrefs();
+			ArrayList<TableModuleXref> tm_xrefs = readTableLogicalModuleXrefs();
 			TableModuleXref tm_Xref;
 		
 			Iterator<TableModuleXref>  tm_xrefIterator  = tm_xrefs.iterator();
 			while (tm_xrefIterator.hasNext()) {
 				tm_Xref = tm_xrefIterator.next();
-				this.relateTableToModule (tables, logicalModules, tm_Xref.logModuleName, tm_Xref);
+				this.relateTableToModule (tables, logicalModules, tm_Xref);
 			} 
-		
 		} else
 		{
 			relateImplementationToLogicalModelForTestData ( tables, logicalModules);
 		}
 	}
 	
-	
-	public  void relateBaseElements ( 	ArrayList<Table> tables,  ArrayList<Program> programs,
-										ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
-	{		
-		if (this.fullModel) {
-			
-		// setup relationships between Tables and Programs (from generated Table/Program XREF file)
-	
-		ArrayList<TableProgramXref> tp_xrefs = readTableProgramXrefs();
-		TableProgramXref tp_Xref;
-		
-		Iterator<TableProgramXref>  tp_xrefIterator  = tp_xrefs.iterator();
-		while (tp_xrefIterator.hasNext()) {
-			tp_Xref = tp_xrefIterator.next();
-			this.relateTableToProgram (tables, programs, tp_Xref);
-		}
-		
-		// setup relationships between Tables and target Modules (from IFS SME defined Table/Module XREF file)
-		ArrayList<TableModuleXref> tm_xrefs = readTableModuleXrefs();
-		TableModuleXref tm_Xref;
-		
-		Iterator<TableModuleXref>  tm_xrefIterator  = tm_xrefs.iterator();
-		while (tm_xrefIterator.hasNext()) {
-			tm_Xref = tm_xrefIterator.next();
-			this.relateTableToModule (tables, ifsModules, tm_Xref.physModuleName, tm_Xref);
-			this.relateTableToModule (tables, lbbModules, tm_Xref.logModuleName, tm_Xref);
-		} 
-		
-		} else
-		{
-			DefineUnitTestData ( tables, programs, ifsModules,  lbbModules);
-		}	
-	}
 	
 	public  void  relateTableToProgram (ArrayList<Table> tables,  ArrayList<Program> programs, TableProgramXref xref)
 	{
@@ -123,16 +89,16 @@ public class ElementRelator {
 		}
 	}
 
-	public void  relateTableToModule (ArrayList<Table> tables,  ArrayList<TargetModule> modules, String moduleName, TableModuleXref xref)
+	public void  relateTableToModule (ArrayList<Table> tables,  ArrayList<TargetModule> modules, TableModuleXref xref)
 	{
 		try {
-			TargetModule myModule = findModule( modules, moduleName);
-			Table myTable  	  = findTable(tables, xref.tableName);
+			TargetModule myModule = findModule( modules, xref.getModuleName());
+			Table myTable  	  = findTable(tables, xref.getTableName());
 			// setup relationship in two ways
 			myModule.addAssignedTable(myTable);
 			myTable.setAssignedModule(myModule);
 		} catch (Exception e) {// Catch exception if any
-			System.out.printf("Error:  failed to relate table %s to module %s \n", xref.tableName, xref.physModuleName);
+			System.out.printf("Error:  failed to relate table %s to module %s \n", xref.getTableName(), xref.getModuleName());
 		}
 	}
 
@@ -224,9 +190,35 @@ public class ElementRelator {
 		return outputList;
 	}
 
-	private ArrayList<TableModuleXref> readTableModuleXrefs() {
+	private ArrayList<TableModuleXref> readTablePhysicalModuleXrefs() {
 
-		int		counter = 0;
+		TableModuleXref currentXref;
+		ArrayList<TableModuleXref> outputList = new ArrayList<TableModuleXref>();
+		try {
+			// Open the file
+			InputStream fstream = this.getClass().getResourceAsStream(Constants.TABLE2MODULE_XREF);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();			// BEWARE: Read of header line here. Make sure the input file has a header line!!! 
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");
+				// index: 0 = table, 1 = LBB module, 2= IFS Module				
+				currentXref = new TableModuleXref(output[0], output[2],"","","","");  					
+				outputList.add(currentXref);
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.out.println("Error: " + e.getMessage());
+		}
+		return outputList;
+	}
+
+	private ArrayList<TableModuleXref> readTableLogicalModuleXrefs() {
+
+		TableModuleXref currentXref;
 		ArrayList<TableModuleXref> outputList = new ArrayList<TableModuleXref>();
 		try {
 			// Open the file
@@ -239,9 +231,8 @@ public class ElementRelator {
 			while ((strLine = br.readLine()) != null) {
 				String[] output = strLine.split(";");
 				// index: 0 = table, 1 = LBB module, 2= IFS Module
-				TableModuleXref currentXref = new TableModuleXref(output[0], output[1], output[2],"","","","");  
+				currentXref = new TableModuleXref(output[0], output[1],"","","","");  					
 				outputList.add(currentXref);
-				counter++;
 			}
 			// Close the input stream
 			in.close();
@@ -251,40 +242,6 @@ public class ElementRelator {
 		return outputList;
 	}
 
-	private void DefineUnitTestData
-	( 	ArrayList<Table> tables,  ArrayList<Program> programs,
-			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules)
-	{
-		
-		relateTableToProgram (tables, programs, new TableProgramXref("Table01", "ProgramAAA", "C", "R", "U", ""));
-		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramAAA", "C", "R", "", ""));
-		relateTableToProgram (tables, programs, new TableProgramXref("Table03", "ProgramAAA", "", "R", "", "D"));
-		relateTableToProgram (tables, programs, new TableProgramXref("Table04", "ProgramAAA", "", "R", "U", "D"));
-	
-		relateTableToProgram (tables, programs, new TableProgramXref("Table03", "ProgramBBB", "C", "R", "", "D"));
-		relateTableToProgram (tables, programs, new TableProgramXref("Table04", "ProgramBBB", "C", "R", "", "D"));
-		relateTableToProgram (tables, programs, new TableProgramXref("Table05", "ProgramBBB", "", "R", "U", ""));	
-	
-		relateTableToProgram (tables, programs, new TableProgramXref("Table01", "ProgramCCC", "C", "R", "U", "D"));
-		relateTableToProgram (tables, programs, new TableProgramXref("Table02", "ProgramCCC", "C", "R", "U", "D"));
-		
-		relateTableToModule (tables, ifsModules, "ModuleIFS_AA", new TableModuleXref("Table01","ModuleIFS_AA", "LBBModuleAA","","","","")) ;
-		relateTableToModule (tables, ifsModules, "ModuleIFS_AA", new TableModuleXref("Table02","ModuleIFS_AA", "LBBModuleAA","","","","")) ;
-	
-		relateTableToModule (tables, ifsModules, "ModuleIFS_BB", new TableModuleXref("Table03","ModuleIFS_BB", "LBBModuleBB","","","","")) ;
-	
-		relateTableToModule (tables, ifsModules, "ModuleIFS_CC", new TableModuleXref("Table04","ModuleIFS_CC", "LBBModuleCC","","","","")) ; 
-		relateTableToModule (tables, ifsModules, "ModuleIFS_CC", new TableModuleXref("Table05","ModuleIFS_CC", "LBBModuleCC","","","","")) ;
-						
-		relateTableToModule (tables, lbbModules, "ModuleLBB_AA", new TableModuleXref("Table01","ModuleIFS_AA", "ModuleLBB_AA","","","","")) ;
-		relateTableToModule (tables, lbbModules, "ModuleLBB_AA", new TableModuleXref("Table02","ModuleIFS_AA", "ModuleLBB_AA","","","","")) ;
-		
-		relateTableToModule (tables, lbbModules, "ModuleLBB_BB", new TableModuleXref("Table03","ModuleIFS_BB", "ModuleLBB_BB","","","","")) ;
-		
-		relateTableToModule (tables, lbbModules, "ModuleLBB_CC", new TableModuleXref("Table04","IFSModule03", "ModuleLBB_CC","","","","")) ; 
-		relateTableToModule (tables, lbbModules, "ModuleLBB_CC", new TableModuleXref("Table05","IFSModule003","ModuleLBB_CC","","","","")) ;
-
-	}	
 	
 	private void RelateImplementationModelInternallyForTestData 
 	( 	ArrayList<Table> tables,  ArrayList<Program> programs)
@@ -305,25 +262,25 @@ public class ElementRelator {
 	public void relateImplementationToPhysicalModelForTestData (ArrayList<Table> tables,  
 			ArrayList<TargetModule> physicalModules)
 	{
-		relateTableToModule (tables, physicalModules, "ModuleIFS_AA", new TableModuleXref("Table01","ModuleIFS_AA", "LBBModuleAA","","","","")) ;
-		relateTableToModule (tables, physicalModules, "ModuleIFS_AA", new TableModuleXref("Table02","ModuleIFS_AA", "LBBModuleAA","","","","")) ;
+		relateTableToModule (tables, physicalModules, new TableModuleXref("Table01","ModuleIFS_AA", "","","","")) ;
+		relateTableToModule (tables, physicalModules, new TableModuleXref("Table02","ModuleIFS_AA", "","","","")) ;
 	
-		relateTableToModule (tables, physicalModules, "ModuleIFS_BB", new TableModuleXref("Table03","ModuleIFS_BB", "LBBModuleBB","","","","")) ;
+		relateTableToModule (tables, physicalModules, new TableModuleXref("Table03","ModuleIFS_BB", "","","","")) ;
 	
-		relateTableToModule (tables, physicalModules, "ModuleIFS_CC", new TableModuleXref("Table04","ModuleIFS_CC", "LBBModuleCC","","","","")) ; 
-		relateTableToModule (tables, physicalModules, "ModuleIFS_CC", new TableModuleXref("Table05","ModuleIFS_CC", "LBBModuleCC","","","","")) ;
+		relateTableToModule (tables, physicalModules, new TableModuleXref("Table04","ModuleIFS_CC", "","","","")) ; 
+		relateTableToModule (tables, physicalModules, new TableModuleXref("Table05","ModuleIFS_CC", "","","","")) ;
 	}
 	
 	public void relateImplementationToLogicalModelForTestData (ArrayList<Table> tables,  
 			ArrayList<TargetModule> logicalModules)
 	{
-		relateTableToModule (tables, logicalModules, "ModuleLBB_AA", new TableModuleXref("Table01","ModuleIFS_AA", "ModuleLBB_AA","","","","")) ;
-		relateTableToModule (tables, logicalModules, "ModuleLBB_AA", new TableModuleXref("Table02","ModuleIFS_AA", "ModuleLBB_AA","","","","")) ;
+		relateTableToModule (tables, logicalModules, new TableModuleXref("Table01", "ModuleLBB_AA","","","","")) ;
+		relateTableToModule (tables, logicalModules, new TableModuleXref("Table02", "ModuleLBB_AA","","","","")) ;
 		
-		relateTableToModule (tables, logicalModules, "ModuleLBB_BB", new TableModuleXref("Table03","ModuleIFS_BB", "ModuleLBB_BB","","","","")) ;
+		relateTableToModule (tables, logicalModules, new TableModuleXref("Table03","ModuleLBB_BB","","","","")) ;
 		
-		relateTableToModule (tables, logicalModules, "ModuleLBB_CC", new TableModuleXref("Table04","IFSModule03", "ModuleLBB_CC","","","","")) ; 
-		relateTableToModule (tables, logicalModules, "ModuleLBB_CC", new TableModuleXref("Table05","IFSModule003","ModuleLBB_CC","","","","")) ;
+		relateTableToModule (tables, logicalModules, new TableModuleXref("Table04", "ModuleLBB_CC","","","","")) ; 
+		relateTableToModule (tables, logicalModules, new TableModuleXref("Table05","ModuleLBB_CC","","","","")) ;
 	}
 	
 	

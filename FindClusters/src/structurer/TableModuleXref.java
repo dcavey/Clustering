@@ -2,18 +2,27 @@ package structurer;
 
 public class TableModuleXref{
 	String tableName;
-	String physModuleName;
-	String logModuleName;
+//	String module01NameFromInputFile;
+//	String module02NameFromInputFile;
+	String moduleName;
 	String create; String read; String update; String delete;
-	public TableModuleXref(String tableName, String logModuleName, String physModuleName,  String create, String read, String update, String delete) {
+//	public TableModuleXref(String tableName, String module01NameFromInputFile, String module02NameFromInputFile,  String create, String read, String update, String delete) {
+	public TableModuleXref(String tableName, String moduleName ,  String create, String read, String update, String delete) {
 		super();
 		this.tableName = tableName;
-		this.physModuleName = physModuleName;
-		this.logModuleName = logModuleName;
+//		this.module02NameFromInputFile = module02NameFromInputFile;
+//		this.module01NameFromInputFile = module01NameFromInputFile;
+		this.moduleName = moduleName;
 		this.create = create;
 		this.read = read;
 		this.update = update;
 		this.delete = delete;
+	}
+	public String getModuleName() {
+		return moduleName;
+	}
+	public void setModuleName(String moduleName) {
+		this.moduleName = moduleName;
 	}
 	public String getTableName() {
 		return tableName;
@@ -21,19 +30,22 @@ public class TableModuleXref{
 	public void setTableName(String tableName) {
 		this.tableName = tableName;
 	}
-	public String getPhysModuleName() {
-		return physModuleName;
+	/*
+	public String getPhysicalModuleName() {
+		return physicalModuleName;
 	}
-	public void setPhysModuleName(String moduleName) {
-		this.physModuleName = moduleName;
+	public void setPhysicalModuleName(String moduleName) {
+		this.physicalModuleName = moduleName;
 	}
 	
-	public String getLogModuleName() {
-		return logModuleName;
+	public String getLogicalModuleName() {
+		return logicalModuleName;
 	}
-	public void setLogModuleName(String logModuleName) {
-		this.logModuleName = logModuleName;
+	public void setLogicalModuleName(String logModuleName) {
+		this.logicalModuleName = logModuleName;
 	}
+	*/
+	
 	public String getCreate() {
 		return create;
 	}
