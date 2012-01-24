@@ -25,15 +25,6 @@ public class FindClusters  {
 	 */
 
 	/* COMPLETE OUTPUT settings 
-	 * 	
-	private static boolean 	TEST = false; 			
-	private static boolean 	TOCSV = true;			
-	private static boolean 	TOSTDOUT = true;		
-	private static boolean 	PRINTSCORE = true;	
-	private static boolean 	PRINTUSE = true; 	
-	private static int 		PRINTCONTAINS = 4;		
-	 * 
-	 */
 	
 	private static boolean 	TEST = false; 			// true => test model, false => real model
 	private static boolean 	TOCSV = true;			// true => change output from console to csv (!delete old file first)
@@ -44,8 +35,20 @@ public class FindClusters  {
 													// 1 => showModules
 													// 2 => ShowSharedTables
 													// 3 => showTableUsageAcrossModules
-													// 4 => showModules + showTableUsageAcrossModules 
-	
+													// 4 => showModules + showTableUsageAcrossModules
+	private static boolean	PHYSICAL_LEVEL=true;
+	private static boolean 	LOGICAL_LEVEL=true;
+	*/
+		
+	private static boolean 	TEST = false; 			
+	private static boolean 	TOCSV = true;			
+	private static boolean 	TOSTDOUT = true;		
+	private static boolean 	PRINTSCORE = true;	
+	private static boolean 	PRINTUSE = true; 	
+	private static int 		PRINTCONTAINS = 4;		
+	private static boolean	PHYSICAL_LEVEL=true;
+	private static boolean 	LOGICAL_LEVEL=false;
+
 	
 	public FindClusters(){
 		super();
@@ -54,14 +57,22 @@ public class FindClusters  {
 	public void run() /* throws IOException */ {
 	
 		ObjectModel model = new ObjectModel(!TEST);		
+
+		model.createImplementationModel();
+
+		if (PHYSICAL_LEVEL) { 
+			model.CreatePhysicalModel();
+			PlaceProgramInModules(model.getPrograms(), model.getPhysicalModules());  
+		}
 		
-		// Pick the right Modules
-		DoForModules ( model.getPrograms(), model.getIFSModules());
-		DoForModules ( model.getPrograms(), model.getLBBModules());
+		if (LOGICAL_LEVEL) { 
+			model.CreateLogicalModel();
+			PlaceProgramInModules ( model.getPrograms(), model.getLogicalModules());  
+		}
 	}
 	
 	
-	private void DoForModules (ArrayList<Program> programs, ArrayList<TargetModule> modules)
+	private void PlaceProgramInModules (ArrayList<Program> programs, ArrayList<TargetModule> modules)
 	{
 		MatchMaker matchMaker = new MatchMaker (PRINTSCORE, PRINTUSE);
 		Reporter reporter = new Reporter(TOCSV, TOSTDOUT);

@@ -283,14 +283,15 @@ public class TargetModule {
 			else {usageType = "internal";}
 			
 			if (toStdOut) {
-				System.out.printf ("module.program=%s.%s uses %s %s module.table=%s.%s for %s \n",  
+				System.out.printf ("%s module.program=%s.%s uses %s %s module.table=%s.%s for %s \n",  
+					module.getType(),
 					module.getName(), program.getPgmNameAndType(),  usageType, table.getAssignedModule().getType(),
 					table.getAssignedModule().getName() , 
 					table.getName(),   program.getCRUDforTable (table));
 			}
 // Output to csv-file  as well
 			if(tocsv){
-				String line = "module;program;" 
+				String line = module.getType() + ";module;program;" 
 							+ module.getName() + ";" + program.getName() +";" + program.getPgmType() 
 							+ ";uses;" + table.getAssignedModule().getType() + ";"+  usageType +";module;table;" + table.getAssignedModule().getName() 
 							+ ";" + table.getName() + ";for;" + program.getCRUDforTable (table);

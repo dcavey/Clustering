@@ -32,7 +32,7 @@ public class ElementCreator {
 	public  void createBaseElementsPhysicalModel ( ArrayList<TargetModule> modules)
 	{
 		if (this.fullModel) {
-			createBaseElementsTargetIFSModules( modules);			
+			createBaseElementsTargetPhysicalModules( modules);			
 		}
 		else
 		{
@@ -43,7 +43,7 @@ public class ElementCreator {
 	public  void createBaseElementsLogicalModel ( ArrayList<TargetModule> modules)
 	{
 		if (this.fullModel) {
-			createBaseElementsTargetLBBModules( modules);			
+			createBaseElementsTargetLogicalModules( modules);			
 		}
 		else
 		{
@@ -52,7 +52,7 @@ public class ElementCreator {
 	}	
 	
 	
-	private  void createBaseElementsTargetLBBModules
+	private  void createBaseElementsTargetLogicalModules
 	(  ArrayList<TargetModule> lbbModules)
 	{
 		try {
@@ -78,7 +78,7 @@ public class ElementCreator {
 	}	
 	
 	
-	private  void createBaseElementsTargetIFSModules
+	private  void createBaseElementsTargetPhysicalModules
 	(  ArrayList<TargetModule> ifsModules)
 	{
 		try {
