@@ -40,7 +40,7 @@ public class FindClusters  {
 	private static boolean 	TOSTDOUT = true;		// true => change output from console to std out
 	private static boolean 	PRINTSCORE = true;		// true => print score, false => no scores displayed
 	private static boolean 	PRINTUSE = true; 		// true => print use, false => no use displayed
-	private static int 		PRINTCONTAINS = 0;		// 0 => nothing displayed
+	private static int 		PRINTCONTAINS = 4;		// 0 => nothing displayed
 													// 1 => showModules
 													// 2 => ShowSharedTables
 													// 3 => showTableUsageAcrossModules
