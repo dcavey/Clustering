@@ -218,7 +218,7 @@ BUDLYMBSYD;Financial_Markets;;CRU_
 BUEURCNV;Financial_Markets;;CRU_
 BUEURLIQ;Financial_Markets;;C___
 BUMBSPOOL;Financial_Markets;;CR__
-BUMKSWIFT;TECHNICAL_KERNEL;;C___
+BUMKSWIFT;Financial_Markets;Payments_Execution_Engine;Create Bond swift msg
 BUMLYACRBO;Financial_Markets;;CRU_
 BUMLYMBS;Financial_Markets;;CRU_
 BUMLYTRD;Financial_Markets;;CR__
@@ -247,6 +247,7 @@ CFARM;Lending;;CRU_
 CFDDC;Lending;;CRUD
 CFFEM;Lending;;CRUD
 CFIIA;Financial_Markets;;C___
+CFIIA;Lending;;CRUD
 CFIIC;Financial_Markets;;CRUD
 CFINA;Lending;;CRU_
 CFNIA;Lending;;CR__
@@ -279,6 +280,7 @@ CLLDCMDEAL;TECHNICAL_KERNEL;;CR__
 CLLDMMDEAL;TECHNICAL_KERNEL;;CR__
 CLOUTDEPFA;Lending;;CR__
 CLPRIBNK3;TECHNICAL_KERNEL;;CR__
+CLPRIBNK3;Financial_Markets;Financial_Markets_Trade_engine;Private banking customer assets
 CLSHRMOST;TECHNICAL_KERNEL;;C___
 CMHIA;Financial_Markets;;CRU_
 CMHIF;Lending;;CRU_
@@ -294,7 +296,6 @@ COTIA;Financial_Markets;;CR__
 COTIC;Financial_Markets;;CRU_
 CP-004DELFACILITY;Lending;;C___
 CP-005DELSECURITY;Lending;;C___
-CP-005DELSECURITY;Financial_Markets;;C___
 CP-008UPDNVM;Financial_Markets;;CRU_
 CPAYA;Lending;;CRU_
 CPBCA;Financial_Markets;;CRU_
@@ -361,15 +362,14 @@ CUEXSINITH;Lending;;CRU_
 CUEXSOUTO1;Lending;;CRUD
 CUFACOUTS;Lending;;CRUD
 CUFEECAL;Lending;;CR__
-CUFEECAL;TECHNICAL_KERNEL;;C___
 CUFLOATRTE;Lending;;CRU_
 CUGUAACCRE;Finance;;CRU_
 CUGUAACCRE;Lending;;CR__
-CUGUACOMA2;Account_Management;;C___
+CUGUACOMA2;Lending;;Guarantees comm advices
 CUGUACOMAD;Lending;;CR__
 CUGUACOMEX;Lending;;CR__
 CUGUACONTR;Lending;;CR_D
-CUICNFS;Payment_And_Cash_Management;;CRUD
+CUICNFS;MDM_Management;Reference_Data_Manager;Load and un-load ICNFS
 CUIFLTRTE;Financial_Markets;;CRU_
 CULDCRYRIS;TECHNICAL_KERNEL;;C___
 CUMATPOS;Lending;;CRUD
@@ -427,25 +427,24 @@ DIOGC;Payment_And_Cash_Management;;CR__
 DIONC;Payment_And_Cash_Management;;CRU_
 DIOUC;Payment_And_Cash_Management;;CRU_
 DLCUSMVTPT;Account_Management;;CR__
-DLDLLCLEAT;Payment_And_Cash_Management;;CR__
-DLDLLCLEGB;TECHNICAL_KERNEL;;C___
-DLDLLCLEGE;Account_Management;;C___
-DLDLLCLEGE;Payment_And_Cash_Management;;C___
-DLDLLCLEIT;Payment_And_Cash_Management;;C___
-DLDLLCLEPT;TECHNICAL_KERNEL;;C_U_
-DLDLLCLESP;Account_Management;;C___
+DLDLLCLEAT;Payment_And_Cash_Management;Clearing_and_Settlement_Engine;Clearing Vienna
+DLDLLCLEGB;Payment_And_Cash_Management;Clearing_and_Settlement_Engine;Clearing UK
+DLDLLCLEGE;Payment_And_Cash_Management;Clearing_and_Settlement_Engine;Clearing DE
+DLDLLCLEIT;Payment_And_Cash_Management;Clearing_and_Settlement_Engine;Clearing Italy
+DLDLLCLEPT;Payment_And_Cash_Management;Clearing_and_Settlement_Engine;Clearing PT
+DLDLLCLESP;Payment_And_Cash_Management;Clearing_and_Settlement_Engine;Clearing ESP
 DLDLLSEPA;Payment_And_Cash_Management;;CRU_
 DLDSTOAUT;Payment_And_Cash_Management;;CR_D
 DLICMACC;Account_Management;;CRU_
 DLICMACC;TECHNICAL_KERNEL;;C___
-DLSTMDDMAD;TECHNICAL_KERNEL;;C_U_
+DLSTMDDMAD;Payment_And_Cash_Management;Payments_Execution_Engine;Direct debits Madrid
 DLSWF100;TECHNICAL_KERNEL;;C___
 DLSWF100ST;TECHNICAL_KERNEL;;C___
-DLSWF101;TECHNICAL_KERNEL;;C___
-DLSWF103;Payment_And_Cash_Management;;CR__
-DLSWF103;TECHNICAL_KERNEL;;C___
-DLSWF202;TECHNICAL_KERNEL;;C___
-DLSWF204;TECHNICAL_KERNEL;;C___
+DLSWF101;Payment_And_Cash_Management;Payments_Execution_Engine;Creates SWIFT msgs
+DLSWF103;Payment_And_Cash_Management;Payments_Execution_Engine;Creates SWIFT msgs
+DLSWF103;Payment_And_Cash_Management;Payments_Execution_Engine;Creates SWIFT msgs
+DLSWF202;Payment_And_Cash_Management;Payments_Execution_Engine;Creates SWIFT msgs
+DLSWF204;Payment_And_Cash_Management;Payments_Execution_Engine;Creates SWIFT msgs
 DMSTM;Payment_And_Cash_Management;;CRU_
 DPBDC;Payment_And_Cash_Management;;CRU_
 DPEIM;Payment_And_Cash_Management;;CR__
@@ -468,21 +467,15 @@ DUCALCOSTS;Account_Management;;C___
 DUCALCSTD;Account_Management;;C___
 DUCLIEOP;Payment_And_Cash_Management;;CRU_
 DUCORDIPTO;Payment_And_Cash_Management;;CRU_
-DUDLLAEB45;Account_Management;;CRU_
 DUDLLAEB45;Payment_And_Cash_Management;;CR__
-DUDLLAEB45;TECHNICAL_KERNEL;;C_U_
-DUDLLAEB46;Account_Management;;CRU_
-DUDLLAEB46;Payment_And_Cash_Management;;C___
-DUDLLAEB46;TECHNICAL_KERNEL;;C_U_
-DUDLLAEB47;Account_Management;;CRU_
+DUDLLAEB46;Payment_And_Cash_Management;;C___ + DLL cleared and collected cheques
 DUDLLAEB47;Payment_And_Cash_Management;;CR__
-DUDLLAEB47;TECHNICAL_KERNEL;;CRU_
 DUDLLENEPT;Payment_And_Cash_Management;;C___
 DUDLLPAYGB;TECHNICAL_KERNEL;;C___
 DUDLLTAXIT;TECHNICAL_KERNEL;;C_U_
 DUECHANNEL;Payment_And_Cash_Management;;CRUD
 DUFISET;Payment_And_Cash_Management;;C___
-DUFLBAT;Account_Management;;CRU_
+DUFLBAT;Payment_And_Cash_Management;;Creates global payment items and autorises individual payments in the batch
 DUFLICM;Account_Management;;CRU_
 DUFLICM;TECHNICAL_KERNEL;;C_U_
 DUGCNVOUPL;TECHNICAL_KERNEL;;CRUD
@@ -504,12 +497,11 @@ DUINVXBRRU;Financial_Markets;;C___
 DUINVXBRRU;Payment_And_Cash_Management;;C___
 DULD8007NE;Payment_And_Cash_Management;;C___
 DULDAEB19;Payment_And_Cash_Management;;CR__
-DULDAEB34;Payment_And_Cash_Management;;CRU_
-DULDAEB34;TECHNICAL_KERNEL;;CR__
-DULDAEB45;Account_Management;;CR__
+DULDAEB34;Payment_And_Cash_Management;Instruction_and_Order_Management;ESP payments to IFS
+DULDAEB45;Payment_And_Cash_Management;;CR__
 DULDAEB45;Payment_And_Cash_Management;;CR__
 DULDAEB46;Payment_And_Cash_Management;;C___
-DULDAEB47;Account_Management;;C___
+DULDAEB47;Payment_And_Cash_Management;;C___
 DULDAEB47;Payment_And_Cash_Management;;C___
 DULDBE04;Payment_And_Cash_Management;;C___
 DULDBIREL;Payment_And_Cash_Management;;CRU_
@@ -584,8 +576,8 @@ DUS101ING;Payment_And_Cash_Management;;C___
 DUSTOXBR;Account_Management;;CR__
 DUSTOXBR;Payment_And_Cash_Management;;CRU_
 DUSWF104;TECHNICAL_KERNEL;;C___
-DUSWF942;TECHNICAL_KERNEL;;C___
-DUSWFCCR;Account_Management;;CR__
+DUSWF942;MDM_Management;;C___
+DUSWFCCR;Account_Management;Customer_Reporting;CR__
 DUTOSTAT;Payment_And_Cash_Management;;CRU_
 DUXBRTRPTS;Payment_And_Cash_Management;;C___
 DUZEROBA2;Account_Management;;C___
@@ -679,11 +671,7 @@ GSRIF;TECHNICAL_KERNEL;;C___
 GUCRESUB;Finance;;CR__
 GUCRESUB;Account_Management;;C___
 GUCRESUB;TECHNICAL_KERNEL;;C_U_
-GUCRESUB2;Finance;;C___
-GUCRESUB2;Account_Management;;C___
-GUCRESUB2;Financial_Markets;;C___
-GUCRESUB2;Payment_And_Cash_Management;;C___
-GUCRESUB2;TECHNICAL_KERNEL;;C___
+GUCRESUB2;MDM_Management;Party_Management;Create new subsidiary
 GUCRESUB3;Finance;;CRU_
 GUCRESUB3;Account_Management;;CRU_
 GUCRESUB3;TECHNICAL_KERNEL;;CRU_
@@ -706,14 +694,14 @@ ICBRM;Financial_Markets;;CR_D
 ICDCI;Payment_And_Cash_Management;;CRU_
 ICDPI;Payment_And_Cash_Management;;CRU_
 ICNDM;Payment_And_Cash_Management;;C___
-ICNFS;Payment_And_Cash_Management;;C___
+ICNFS;MDM_Management;Reference_Data_Manager;C___
 ICNPC;Financial_Markets;;C___
 ICNPC;Payment_And_Cash_Management;;C___
 ICNSC;Financial_Markets;;C___
 ICNSC;Payment_And_Cash_Management;;C___
 ICOSP;Payment_And_Cash_Management;;C___
 ICPIC;Financial_Markets;;CRU_
-IEBAM;Account_Management;;CRUD
+IEBAM;MDM_Management;Party_Management;CRUD -> Clearing members
 IERB5;Financial_Markets;;CRUD
 IERBS;TECHNICAL_KERNEL;;C___
 IFCP1;Financial_Markets;;CRUD
@@ -726,30 +714,26 @@ IFPIC;Financial_Markets;;C___
 IGFRC;Financial_Markets;;C___
 IGFXC;Financial_Markets;;C___
 IGIRC;Financial_Markets;;C___
-IGLDC;Lending;;C___
+IGLDC;Financial_Markets;;Amend info to L&D
 IGOPC;Financial_Markets;;C___
 II-008PAYMENTFILL;Financial_Markets;;C_U_
 IICFM;Payment_And_Cash_Management;;CRUD
 IIFFS;Financial_Markets;;CRUD
-IIFFS;TECHNICAL_KERNEL;;C_U_
 IIFRA;Financial_Markets;;CRUD
 IIFRA;TECHNICAL_KERNEL;;C_U_
 IIFXS;Financial_Markets;;CRUD
-IIFXS;TECHNICAL_KERNEL;;C_U_
 IILDA;Financial_Markets;;CR_D
 IINIF;Account_Management;;C___
-IINIM;Payment_And_Cash_Management;;CRU_
-IINTM;Account_Management;;C___
-IINTM;Payment_And_Cash_Management;;CRU_
+IINIM;Account_Management;Current_Account_Engine;4eyes interest base rate
+IINTM;Account_Management;Current_Account_Engine;interest base rate
 IIRGM;TECHNICAL_KERNEL;;CRUD
 IITEC;Financial_Markets;;CRU_
-II-UPD-ILNGS;Financial_Markets;;CR__
-II-UPD-ILNGS;TECHNICAL_KERNEL;;CR__
+II-UPD-ILNGS;Financial_Markets;;Store longtext
 ILBGEOPT;TECHNICAL_KERNEL;;CR__
 ILDLYACCFR;TECHNICAL_KERNEL;;CR__
-ILDLYACCL3;TECHNICAL_KERNEL;;CR__
+ILDLYACCL3;Financial_Markets;;L&D Daily accruals
 ILFXTRANSA;Financial_Markets;;CR__
-ILINVFLAT;TECHNICAL_KERNEL;;C___
+ILINVFLAT;Financial_Markets;;Create flat files inventory
 ILIRFTRA;Financial_Markets;;C___
 ILJUSRAEOM;TECHNICAL_KERNEL;;CR__
 ILMLYMRGLD;TECHNICAL_KERNEL;;CR__
@@ -764,15 +748,11 @@ IODUS;Financial_Markets;;C___
 IOFFC;Financial_Markets;;CR_D
 IOPEC;Financial_Markets;;C___
 IOPTC;Financial_Markets;;C___
-IOPTS;Financial_Markets;;C___
-IOPTS;TECHNICAL_KERNEL;;C___
+IOPTS;Financial_Markets;;C___ + Currency options
 IOSTM;Payment_And_Cash_Management;;CRU_
 IP-008AEINVMO;Financial_Markets;;CRU_
 IP-008ANNUNVM;Financial_Markets;;CRU_
-IPAPC;Financial_Markets;;C___
-IPAPC;Payment_And_Cash_Management;;C___
-IPASC;Financial_Markets;;C___
-IPASC;Payment_And_Cash_Management;;C___
+IPAPC;Financial_Markets;;C___ + change ccy param
 IPCOM;Financial_Markets;;CR__
 IPCOM;Payment_And_Cash_Management;;C___
 IPIIF;Financial_Markets;;C___
@@ -804,7 +784,7 @@ IUCLRATE;Account_Management;;CR__
 IUCNVNOSRE;Payment_And_Cash_Management;;CRU_
 IUCRECNF;Financial_Markets;;C___
 IUCRECNF;Payment_And_Cash_Management;;CR__
-IUCRSWPM2;TECHNICAL_KERNEL;;C___
+IUCRSWPM2;Financial_Markets;;Create swift paymenyt
 IUDELISIMO;Lending;;C___
 IUDLYABFRA;Account_Management;;C_U_
 IUDLYABFRA;Financial_Markets;;CR__
@@ -812,9 +792,7 @@ IUDLYABIRF;Account_Management;;C_U_
 IUDLYABIRF;Financial_Markets;;C___
 IUDLYABIRS;Account_Management;;C_U_
 IUDLYABIRS;Financial_Markets;;CR__
-IUDLYABOPT;Account_Management;;C_U_
-IUDLYABOPT;Financial_Markets;;CR__
-IUDLYABOPT;TECHNICAL_KERNEL;;CR__
+IUDLYABOPT;Financial_Markets;;CR__ + create daily abstract for options
 IUDLYACCAB;Account_Management;;C___
 IUDLYACCAB;Financial_Markets;;CR__
 IUEXPSSI;Financial_Markets;;CR_D
@@ -854,14 +832,12 @@ IULOADFRTR;Financial_Markets;;CRU_
 IULOADFXTR;Financial_Markets;;CRUD
 IULOADLC;Lending;;C___
 IULOADLDTR;Financial_Markets;;CRUD
-IUMKSWCN2;TECHNICAL_KERNEL;;C___
+IUMKSWCN2;Financial_Markets;;SWIFT confirmations (IFSOSW)  
 IUMLYACCF3;Account_Management;;C___
 IUMLYACCF3;Financial_Markets;;CR__
 IUMLYACCFF;Account_Management;;C_U_
 IUMLYACCFF;Financial_Markets;;CR__
-IUMLYACCFR;Account_Management;;C___
 IUMLYACCFR;Financial_Markets;;C___
-IUMLYACCFR;TECHNICAL_KERNEL;;CR__
 IUMLYACCIR;Account_Management;;C___
 IUMLYACCIR;Financial_Markets;;C___
 IUMLYACCL3;Account_Management;;C___
@@ -879,9 +855,7 @@ IUSELCONPM;Financial_Markets;;CRUD
 IUSELCONPM;Payment_And_Cash_Management;;CRUD
 IUSELDAYCN;Financial_Markets;;CRU_
 IUSELDAYCN;Payment_And_Cash_Management;;CRU_
-IUSWFACK;Financial_Markets;;C___
-IUSWFACK;Payment_And_Cash_Management;;C___
-IUSWFACK;TECHNICAL_KERNEL;;CR__
+IUSWFACK;Financial_Markets;;C___ + SWIFT ACK/REJ
 IWARM;Financial_Markets;;C___
 IWODM;Financial_Markets;;C___
 JAAUAHLBO;Account_Management;;CRU_
@@ -964,18 +938,9 @@ LRCEM;Finance;;CRU_
 LRCEM;TECHNICAL_KERNEL;;C___
 LRCES;Finance;;C___
 LRESS;TECHNICAL_KERNEL;;C___
-LSLUTIL;Finance;;CRUD
-LSLUTIL;Account_Management;;CRUD
-LSLUTIL;Financial_Markets;;CR__
-LSLUTIL;Payment_And_Cash_Management;;CR_D
-LSLUTIL;TECHNICAL_KERNEL;;CR_D
-LSLUTIL2;Finance;;CR_D
-LSLUTIL2;Account_Management;;CRUD
-LSLUTIL2;Lending;;CRUD
-LSLUTIL2;TECHNICAL_KERNEL;;CR_D
-LSLUTIL3;Finance;;CR_D
-LSLUTIL3;Account_Management;;CR_D
-LSLUTIL3;TECHNICAL_KERNEL;;CRUD
+LSLUTIL;MDM_Management;Reference_Data_Manager;Oper codes dictionary maint
+LSLUTIL2;MDM_Management;Reference_Data_Manager;Oper codes dictionary maint
+LSLUTIL3;MDM_Management;Reference_Data_Manager;Oper codes dictionary maint
 LSUPS;Finance;;C___
 LSUTC;TECHNICAL_KERNEL;;C___
 LULDCUSDUB;Account_Management;;C___
@@ -999,9 +964,7 @@ MII3C;Payment_And_Cash_Management;;CRU_
 MIO1C;Payment_And_Cash_Management;;CRU_
 MIO3C;Payment_And_Cash_Management;;CRU_
 MUMKMT100;TECHNICAL_KERNEL;;C___
-MUPMNTACC;Account_Management;;CR__
-MUPMNTACC;Payment_And_Cash_Management;;CRU_
-MUPMNTACC;TECHNICAL_KERNEL;;C___
+MUPMNTACC;Payment_And_Cash_Management;;CRU_ + create accounting
 MUPMNTPRT;TECHNICAL_KERNEL;;C___
 MUPMNTSIN;Account_Management;;CR__
 MUPMNTSIN;Payment_And_Cash_Management;;CR_D
@@ -1013,6 +976,7 @@ PAEXRSAMP;TECHNICAL_KERNEL;;C___
 PRSIF;TECHNICAL_KERNEL;;C_U_
 RCHDS;Account_Management;;C___
 RCHDS;Financial_Markets;;CRU_
+RCHDS;Payment_And_Cash_Management;Payments_Execution_Engine;Clear cheques maintenance
 RCHQC;Account_Management;;C___
 RCHQC;Financial_Markets;;C___
 RCHQC;Payment_And_Cash_Management;;CRUD
@@ -1034,9 +998,7 @@ RMGPARO;TECHNICAL_KERNEL;;CRU_
 RUCHQCLRSC;Account_Management;;C___
 RUCHQVALSC;Account_Management;;C___
 TJAENCRYPT;TECHNICAL_KERNEL;;C_U_
-TOBACCO;Account_Management;;CRUD
 TOBACCO;Payment_And_Cash_Management;;CR_D
-TOBACCO;TECHNICAL_KERNEL;;CR_D
 TOBARACCO1;Finance;;C___
 TOBARACCO1;Account_Management;;CRU_
 TOBARACCO2;Account_Management;;CRU_
@@ -1056,8 +1018,8 @@ TOMCUST;Account_Management;;CRUD
 TOMCUST;TECHNICAL_KERNEL;;CR_D
 UPDDCNDO;Payment_And_Cash_Management;;CR_D
 UPDGPARO;TECHNICAL_KERNEL;;CRUD
-WPIRCE;Account_Management;;CRU_
-WPIRCE2;Account_Management;;CRU_
+WPIRCE;Account_Management;Current_Account_Engine;CRU_
+WPIRCE2;Account_Management;Current_Account_Engine;CRU_
 XFXCM;Finance;;CRUD
 XGACM;Finance;;C___
 XGACS;Finance;;C___
@@ -1080,7 +1042,6 @@ XGSAS;Account_Management;;C___
 XHVBM;Finance;;CRUD
 XLACCRLIST;Finance;;CR__
 XUCREPAYM;Finance;;CR__
-XUCREPAYM;Payment_And_Cash_Management;;C___
 XUFXCABS;Account_Management;;CR__
 XUFXCREDS;Finance;;C___
 XUGEXBAL;Finance;;CRU_
@@ -1382,8 +1343,8 @@ CRMIC;Lending;Business_Lending_Engine;Reimb.inc. comm. loans CHG
 CRMO1;Lending;Business_Lending_Engine;Reimb. outg. comm.loans Inq.
 CRMOC;Lending;Business_Lending_Engine;Reimb. outg. comm.loans CHG 
 CCME5;Lending;Business_Lending_Engine;Contract events Comm.Loan Cont
-CLSHRSECVL;Financial_Markets;Collateral_Management;List securities held by PB
-CLSECCOMP;Financial_Markets;Collateral_Management;Securities composition report
+CLSHRSECVL;Lending;Collateral_Management;List securities held by PB
+CLSECCOMP;Lending;Collateral_Management;Securities composition report
 CLSHRPORTF;Financial_Markets;Financial_Markets_Trade_engine;Share portfolio report
 CPBC5;Financial_Markets;Financial_Markets_Trade_engine;Private Banking Cust. Mult.inq
 CPBGM;Financial_Markets;Party_Management;PB ctpy grouping
@@ -1410,7 +1371,7 @@ CSEC6;Lending;Collateral_Management;
 CSEC4;Lending;Collateral_Management;Securities per Security-giver
 CSEI5;Lending;Collateral_Management;List all securities
 CLSECINT;Lending;Collateral_Management;List securities
-CLCPSHR;Financial_Markets;Financial_Markets_Trade_engine;MIS CPD Download Shares 
+CLCPSHR;MDM_Management;Marketing_And_Sales_Analytics;MIS CPD Download Shares 
 CSH2A;Financial_Markets;Financial_Markets_Trade_engine;share trading swift messages
 CLSHRVOL;Financial_Markets;Financial_Markets_Trade_engine;Share Trading Volume Report
 CLSHRPROLO;Financial_Markets;Financial_Markets_Trade_engine;Share Trading : Profit & Loss
@@ -1425,7 +1386,6 @@ ILAUDITFFT;Account_Management;Local_Reporting_Layer;audit report about cust
 ILAUDITLO3;Account_Management;Local_Reporting_Layer;audit report about cust
 GP-044MATCH;Financial_Markets;;
 CSHO5;Financial_Markets;Financial_Markets_Trade_engine;Multiple Inquiry Equity Option
-CLCPEO;Financial_Markets;Financial_Markets_Trade_engine;MIS CPD Download CSHOO
 CSHT5;Financial_Markets;Financial_Markets_Trade_engine;Share Type Multiple Inquiries
 CSIM5;Lending;;Inq.simp.inventory Commercial
 CLPRIBNK2;Financial_Markets;; Priv. Bank. customer portfolio
@@ -1461,9 +1421,9 @@ DLACCDWH;Account_Management;;Download account data for datawarehouse
 GP-072-BAL-CHECKC;Account_Management;Current_Account_Engine;balance check on customer accounts
 GP-072-BAL-CHECKN;Account_Management;Current_Account_Engine;balance check on customer accounts
 GP-072-BAL-CHECKT;Account_Management;Current_Account_Engine;balance check on customer accounts
-GP-147ADJ-AMUNT;Lending;;Subtract CRTRO & ADETS 4 Facly
+GP-147ADJ-AMUNT;Lending;Risk_Reporting_Layer;Subtract CRTRO & ADETS 4 Facly
 DCTI5;Payment_And_Cash_Management;;Mult Inq DCTIO 
-DUPURCNDI;Payment_And_Cash_Management;Product_Management;Purge PMT conditions
+DUPURCNDI;Lending;Business_Lending_Engine;Delete Comm loan & MM interim 
 ALDLCBITMV;Finance;Local_Regulatory_Reporting_Layer;CBI Movements download
 DLDRFCHG;Payment_And_Cash_Management;Payments_Execution_Engine;Display diff. charges 4 Draft
 DLLSBTAX;Account_Management;Current_Account_Engine;LIST TAXES FOR PMT
@@ -1480,7 +1440,7 @@ DLNBREPES;Finance;Local_Regulatory_Reporting_Layer;Download for Central Bank Rep
 DUDLLCLECH;Payment_And_Cash_Management;Clearing_and_Settlement_Engine;Download for Swiss Clearing
 GP-148-103CHK;Payment_And_Cash_Management;Payments_Execution_Engine;Validate MT103 in Interim
 DPTH5;Payment_And_Cash_Management;Payments_Execution_Engine;Mult. Inq. Pmt History
-RMUPDFIDO;Payment_And_Cash_Management;;???
+RMUPDFIDO;UNUSED;UNUSED;Robert Middlehorn
 DPTL5;Payment_And_Cash_Management;Payments_Execution_Engine;List Transactions in Log 
 DLLOGLST;Payment_And_Cash_Management;;List of logging file diptl
 GI-133-BATCH;TECHNICAL_KERNEL;TECHNICAL_KERNEL;EODbatch WARNINGS
@@ -1607,15 +1567,15 @@ GI-IXOPC3;Financial_Markets;Financial_Markets_Trade_engine;LG IAOPC/IVOPC
 IILDM;Financial_Markets;Financial_Markets_Trade_engine;Loan/Dep Interim Segment Mnt
 IRS1A;Financial_Markets;Financial_Markets_Trade_engine;INPUT IRS TRANSACTIONS-GENERA
 IRS2A;Financial_Markets;Financial_Markets_Trade_engine;INPUT IRS TRANSACTIONS-SEGMANT
-ILCNFDCSTB;Payment_And_Cash_Management;Payments_Execution_Engine;CONFIRMATION DECISION TABL
-ICOLB;Financial_Markets;Clearing_and_Settlement_Engine; Match OL cnf's Our-Broker NYC
-IMMLC;Financial_Markets;Clearing_and_Settlement_Engine;Match confirm. arrived by mail
-ISTAC;Financial_Markets;Clearing_and_Settlement_Engine; Change status confirmation
-ILLSTCOMP;Payment_And_Cash_Management;Payments_Execution_Engine;List composite payments
-IMCO5;Payment_And_Cash_Management;Payments_Execution_Engine;Mult Inq composite payments
-ICVBS;Financial_Markets;Party_Management;Maint.conv.broker ctp-IFS ctp (eg add address)
-IUICVBSDEL;Financial_Markets;Party_Management;Delete ICVBS Records 
-ILACDLYPL;Finance;General_Ledger;Daily profit and loss
+ILCNFDCSTB;Financial_Markets;Financial_Markets_Trade_engine;CONFIRMATION DECISION TABL
+ICOLB;Financial_Markets;Financial_Markets_Trade_engine; Match OL cnf's Our-Broker NYC
+IMMLC;Financial_Markets;Financial_Markets_Trade_engine;Match confirm. arrived by mail
+ISTAC;Financial_Markets;Financial_Markets_Trade_engine; Change status confirmation
+ILLSTCOMP;Financial_Markets;Financial_Markets_Trade_engine;List composite payments
+IMCO5;Financial_Markets;Financial_Markets_Trade_engine;Mult Inq composite payments
+ICVBS;Financial_Markets;Financial_Markets_Trade_engine;Maint.conv.broker ctp-IFS ctp (eg add address)
+IUICVBSDEL;Financial_Markets;Financial_Markets_Trade_engine;Delete ICVBS Records 
+ILACDLYPL;Financial_Markets;Financial_Markets_Trade_engine;Daily profit and loss
 ILBGEFRA;Financial_Markets;Financial_Markets_Trade_engine;Brokerage FRA  
 ILBGEIRCS;Financial_Markets;Financial_Markets_Trade_engine;Brokerage fees IRCS
 ILBGELOADE;Financial_Markets;Financial_Markets_Trade_engine;Brokerage loans/deposits
@@ -1636,7 +1596,6 @@ IMIF5;Financial_Markets;Financial_Markets_Trade_engine;Mult. inq. Interest Rate 
 ISIF1;Financial_Markets;Financial_Markets_Trade_engine;Inq. on single IRF deal 
 ILIRFOP;Financial_Markets;Financial_Markets_Trade_engine;OPEN INTR. RATE FUTERES POSIT.
 IFFVS;Financial_Markets;Clearing_and_Settlement_Engine;Correction amount to balance
-CLCPFRA;Financial_Markets;Financial_Markets_Trade_engine;MIS CPD of FRA Deals
 AP-009CHECK-INVEN;Financial_Markets;Financial_Markets_Trade_engine;Checks Inventory(deal) exists
 ICON5;Financial_Markets;Financial_Markets_Trade_engine;Contract inquiry
 ALBOE052;Finance;Local_Regulatory_Reporting_Layer;Interest (R/P) per countries
@@ -1656,7 +1615,6 @@ IMFR5;Financial_Markets;Financial_Markets_Trade_engine;Multiple Inquiry Fra's Ct
 ISFR1;Financial_Markets;Financial_Markets_Trade_engine;Single Inquiry Fra's Contract
 ILDLYACCFX;Financial_Markets;General_Ledger;Daily accrual foreign exchange
 ILFWDCONAL;Financial_Markets;Financial_Markets_Trade_engine;SPOT/FORWARD CONCLUSION ANAL.
-CLCPFX;Financial_Markets;Financial_Markets_Trade_engine;MIS CPD Forex deals 
 IIFXT;Financial_Markets;Financial_Markets_Trade_engine;Add FX trans - Treasury
 ILAFFLOADN;UNUSED;Financial_Markets_Trade_engine;AFF download NYC 
 ILBGEFOREX;Financial_Markets;Financial_Markets_Trade_engine;Bge foreign exchange
@@ -1673,7 +1631,7 @@ ILFXDEALIN;Financial_Markets;Financial_Markets_Trade_engine;FX Inv Deal Tickets
 ILINVSEL;Financial_Markets;Financial_Markets_Trade_engine;L/D & FOREX FLAT FILE CREATE
 ILJUSPDACC;Financial_Markets;Financial_Markets_Trade_engine;Justification of P/D Accounts
 ILLSTWARFX;Financial_Markets;Financial_Markets_Trade_engine;Last Warning Forex    
-ILMKGDBBMB;UNUSED;Financial_Markets_Trade_engine;Make GDB for BMB   
+ILMKGDBBMB;Finance;;Make GDB for BMB   
 ILOUFWCVDE;Financial_Markets;Financial_Markets_Trade_engine;List Outsdng FWOC deals  
 ILOUTFXEOQ;Financial_Markets;Financial_Markets_Trade_engine;outstanding FX deals    
 ILPRINTCNF;Financial_Markets;Financial_Markets_Trade_engine; Print Confirmations
@@ -1699,7 +1657,7 @@ ILPOSIRS;Financial_Markets;Arrangement_Management;Positions OIS contracts
 IMIR5;Financial_Markets;Financial_Markets_Trade_engine;Mult. inq. Imterest Rate Swaps
 IRS1A;Financial_Markets;Financial_Markets_Trade_engine;INPUT IRS TRANSACTIONS-GENERAL
 ISIR1;Financial_Markets;Financial_Markets_Trade_engine;Single inq. Interest Rate Swap
-IUCHGCTP;Financial_Markets;; Change Shn-ciy and rel nbr ctp 
+IUCHGCTP;UNUSED;UNUSED; Change Shn-ciy and rel nbr ctp 
 CI-003-FILL-RCPV6;Financial_Markets;Financial_Markets_Trade_engine;Fill rcpv6
 ILBOEDEP52;Lending;Risk_Reporting_Layer;BOE - 50 largest exposure
 ILLDDEALIN;Financial_Markets;Financial_Markets_Trade_engine;Loan/Deposits deal tickets
@@ -1710,7 +1668,7 @@ ILLSTWARLD;Financial_Markets;Financial_Markets_Trade_engine;LAST WARNING REPORT 
 ILOUTRR;Financial_Markets;Financial_Markets_Trade_engine;LIST OUTSTANDING REV.REPOS
 IMLD5;Financial_Markets;Arrangement_Management;Multiple inquiry Loan & deposits contracts
 ISLD1;Financial_Markets;Arrangement_Management;INQUIRY SINGLE LOANS & DEPOSITS 
-IMLN1;Financial_Markets;Clearing_and_Settlement_Engine; Input confirm. arrived by mail 
+IMLN1;Payment_And_Cash_Management;Payments_Execution_Engine; Input confirm. arrived by mail 
 ILCNFOPT;Financial_Markets;Financial_Markets_Trade_engine;OPT CONFIRMATIONS - IFSPRINT
 IIFF5;Financial_Markets;Financial_Markets_Trade_engine;Mult inq on IRF transaction
 GI-IXFRC1;Financial_Markets;Financial_Markets_Trade_engine;PS IAFRC/IVFRC  
@@ -1732,13 +1690,12 @@ ILLDBTSTRA;Financial_Markets;Financial_Markets_Trade_engine;Loans/deposits BTS t
 GP-130INT-IILDO;Financial_Markets;Financial_Markets_Trade_engine;Auto ILLDO using IILDO data
 ILLDTRANSA;Financial_Markets;Financial_Markets_Trade_engine;Print transactions LD
 IUFILIBTI5;Financial_Markets;Financial_Markets_Trade_engine;??
-IINI5;Account_Management;Current_Account_Engine;Int Base Rate Mult Inq 4eyes
+IINI5;MDM_Management;Reference_Data_Manager;Int Base Rate Mult Inq 4eyes
 AINIC;Account_Management;Current_Account_Engine;4eyes interest settlement conditions
 AINT1;Account_Management;Current_Account_Engine;Acc.Int. Cdt on Specified Date
 ALSIHINT;Account_Management;Current_Account_Engine;Acc. Int. Cond. History List
 ILINTBASRT;Account_Management;Current_Account_Engine;Interest base rate
-CLCPRATE;Account_Management;;ICP download interest rate
-IINT5;Account_Management;;Interest base rates inquiry 
+IINT5;MDM_Management;Reference_Data_Manager;Interest base rates inquiry 
 GI-IXOPC1;Financial_Markets;Financial_Markets_Trade_engine;PS IVOPC/IAOPC 
 IIOP1;Financial_Markets;Financial_Markets_Trade_engine;Inquiry FX options trans.
 IIOP5;Financial_Markets;Financial_Markets_Trade_engine;Multi-inquiry on FX options
@@ -1751,7 +1708,7 @@ ILLDTRANSA;Financial_Markets;Financial_Markets_Trade_engine;print transaction Lo
 GI-IXIRC1;Financial_Markets;Financial_Markets_Trade_engine;PS IAIRC
 IIIR1;Financial_Markets;Financial_Markets_Trade_engine;Inq on single IRS transaction
 GP-109UPDIIRSO;Financial_Markets;Financial_Markets_Trade_engine;UPDATE IIRSO RECORDS 
-ILDLYACCLD;Financial_Markets;General_Ledger;Daily accrual Loans/Deposits
+ILDLYACCLD;Financial_Markets;Financial_Markets_Trade_engine;Daily accrual Loans/Deposits
 ILCONSLLD2;Financial_Markets;Arrangement_Management;Print LoanDeposit contracts
 ILLDCONAL;Financial_Markets;Arrangement_Management;Loan/deposit annual conclusion
 IUCHKCNF;Financial_Markets;Reconciliation_Engine;Confirmations reconciliation
@@ -1763,7 +1720,6 @@ ILNCUDTRPO;Financial_Markets;Financial_Markets_Trade_engine;Nostro Curr. d/t Rev
 IODU5;Financial_Markets;Reconciliation_Engine;Mult. inq. overdue settings
 ALHKMF01;Financial_Markets;Local_Regulatory_Reporting_Layer;Reporting Monetary Authority F
 CLAUDCNF;Financial_Markets;Local_Regulatory_Reporting_Layer;External audit confirmation
-CLCPCO;Financial_Markets;;MIS CPT Download IOPTS
 ILOPDEATDY;Financial_Markets;Financial_Markets_Trade_engine;Deals done today   
 ILOPLGRACC;Financial_Markets;Reconciliation_Engine;FX OP /GENERAL LEDGER ACCOUNT
 ILOPLSTMTH;Financial_Markets;Financial_Markets_Trade_engine;Ccy Opt Deals done last month 
@@ -1823,7 +1779,8 @@ LULDLGRDO;MDM_Management;Party_Management;Upload grid info (grid=>risk related p
 AUHOLUPD;TECHNICAL_KERNEL;;Holiday file
 LULOADHOL;TECHNICAL_KERNEL;;Holiday file
 LCTIF;Account_Management;Party_Management;CTP base nr
-AUCTPSHN2;MDM_Management;Party_Management;Change shortname+city
+AUCTPSHN2;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Change shortname+city - incident tool
+AUCTPSHN;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Change shortname - incident tool
 GUCRESUB3;Account_Management;Party_Management;CREATE NEW SUBSIDIARY FOR NYC
 LSLUTIL;Account_Management;;???
 LUCLNPSNAD;MDM_Management;Party_Management;Clear Suppl, Address & Persons
@@ -1858,3 +1815,46 @@ AUGXACC;Finance;General_Ledger;Accounting of Gen.Exp.Mvts
 AUGXACR;Finance;General_Ledger;General Expenses - Accruals
 XGSAS;Finance;General_Ledger;Salaries description maint.
 AUGXPRE;Finance;General_Ledger;Acc. of Invoices with Prepaymt
+IUAUDTBL;TECHNICAL_KERNEL;TECHNICAL_KERNEL;list audit trail about decision tables
+IUAUDTBLES;TECHNICAL_KERNEL;TECHNICAL_KERNEL;list audit trail about decision tables
+CLCPACC;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPACCT;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPACRS;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPBRCH;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPBROK;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPBVAL;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPCBN;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPCHA;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPCTP;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPCTP2;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPFAM;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPPRNL;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPRATE;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPPFTC;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPBND;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPBNDC;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPBNDL;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPCO;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPEO;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPFRA;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPFX;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPIRS;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPSHR;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPACIRC;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPFAC;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPGUA;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPLD;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPLDCM;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPSEC;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPSIM;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPCTRY;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPCURR;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPEXC;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPPRD;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPCHQE;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPPMNT;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPPMT2;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPPMTC;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPRES;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPSHRLI;MDM_Management;Marketing_And_Sales_Analytics;
+CLCPSHRM;MDM_Management;Marketing_And_Sales_Analytics;
