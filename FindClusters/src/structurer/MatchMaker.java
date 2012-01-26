@@ -26,15 +26,28 @@ public  class MatchMaker {
 		TargetModule bestModuleSoFar = null;
 		TargetModule definedModule;
 		boolean needToAdaptBestScore;
-				
-		definedModule = getDefinedOwner (program, modules);
-
-		// Check to see if program is already classified
+		
+		// Check to see if program is already classified by rules
+		OwnerSearcher sos = new SuggestedOwnerSearcher(printScore);
+		definedModule = sos.getOwner (program, modules);
 		if (definedModule != null) {
-			SignalScore (999, "FIT=Y,SEL=Y", definedModule.getType(), definedModule.getName(), program );
-			bestScoreSoFar = 999;  
-			bestModuleSoFar = definedModule;
-		}		
+			SignalScore (Constants.SCOREFINAL_SUGGESTEDOWNER, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );
+			if(bestScoreSoFar < Constants.SCOREFINAL_SUGGESTEDOWNER){
+				bestScoreSoFar = Constants.SCOREFINAL_SUGGESTEDOWNER;  
+				bestModuleSoFar = definedModule;
+			}
+		}
+		
+		// Check to see if program is already classified by experts
+		OwnerSearcher dos = new DefinedOwnerSearcher(printScore);
+		definedModule = dos.getOwner (program, modules);
+		if (definedModule != null) {
+			SignalScore (Constants.SCOREFINAL_DEFINEDOWNER, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );
+			if(bestScoreSoFar < Constants.SCOREFINAL_DEFINEDOWNER){
+				bestScoreSoFar = Constants.SCOREFINAL_DEFINEDOWNER;  
+				bestModuleSoFar = definedModule;
+			}
+		}
 		
 		// Do reasoning on all possible modules and check number of uses to set score
 		Iterator<TargetModule>  moduleIterator  = modules.iterator();
@@ -96,116 +109,6 @@ public  class MatchMaker {
 	private void SignalScore (int score, String scoreQualifier,  String moduleType, String moduleName, Program program )  {
 		if(printScore){
 			System.out.printf ("program=%s %s into %s module=%s with score=%d> \n",  program.getPgmNameAndType(), scoreQualifier, moduleType, moduleName, score );
-		}
-	}
-	
-	
-	private TargetModule getDefinedPhysicalOwner (Program program, ArrayList<TargetModule> modules) {
-		TargetModule definedModule = null;
-		
-		try 
-		{
-			// Open the file
-			InputStream fstream = this.getClass().getResourceAsStream(Constants.PROGRAM2MODULE_XREF);
-			// Get the object of DataInputStream
-			DataInputStream in = new DataInputStream(fstream);
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String strLine = br.readLine();
-			// Read File Line By Line
-			while ((strLine = br.readLine()) != null) 
-			{
-				String[] output = strLine.split(";");
-				
-				/*
-				 * index 
-				 * 	0 = Program Name
-				 * 	1/2/... = Module Name
-				 * 
-				 */
-				if (program.getName().equals(output[0])) {
-
-					if (definedModule != null) {
-						SignalScore (998, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );							
-					}
-					
-					definedModule = findModule(modules, output[1]);
-				}	
-			}
-			// Close the input stream
-			in.close();
-		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
-		}
-		
-		return definedModule;
-		
-	}
-	
-	private TargetModule getDefinedLogicalOwner (Program program, ArrayList<TargetModule> modules) {
-		TargetModule definedModule = null;
-	
-		try 
-		{
-			// Open the file
-			InputStream fstream = this.getClass().getResourceAsStream(Constants.PROGRAM2MODULE_XREF);
-			// Get the object of DataInputStream
-			DataInputStream in = new DataInputStream(fstream);
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String strLine = br.readLine();
-			// Read File Line By Line
-			while ((strLine = br.readLine()) != null) 
-			{
-				String[] output = strLine.split(";");
-				
-				/*
-				 * index 
-				 * 	0 = Program Name
-				 * 	1/2/... = Module Name
-				 * 
-				 */
-				if (program.getName().equals(output[0])) {
-
-					if (definedModule != null) {
-						SignalScore (998, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );							
-					}				
-					definedModule = findModule(modules, output[2]);
-				}	
-			}
-			// Close the input stream
-			in.close();
-		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
-		}
-		
-		return definedModule;
-		}
-	
-	private TargetModule getDefinedOwner (Program program, ArrayList<TargetModule> modules) {
-		
-		TargetModule definedModule = null;
-		String type = modules.get(0).getType();
-		if(type.equals("IFS")){
-			definedModule = getDefinedPhysicalOwner (program, modules); 
-		} else if(type.equals("LBB")){
-			definedModule = getDefinedLogicalOwner (program, modules); 
-		}
-		return definedModule;
-	}
-	
-	private TargetModule findModule (ArrayList<TargetModule> modules, String moduleName) {
-		Iterator<TargetModule>  moduleIterator  = modules.iterator();
-		TargetModule thisModule = null;
-		boolean found = false;	
-		while (moduleIterator.hasNext()) {
-			thisModule = moduleIterator.next();
-			if (thisModule.getName().equals(moduleName))
-			{ found= true; break;  }
-		}
-		if (found) 
-		{ return thisModule; } 
-		else {
-			System.out.printf("MATCHMAKER: failed to find module %s \n", moduleName);
-			return null;
 		}
 	}
 	
