@@ -35,7 +35,7 @@ AINIF;TECHNICAL_KERNEL;;C___
 AINTS;TECHNICAL_KERNEL;;C___
 AJSTC;Finance;;C___
 AKHDCNDO;Payment_And_Cash_Management;;CR_D
-ALDLCBITLC;TECHNICAL_KERNEL;;CR__
+ALDLCBITLC;Finance;Local_Regulatory_Reporting_Layer;CR__ + REG REP for milan (collateral)
 ALDLLCBRGE;TECHNICAL_KERNEL;;C_U_
 ALDLLDIBA;Lending;;CR__
 ALDLLDIBA;TECHNICAL_KERNEL;;CR__
@@ -166,9 +166,7 @@ AURVMVT;Finance;;C___
 AUSAVTAB;Finance;;CR_D
 AUSTM942RT;TECHNICAL_KERNEL;;C___
 AUSTMCCR;TECHNICAL_KERNEL;;C___
-AUSTMLOJ;Account_Management;;CR_D
-AUSTMLOJ;Payment_And_Cash_Management;;C___
-AUSTMLOJ;TECHNICAL_KERNEL;;C___
+AUSTMLOJ;Account_Management;Current_Account_Engine;Statement processes
 AUSTMPR2;Account_Management;;CR_D
 AUSTMPRC;Account_Management;;CR_D
 AUSTMPRC;Payment_And_Cash_Management;;C___
@@ -189,7 +187,7 @@ BISPM;Financial_Markets;;CRU_
 BISPX;Financial_Markets;;CRUD
 BISSA;Financial_Markets;;CRUD
 BISSX;Financial_Markets;;CRU_
-BLGFIDL;TECHNICAL_KERNEL;;C___
+BLGFIDL;Financial_Markets;Financial_Markets_Trade_engine;Download Bonds
 BLUSADL;TECHNICAL_KERNEL;;CR__
 BPOR5;Financial_Markets;;CRU_
 BPRDA;Financial_Markets;;CRUD
@@ -327,7 +325,6 @@ CSSHM;UNUSED;;Security portfolio shares
 CUATCRLOVR;Lending;;CRU_
 CUBANKEXC1;Lending;;CR_D
 CUCEXRO;Financial_Markets;;CRU_
-CUCEXRO;TECHNICAL_KERNEL;;C___
 CUCOMATRDO;Lending;;CR__
 CUCOMCRINT;Lending;;CRU_
 CUCONFIF2;Lending;;CRU_
@@ -366,7 +363,7 @@ CUPBPORTF;Financial_Markets;;CRUD
 CUPDPFAC;Lending;;C___
 CUREUTIMP;Financial_Markets;;CRU_
 CUSELPAYM;Lending;;CRU_
-CUSHRCUSTM;TECHNICAL_KERNEL;;C___
+CUSHRCUSTM;Account_Management;Current_Account_Engine;Share trading cust statements
 CUSHRDVD;Financial_Markets;;C___
 CUSHRLOG;Financial_Markets;;CR_D
 CUSHRPRCLD;Financial_Markets;;CRUD
@@ -540,9 +537,7 @@ DULDSWCMI;Payment_And_Cash_Management;;C___
 DULDSWF;Payment_And_Cash_Management;;C___
 DULDSWIFT;Account_Management;;C___
 DULDSWIFT;Payment_And_Cash_Management;;C___
-DULDTAXIT;Account_Management;;C___
-DULDTAXIT;Payment_And_Cash_Management;;CR__
-DULDTAXIT;TECHNICAL_KERNEL;;C___
+DULDTAXIT;Payment_And_Cash_Management;;CR__ + Upload F24 payments
 DUMADCLRLD;TECHNICAL_KERNEL;;CR_D
 DUNAVIS;Account_Management;;CR__
 DUNAVIS;Payment_And_Cash_Management;;C___
@@ -704,8 +699,7 @@ IGOPC;Financial_Markets;;C___
 II-008PAYMENTFILL;Financial_Markets;;C_U_
 IICFM;Payment_And_Cash_Management;;CRUD
 IIFFS;Financial_Markets;;CRUD
-IIFRA;Financial_Markets;;CRUD
-IIFRA;TECHNICAL_KERNEL;;C_U_
+IIFRA;Financial_Markets;Financial_Markets_Trade_engine;CRUD + create payment instruction for FX
 IIFXS;Financial_Markets;;CRUD
 IILDA;Financial_Markets;;CR_D
 IINIF;Account_Management;;C___
@@ -721,7 +715,7 @@ ILFXTRANSA;Financial_Markets;;CR__
 ILINVFLAT;Financial_Markets;;Create flat files inventory
 ILIRFTRA;Financial_Markets;;C___
 ILJUSRAEOM;TECHNICAL_KERNEL;;CR__
-ILMLYMRGLD;TECHNICAL_KERNEL;;CR__
+ILMLYMRGLD;Financial_Markets;Financial_Markets_Trade_engine;CR__ + Monthly Margin Analysis LD
 ILNGS;Financial_Markets;;C___
 ILPAM;Financial_Markets;;C___
 IMAGC;Financial_Markets;;CRUD
@@ -948,9 +942,7 @@ MIO3C;Payment_And_Cash_Management;;CRU_
 MUMKMT100;TECHNICAL_KERNEL;;C___
 MUPMNTACC;Payment_And_Cash_Management;;CRU_ + create accounting
 MUPMNTPRT;TECHNICAL_KERNEL;;C___
-MUPMNTSIN;Account_Management;;CR__
-MUPMNTSIN;Payment_And_Cash_Management;;CR_D
-MUPMNTSIN;TECHNICAL_KERNEL;;C___
+MUPMNTSIN;Account_Management;;CRU_ + accounting
 PAEVTO101;Account_Management;;C___
 PAEVTO102;Account_Management;;C___
 PAEXRL101;TECHNICAL_KERNEL;;C___
@@ -1413,7 +1405,7 @@ DLTRXDWH;Finance;Local_Reporting_Layer;DWH download
 DPMT5;Payment_And_Cash_Management;Payments_Execution_Engine;Mult. Inq. Inventory
 DUDLLBE04;UNUSED;Clearing_and_Settlement_Engine;download OMF files to SLBE clr
 DUDLLDRAFT;Payment_And_Cash_Management;Payments_Execution_Engine;Download of Collected Drafts
-GLEASYSERV;TECHNICAL_KERNEL;TECHNICAL_KERNEL;EASY server
+GLEASYSERV;UNUSED;UNUSED;EASY server - no longer active
 CLCPPMTC;Payment_And_Cash_Management;Local_Reporting_Layer;MIS CPD Download Paym. DCTRO
 DLLSTDDC;Payment_And_Cash_Management;Arrangement_Management;Align PCM functionalities
 DULDCLLVIE;Payment_And_Cash_Management;Clearing_and_Settlement_Engine;Low val dom. Clear upl'd - IE
@@ -1425,7 +1417,7 @@ DPTH5;Payment_And_Cash_Management;Payments_Execution_Engine;Mult. Inq. Pmt Histo
 RMUPDFIDO;UNUSED;UNUSED;Robert Middlehorn
 DPTL5;Payment_And_Cash_Management;Payments_Execution_Engine;List Transactions in Log 
 DLLOGLST;Payment_And_Cash_Management;;List of logging file diptl
-GI-133-BATCH;TECHNICAL_KERNEL;TECHNICAL_KERNEL;EODbatch WARNINGS
+GI-133-BATCH;Financial_Markets;Financial_Markets_Trade_engine;EODbatch WARNINGS for FM products
 ALCRYMONIT;Payment_And_Cash_Management;Local_Regulatory_Reporting_Layer;High risk country monitoring
 DIDDF;Payment_And_Cash_Management;Payments_Execution_Engine;Auth. Dir Deb trs 
 DIDEF;Payment_And_Cash_Management;Payments_Execution_Engine;SEPA Direct Debits - Auth
@@ -1843,3 +1835,6 @@ ALRGRPOS2;Financial_Markets;Financial_Markets_Trade_engine;Regroupment FX Positi
 IUFLSHN;Financial_Markets;Financial_Markets_Trade_engine;FLAG SHN IN IGLDO AND IFXCO   
 WPLOGDEL;UNUSED;UNUSED;WP
 AUCNVACCR;Lending;Business_Lending_Engine;
+IUSELPM;Financial_Markets;Financial_Markets_Trade_engine;Extract FM payments for today
+ALBMBHOF;UNUSED;UNUSED;
+ALBILHOF;UNUSED;UNUSED;
