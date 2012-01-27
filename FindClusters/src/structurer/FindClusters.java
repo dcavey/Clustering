@@ -41,7 +41,7 @@ public class FindClusters  {
 	*/
 		
 	private static boolean 	TEST = false; 			
-	private static boolean 	TOCSV = false;			
+	private static boolean 	TOCSV = true;			
 	private static boolean 	TOSTDOUT = true;		
 	private static boolean 	PRINTSCORE = true;	
 	private static boolean 	PRINTUSE = true; 	

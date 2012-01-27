@@ -105,7 +105,7 @@ BREPO;Financial_Markets_Trade_engine;Financial_Markets
 BRPIO;Financial_Markets_Trade_engine;Financial_Markets
 BSPIO;Financial_Markets_Trade_engine;Financial_Markets
 CBFMO;UNUSED;UNUSED
-CC3PL;Financial_Markets_Trade_engine;Financial_Markets
+CC3PL;Business_Lending_Engine;Lending
 CC3PO;Business_Lending_Engine;Lending
 CCBRO;Business_Lending_Engine;Lending
 CCDIL;Business_Lending_Engine;Lending
@@ -199,7 +199,7 @@ CSSHO;Financial_Markets_Trade_engine;UNUSED
 DBATO;Instruction_and_Order_Management;Payment_And_Cash_Management
 DBILO;Customer_Billing;Account_Management
 DCBDO;Payments_Execution_Engine;Payment_And_Cash_Management
-DCBMO;Payments_Execution_Engine;Payment_And_Cash_Management
+DCBMO;Reference_Data_Manager;MDM_Management
 DCBRO;Local_Regulatory_Reporting_Layer;Finance
 DCLHO;Payments_Execution_Engine;Payment_And_Cash_Management
 DCLTO;Payments_Execution_Engine;Payment_And_Cash_Management
@@ -384,7 +384,7 @@ ITECO;Financial_Markets_Trade_engine;Financial_Markets
 ITIRO;Financial_Markets_Trade_engine;Financial_Markets
 ITITL;Business_Lending_Engine;Lending
 ITITO;Business_Lending_Engine;Lending
-ITLDO;Business_Lending_Engine;Lending
+ITLDO;Financial_Markets_Trade_engine;Financial_Markets
 ITOLL;Reconciliation_Engine;UNUSED
 ITOLO;Reconciliation_Engine;Payment_And_Cash_Management
 ITXTO;TECHNICAL_KERNEL;TECHNICAL_KERNEL
