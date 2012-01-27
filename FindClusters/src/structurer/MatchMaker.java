@@ -19,7 +19,7 @@ public  class MatchMaker {
 		this.printUse = printUse;
 	}
 
-	public void findBestFittingModuleForProgram (Program program, ArrayList<TargetModule> modules) {
+	public void findBestFittingModuleForProgram (Program program, ArrayList<TargetModule> modules, ArrayList<Interface> interfaces) {
 		
 		int	bestScoreSoFar = 0 ;
 		int	score = 0 ;
@@ -27,24 +27,13 @@ public  class MatchMaker {
 		TargetModule definedModule;
 		boolean needToAdaptBestScore;
 		
-		// Check to see if program is already classified by rules
-		OwnerSearcher sos = new SuggestedOwnerSearcher(printScore);
-		definedModule = sos.getOwner (program, modules);
+		// Check to see if program is already classified
+		OwnerSearcher os = new OwnerSearcher(printScore);
+		definedModule = os.getOwner (program, modules);
 		if (definedModule != null) {
-			SignalScore (Constants.SCOREFINAL_SUGGESTEDOWNER, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );
-			if(bestScoreSoFar < Constants.SCOREFINAL_SUGGESTEDOWNER){
-				bestScoreSoFar = Constants.SCOREFINAL_SUGGESTEDOWNER;  
-				bestModuleSoFar = definedModule;
-			}
-		}
-		
-		// Check to see if program is already classified by experts
-		OwnerSearcher dos = new DefinedOwnerSearcher(printScore);
-		definedModule = dos.getOwner (program, modules);
-		if (definedModule != null) {
-			SignalScore (Constants.SCOREFINAL_DEFINEDOWNER, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );
-			if(bestScoreSoFar < Constants.SCOREFINAL_DEFINEDOWNER){
-				bestScoreSoFar = Constants.SCOREFINAL_DEFINEDOWNER;  
+			SignalScore (Constants.SCOREFINALOWNER, "FIT=Y,SEL=N", definedModule.getType(), definedModule.getName(), program );
+			if(bestScoreSoFar < Constants.SCOREFINALOWNER){
+				bestScoreSoFar = Constants.SCOREFINALOWNER;  
 				bestModuleSoFar = definedModule;
 			}
 		}
@@ -65,7 +54,14 @@ public  class MatchMaker {
 		
 		// Assign program to best fitting module
 		if ((bestScoreSoFar > 0) && (bestScoreSoFar != 0 ) /* && (bestModuleSoFar != null) */ ) {
-			bestModuleSoFar.addProgramToModule(program); 
+			bestModuleSoFar.addProgramToModule(program);
+			int j = 0;
+			while(j < interfaces.size() && !interfaces.get(j).getProgramName().equals(program.getName())){
+				j++;
+			}
+			if(j < interfaces.size()){
+				bestModuleSoFar.addInterfaceToModule(interfaces.get(j));
+			}
 			SignalScore (bestScoreSoFar, "FIT=Y,SEL=Y", bestModuleSoFar.getType(), bestModuleSoFar.getName(), program );
 			// System.out.printf ("%s Module-Program fit BEST     : <%s>-<%s> - Score<%d> \n\n",  bestModuleSoFar.getTypedName(), program.getName(), bestScoreSoFar ); 			
 		} else {

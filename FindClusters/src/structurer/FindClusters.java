@@ -44,10 +44,10 @@ public class FindClusters  {
 	private static boolean 	TOCSV = false;			
 	private static boolean 	TOSTDOUT = true;		
 	private static boolean 	PRINTSCORE = true;	
-	private static boolean 	PRINTUSE = false; 	
+	private static boolean 	PRINTUSE = true; 	
 	private static int 		PRINTCONTAINS = 0;		
 	private static boolean	PHYSICAL_LEVEL=true;
-	private static boolean 	LOGICAL_LEVEL=false;
+	private static boolean 	LOGICAL_LEVEL=true;
 
 	
 	public FindClusters(){
@@ -62,17 +62,17 @@ public class FindClusters  {
 
 		if (PHYSICAL_LEVEL) { 
 			model.CreatePhysicalModel();
-			PlaceProgramInModules(model.getPrograms(), model.getPhysicalModules());  
+			PlaceProgramInModules(model.getPrograms(), model.getPhysicalModules(), model.getInterfaces());  
 		}
 		
 		if (LOGICAL_LEVEL) { 
 			model.CreateLogicalModel();
-			PlaceProgramInModules ( model.getPrograms(), model.getLogicalModules());  
+			PlaceProgramInModules ( model.getPrograms(), model.getLogicalModules(), model.getInterfaces());  
 		}
 	}
 	
 	
-	private void PlaceProgramInModules (ArrayList<Program> programs, ArrayList<TargetModule> modules)
+	private void PlaceProgramInModules (ArrayList<Program> programs, ArrayList<TargetModule> modules, ArrayList<Interface> interfaces)
 	{
 		MatchMaker matchMaker = new MatchMaker (PRINTSCORE, PRINTUSE);
 		Reporter reporter = new Reporter(TOCSV, TOSTDOUT);
@@ -81,7 +81,7 @@ public class FindClusters  {
 		
 		while (programIterator.hasNext()) {
 			Program program = programIterator.next();		
-			matchMaker.findBestFittingModuleForProgram(program, modules);
+			matchMaker.findBestFittingModuleForProgram(program, modules, interfaces);
 		}
 		
 		switch(PRINTCONTAINS){

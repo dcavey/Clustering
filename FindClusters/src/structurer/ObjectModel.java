@@ -12,6 +12,7 @@ public class ObjectModel {
 	
 	private ArrayList<Program> 		programs;
 	private ArrayList<Table> 		tables;	
+	private ArrayList<Interface>	interfaces;
 	private ArrayList<TargetModule> ifsModules;
 	private ArrayList<TargetModule> lbbModules;
 	private ArrayList<TargetModule> targetModules;
@@ -27,6 +28,7 @@ public class ObjectModel {
 		this.physicalModel = physicalModel;
 		this.programs = new ArrayList<Program>();
 		this.tables = new ArrayList<Table>();
+		this.interfaces = new ArrayList<Interface>();
 		this.ifsModules = new ArrayList<TargetModule>();
 		this.lbbModules = new ArrayList<TargetModule>();
 		this.creator = new ElementCreator(realModel);
@@ -34,7 +36,7 @@ public class ObjectModel {
 	}
 
 	public void createImplementationModel () {
-		creator.createBaseElementsImplementation (tables,programs);
+		creator.createBaseElementsImplementation (tables,programs,interfaces);
 		relator.relateImplementationModelInternally(tables, programs);
 	}
 	
@@ -55,6 +57,10 @@ public class ObjectModel {
 	
 	public ArrayList<Program> getPrograms(){
 		return programs;
+	}
+	
+	public ArrayList<Interface> getInterfaces(){
+		return interfaces;
 	}
 	
 	public ArrayList<TargetModule> getTargetModules() {

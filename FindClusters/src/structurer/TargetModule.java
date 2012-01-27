@@ -11,6 +11,7 @@ public class TargetModule {
 	private ArrayList<Table> assignedTables;
 	private ArrayList<TableUsedByProgram> tablesUsedByProgram;
 	private ArrayList<Program> programs;
+	private ArrayList<Interface> interfaces;
 	private String name;
 	
 	
@@ -27,6 +28,7 @@ public class TargetModule {
 		assignedTables = new ArrayList<Table>();
 		tablesUsedByProgram = new ArrayList<TableUsedByProgram>();
 		programs = new ArrayList<Program>();
+		interfaces = new ArrayList<Interface>();
 	}
 
 	public ArrayList<Table> getAssignedTables() {
@@ -36,8 +38,13 @@ public class TargetModule {
 	public ArrayList<TableUsedByProgram> getTablesUsedByPrograms() {
 		return tablesUsedByProgram;
 	}
+	
 	public ArrayList<Program> getPrograms() {
 		return programs;
+	}
+	
+	public ArrayList<Interface> getInterfaces() {
+		return interfaces;
 	}
 
 	public String getName() {
@@ -106,6 +113,11 @@ public class TargetModule {
 	public void addProgram (Program program) 
 	{
 		programs.add(program);
+	}
+	
+	public void addInterface (Interface intface) 
+	{
+		interfaces.add(intface);
 	}
 	
 	public int getMatchingScoreForProgram(Program program, boolean printUse)
@@ -195,7 +207,16 @@ public class TargetModule {
 	
 	public void addProgramToModule (Program program)
 	{
-		programs.add(program);		// TODO check for program already added
+		if(!programs.contains(program)){
+			programs.add(program);
+		}
+	}
+	
+	public void addInterfaceToModule (Interface intface)
+	{
+		if(!interfaces.contains(intface)){
+			interfaces.add(intface);
+		}
 	}
 	
 	public void showComposition (boolean tocsv, boolean toStdOut) {
@@ -212,7 +233,14 @@ public class TargetModule {
 		{
 			Program moduleProgram = programIterator.next();
 			signalModuleProgramCompositionLine (this.getName(),moduleProgram.getName(), moduleProgram.getPgmType(), tocsv, toStdOut);
-		} 
+		}
+		
+		Iterator<Interface>  interfaceIterator = this.getInterfaces().iterator();
+		while (interfaceIterator.hasNext()) 
+		{
+			Interface moduleInterface = interfaceIterator.next();
+			signalModuleInterfaceCompositionLine (this.getName(),moduleInterface.getName(), moduleInterface.getProgramName(), tocsv, toStdOut);
+		}
 		
 	}
 	
@@ -262,6 +290,7 @@ public class TargetModule {
 			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
 		}
 	}
+	
 	public void signalModuleProgramCompositionLine (String moduleName, String programName, String pgmType, boolean tocsv, boolean toStdOut)
 	{
 		if (toStdOut) {
@@ -273,6 +302,19 @@ public class TargetModule {
 			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
 		}
 	}
+	
+	public void signalModuleInterfaceCompositionLine (String moduleName, String interfaceName, String programName, boolean tocsv, boolean toStdOut)
+	{
+		if (toStdOut) {
+			System.out.printf ( this.getType() + " module=%S contains [%s]interface=%s \n", moduleName, interfaceName, programName);
+		}
+		if(tocsv){
+			CSVWriter writer = new CSVWriter();
+			String lineToWrite = this.getType() +  " module;" + moduleName + ";contains;["+ interfaceName + "+]interface;" + interfaceName;
+			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
+		}
+	}
+	
 	public void signalTableUsageAcrossModules (TargetModule module, Program program, Table table, boolean external, boolean tocsv, boolean toStdOut)
 	{
 		try {

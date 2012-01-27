@@ -16,11 +16,12 @@ public class ElementCreator {
 	}
 	
 
-	public void createBaseElementsImplementation (ArrayList<Table> tables, ArrayList<Program> programs)
+	public void createBaseElementsImplementation (ArrayList<Table> tables, ArrayList<Program> programs, ArrayList<Interface> interfaces)
 	{
 		if (this.fullModel) {
 			createBaseElementsTables (tables); 
-			createBaseElementsPrograms( programs);			
+			createBaseElementsPrograms( programs);
+			createBaseElementsInterfaces(interfaces);
 		}
 		else
 		{
@@ -125,6 +126,44 @@ public class ElementCreator {
 				// if (output[0].equals("P"))  {	} else 
 				{
 					Program  programToAdd = new Program (output[1],output[0]);	programs.add (programToAdd);	
+				}
+
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.out.println("Error: " + e.getMessage());
+		}
+	}
+	
+	private void createBaseElementsInterfaces(ArrayList<Interface> interfaces) {
+		//ArrayList<String> outputList = new ArrayList<String>();
+		try {
+			// Open the file
+			InputStream fstream = this.getClass().getResourceAsStream(Constants.INTERFACEFILE);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");
+				
+				/*
+				 * index 
+				 * 	0 = Type of program (I, R, P, G) 
+				 * 	1 = Program Name
+				 * 
+				 */
+				// if (output[0].equals("P"))  {	} else 
+				{
+					Interface  interfaceToAdd;
+					if(output.length == 1){
+						interfaceToAdd = new Interface (" ", output[0]); 
+					} else {
+						interfaceToAdd = new Interface (output[1], output[0]);
+					}
+					interfaces.add (interfaceToAdd);	
 				}
 
 			}
