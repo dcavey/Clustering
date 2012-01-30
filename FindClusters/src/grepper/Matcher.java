@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Matcher {
 
-	private static final String SOURCECODE = "D:/JLIEBAER/Documents/ING - IFS/SourceCode/ifsprd.mdl";
+	private static final String SOURCECODE = "C:/WorkStorageIFS/SourceCode/ifsprd.mdl";
 	
 	/*
 	private ArrayList<String> ispecs;
@@ -27,18 +27,21 @@ public class Matcher {
 	
 	public ArrayList<String> grepSources() {
 		ArrayList<String> outputList = new ArrayList<String>();
+		int lineNr = 0;
+		String strLine;
 		try {
 			// Open the file
 			FileInputStream fstream = new FileInputStream(SOURCECODE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String strLine = br.readLine();
+			//String strLine = br.readLine();
 			// Read File Line By Line
 			while ((strLine = br.readLine()) != null) {
-				// matchAndReport(strLine);	
-				matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(strLine);			// remove comment as required
-				// matchAndReport_FIND_LINC_PROGRAMS(strLine);				// remove comment as required
+				lineNr ++;
+				// matchAndReport(strLine, lineNr);	
+				//matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(strLine, lineNr);	// remove comment as required
+				matchAndReport_FIND_LINC_PROGRAMS(strLine, lineNr);				// remove comment as required
 				
 			}
 			// Close the input stream
@@ -51,22 +54,22 @@ public class Matcher {
 	
 
 
-	public void matchAndReport_FIND_LINC_PROGRAMS(String strLine) {
+	public void matchAndReport_FIND_LINC_PROGRAMS(String strLine, int lineNr) {
 			
 		if (strLine.startsWith("10") ) {
-			System.out.printf ("ISPEC  : %1s \n", strLine.substring(2,7));
+			System.out.printf ("%d: ISPEC  : %1s \n", lineNr,strLine.substring(2,7));
 		} else
 		{
 			if (strLine.startsWith("50") ) {
-				System.out.printf ("REPORT : %1s \n", strLine.substring(2,12));
+				System.out.printf ("%d: REPORT : %1s \n", lineNr,strLine.substring(2,12));
 			} else
 			{
 				if (strLine.startsWith("70") ) {
-					System.out.printf ("GLOGIC : %1s \n", strLine.substring(2,19));
+					System.out.printf ("%d: LOGIC : %1s \n", lineNr, strLine.substring(2,19));
 				} else
 				{	
 					if (strLine.startsWith("60") ) {
-						System.out.printf ("PROFILE: %1s \n", strLine.substring(2,11));
+						System.out.printf ("%d: PROFILE: %1s \n", lineNr, strLine.substring(2,11));
 					} 
 				}
 			}
@@ -74,7 +77,7 @@ public class Matcher {
 	}
 	
 	
-	public void matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(String strLine) {
+	public void matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(String strLine, int lineNr) {
 
 		if ( (strLine.contains("BP-") ) && 
 			 (strLine.contains("INS") ) )	{			
