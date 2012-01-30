@@ -47,7 +47,7 @@ public class FindClusters  {
 	private static boolean 	PRINTUSE = true; 	
 	private static int 		PRINTCONTAINS = 4;		
 	private static boolean	PHYSICAL_LEVEL=true;
-	private static boolean 	LOGICAL_LEVEL=true;
+	private static boolean 	LOGICAL_LEVEL=false;
 
 	
 	public FindClusters(){
