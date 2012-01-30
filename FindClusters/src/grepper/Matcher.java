@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Matcher {
 
-	private static final String SOURCECODE = "C:/WorkStorageIFS/SourceCode/ifsprd.mdl";
+	private static final String SOURCECODE = "C:/WorkStorageIFS/input/sourcecode/ifsprd.mdl";
 	
 	/*
 	private ArrayList<String> ispecs;
