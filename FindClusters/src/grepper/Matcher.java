@@ -6,12 +6,10 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
+import structurer.Constants;
 
 public class Matcher {
 
-	private static final String SOURCECODE = "C:/WorkStorageIFS/input/sourcecode/ifsprd.mdl";
-	
 	/*
 	private ArrayList<String> ispecs;
 	private ArrayList<String> reports;
@@ -31,7 +29,7 @@ public class Matcher {
 		String strLine;
 		try {
 			// Open the file
-			FileInputStream fstream = new FileInputStream(SOURCECODE);
+			FileInputStream fstream = new FileInputStream(Constants.SOURCECODE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));

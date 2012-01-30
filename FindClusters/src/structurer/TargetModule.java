@@ -287,7 +287,7 @@ public class TargetModule {
 		if(tocsv){
 			CSVWriter writer = new CSVWriter();
 			String lineToWrite = this.getType() + " module;" + moduleName + ";contains;table;" + tableName;
-			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
+			writer.writeLineToFile(Constants.CSV_CONTAINS, lineToWrite);
 		}
 	}
 	
@@ -299,7 +299,7 @@ public class TargetModule {
 		if(tocsv){
 			CSVWriter writer = new CSVWriter();
 			String lineToWrite = this.getType() +  " module;" + moduleName + ";contains;["+ pgmType +"]program;" + programName;
-			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
+			writer.writeLineToFile(Constants.CSV_CONTAINS, lineToWrite);
 		}
 	}
 	
@@ -311,7 +311,7 @@ public class TargetModule {
 		if(tocsv){
 			CSVWriter writer = new CSVWriter();
 			String lineToWrite = this.getType() +  " module;" + moduleName + ";contains;["+ interfaceName + "+]interface;" + interfaceName;
-			writer.writeLineToFile("out_TablesAndProgramsContainedInModules.csv", lineToWrite);
+			writer.writeLineToFile(Constants.CSV_CONTAINS, lineToWrite);
 		}
 	}
 	
@@ -338,7 +338,7 @@ public class TargetModule {
 							+ ";uses;" + table.getAssignedModule().getType() + ";"+  usageType +";module;table;" + table.getAssignedModule().getName() 
 							+ ";" + table.getName() + ";for;" + program.getCRUDforTable (table);
 				CSVWriter writer = new CSVWriter();
-				writer.writeLineToFile("out_TablesAndProgramsUsedByModules.csv", line);
+				writer.writeLineToFile(Constants.CSV_USED, line);
 			}
 	    }	
 		} catch (Exception e) {// Catch exception if any

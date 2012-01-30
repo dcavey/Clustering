@@ -103,13 +103,5 @@ public class FindClusters  {
 
 		FindClusters fc = new FindClusters();
 		fc.run();
-		fc.convertToCSV();
-
 	}
-
-	private void convertToCSV() {
-		
-		
-	}
-
 }
