@@ -17,9 +17,11 @@ public class Matcher {
 	private ArrayList<String> profiles;
 	*/
 	
+	private ArrayList<String> programs;
+	
 	public Matcher() {
 		super();
-		// TODO Auto-generated constructor stub
+		programs = readProgs();
 	}
 
 	
@@ -38,8 +40,9 @@ public class Matcher {
 			while ((strLine = br.readLine()) != null) {
 				lineNr ++;
 				// matchAndReport(strLine, lineNr);	
-				//matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(strLine, lineNr);	// remove comment as required
-				matchAndReport_FIND_LINC_PROGRAMS(strLine, lineNr);				// remove comment as required
+				// matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(strLine, lineNr);	// remove comment as required
+				// matchAndReport_FIND_LINC_PROGRAMS(strLine, lineNr);			// remove comment as required
+				 matchAndReport_FIND_LINC_ROUTINES(strLine, lineNr);			// remove comment as required
 				
 			}
 			// Close the input stream
@@ -105,5 +108,43 @@ public class Matcher {
 			System.out.printf ("XFB: CALLER=%s \n", strLine.substring(2,12), strLine );
 		}
 	}
+	
+	public void matchAndReport_FIND_LINC_ROUTINES(String strLine, int lineNr)
+	{
+		if (strLine.contains  ("INSERT") && strLine.matches(".*G[A-Z]+.*")) // ("IFSYS/WF/TDFXFB"))  // ("XFB") )//
+		{
+			strLine.replace("  ", " ");
+			String[] strWords = strLine.split(" "); 
+			for(int i = 1; i < strWords.length; i++){
+				if(strWords[i].matches("G[A-Z]+.*") && programs.contains(strWords[0].substring(2))){
+					System.out.printf ("CALLER=%s \t ROUTINE=%s \n", strWords[0].substring(2) , strWords[i] );
+				}
+			}
+		}
+	}
+	
+	private ArrayList<String> readProgs() {
+		ArrayList<String> outputList = new ArrayList<String>();
+		try {
+			// Open the file
+			FileInputStream fstream = new FileInputStream(Constants.PROGFILE);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");
+				outputList.add(output[1]);
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
+		return outputList;
+	}
+	
+	
 
 }
