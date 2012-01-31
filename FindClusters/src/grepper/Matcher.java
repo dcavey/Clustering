@@ -117,7 +117,9 @@ public class Matcher {
 			String[] strWords = strLine.split(" "); 
 			for(int i = 1; i < strWords.length; i++){
 				if(strWords[i].matches("G[A-Z]+.*") && programs.contains(strWords[0].substring(2))){
-					System.out.printf ("CALLER=%s \t ROUTINE=%s \n", strWords[0].substring(2) , strWords[i] );
+					if(programs.contains(strWords[i])){
+						System.out.printf ("CALLER=%s \t ROUTINE=%s \n", strWords[0].substring(2) , strWords[i] );
+					}
 				}
 			}
 		}

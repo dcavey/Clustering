@@ -2,9 +2,11 @@ package structurer;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class ElementRelator {
@@ -13,7 +15,7 @@ public class ElementRelator {
 	
 	public ElementRelator(boolean fullModel) {
 		super();
-		this.fullModel = fullModel;
+		this.fullModel = fullModel;;
 	}
 
 	
@@ -34,8 +36,45 @@ public class ElementRelator {
 			RelateImplementationModelInternallyForTestData ( tables, programs);
 		}
 	}
-
 	
+	public HashMap<Program, ArrayList<Program>> getGlobalLogicToPrograms(ArrayList<Program> programs) {
+		HashMap<Program, ArrayList<Program>> glProgs = new HashMap<Program, ArrayList<Program>>();
+		try {
+			// Open the file
+			InputStream fstream = new FileInputStream(Constants.GL2PROGRAM_XREF);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");
+				/*
+				 * index 
+				 * 	1 = Global Logic Name 
+				 * 	3 = Program Name
+				 * 
+				 */
+				Program prog = findProgram(programs, output[3]);
+				Program glProg = findProgram(programs, output[1]);
+				ArrayList<Program> listProgs;
+				if(glProgs.containsKey(glProg)){
+					listProgs = glProgs.get(glProg);
+				} else {
+					listProgs = new ArrayList<Program>();
+				}
+				listProgs.add(prog);
+				glProgs.put(glProg, listProgs);
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			System.out.println("Error: " + e.getMessage());
+		}
+		return glProgs;
+	}
+
+
 	public void relateImplementationToPhysicalModel (ArrayList<Table> tables, 
 										ArrayList<TargetModule> physicalModules)
 	{

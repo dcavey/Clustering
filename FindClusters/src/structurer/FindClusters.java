@@ -1,7 +1,9 @@
 package structurer;
 
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 import reporter.Reporter;
@@ -62,17 +64,17 @@ public class FindClusters  {
 
 		if (PHYSICAL_LEVEL) { 
 			model.CreatePhysicalModel();
-			PlaceProgramInModules(model.getPrograms(), model.getPhysicalModules(), model.getInterfaces());  
+			PlaceProgramInModules(model.getPrograms(), model.getPhysicalModules(), model.getInterfaces(), model.getGlPrograms());  
 		}
 		
 		if (LOGICAL_LEVEL) { 
 			model.CreateLogicalModel();
-			PlaceProgramInModules ( model.getPrograms(), model.getLogicalModules(), model.getInterfaces());  
+			PlaceProgramInModules ( model.getPrograms(), model.getLogicalModules(), model.getInterfaces(), model.getGlPrograms());  
 		}
 	}
 	
 	
-	private void PlaceProgramInModules (ArrayList<Program> programs, ArrayList<TargetModule> modules, ArrayList<Interface> interfaces)
+	private void PlaceProgramInModules (ArrayList<Program> programs, ArrayList<TargetModule> modules, ArrayList<Interface> interfaces, HashMap<Program, ArrayList<Program>> glPrograms)
 	{
 		MatchMaker matchMaker = new MatchMaker (PRINTSCORE, PRINTUSE);
 		Reporter reporter = new Reporter(TOCSV, TOSTDOUT);
@@ -80,8 +82,19 @@ public class FindClusters  {
 		Iterator<Program>  programIterator  = programs.iterator();
 		
 		while (programIterator.hasNext()) {
-			Program program = programIterator.next();		
-			matchMaker.findBestFittingModuleForProgram(program, modules, interfaces);
+			Program program = programIterator.next();
+			if(!program.getPgmType().equals("G")){
+				matchMaker.findBestFittingModuleForProgram(program, modules, interfaces, glPrograms);
+			}
+		}
+		
+		Iterator<Program>  glProgramIterator  = programs.iterator();
+		
+		while (glProgramIterator.hasNext()) {
+			Program program = glProgramIterator.next();
+			if(program.getPgmType().equals("G")){
+				matchMaker.findBestFittingModuleForProgram(program, modules, interfaces, glPrograms);
+			}
 		}
 		
 		switch(PRINTCONTAINS){
@@ -100,8 +113,16 @@ public class FindClusters  {
 
 
 	public static void main(String[] args) {
-
+		clearFiles();
 		FindClusters fc = new FindClusters();
 		fc.run();
+	}
+	
+	private static void clearFiles(){
+		if(!(new File(Constants.CSV_CONTAINS).delete() 
+				&& new File(Constants.CSV_USED).delete())){
+			System.err.println("Please close all files!");
+			System.exit(-1);
+		}
 	}
 }

@@ -13,6 +13,7 @@ public class Constants {
 	 * INPUT
 	 ****************************************/
 	public static final String SOURCECODE = "C:/WorkStorageIFS/input/sourcecode/ifsprd.mdl";
+	public static final String GL2PROGRAM_XREF = "C:/WorkStorageIFS/output/out_program_globallogic.csv";
 	public static final String TABLE2PROGRAM_XREF = "/resources/xref_table_program.csv";
 	public static final String TABLE2MODULE_XREF = "/resources/xref_table_module.csv";
 	
@@ -29,9 +30,10 @@ public class Constants {
 	public static final String PROGRAM2MODULE_CLOG_XREF = "/resources/xref_program_module_CLog.csv";
 	
 	// Defined|suggested owner scores
-	public static final int SCORETMP_DEFINEDOWNER = 100;
-	public static final int SCORETMP_SUGGESTEDOWNER = 400;
+	public static final int SCORETMP_DEFINEDOWNER = 400;
+	public static final int SCORETMP_SUGGESTEDOWNER = 200;
 	public static final int SCOREFINALOWNER = 999;
+	public static final int SCOREGLPROGRAM = 800;
 	
 	/****************************************
 	 * OUTPUT
