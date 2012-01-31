@@ -10,6 +10,7 @@ import reporter.Reporter;
 
 
 public class FindClusters  {
+	private static final String ERROR_CLOSE_FILES = "Please close all files!";
 	/**
 	 * If you want the output "out_TablesAndProgramsContainedInModules" (in console)
 	 * 			use PRINTSCORE=false; PRINTUSE=false; PRINTCONTAINS=1
@@ -49,7 +50,7 @@ public class FindClusters  {
 	private static boolean 	PRINTUSE = true; 	
 	private static int 		PRINTCONTAINS = 4;		
 	private static boolean	PHYSICAL_LEVEL=true;
-	private static boolean 	LOGICAL_LEVEL=true;
+	private static boolean 	LOGICAL_LEVEL=false;
 
 	
 	public FindClusters(){
@@ -119,10 +120,17 @@ public class FindClusters  {
 	}
 	
 	private static void clearFiles(){
-		if(!(new File(Constants.CSV_CONTAINS).delete() 
-				&& new File(Constants.CSV_USED).delete())){
-			System.err.println("Please close all files!");
-			System.exit(-1);
+		if(new File(Constants.CSV_CONTAINS).exists()){
+			if(!(new File(Constants.CSV_CONTAINS).delete())) {
+				System.err.println(ERROR_CLOSE_FILES);
+				System.exit(-1);
+			}
+		}
+		if(new File(Constants.CSV_USED).exists()){
+			if(!(new File(Constants.CSV_USED).delete())) {
+				System.err.println(ERROR_CLOSE_FILES);
+				System.exit(-1);
+			}
 		}
 	}
 }

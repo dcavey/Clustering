@@ -41,8 +41,8 @@ public class Matcher {
 				lineNr ++;
 				// matchAndReport(strLine, lineNr);	
 				// matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(strLine, lineNr);	// remove comment as required
-				// matchAndReport_FIND_LINC_PROGRAMS(strLine, lineNr);			// remove comment as required
-				 matchAndReport_FIND_LINC_ROUTINES(strLine, lineNr);			// remove comment as required
+				 matchAndReport_FIND_LINC_PROGRAMS(strLine, lineNr);			// remove comment as required
+				// matchAndReport_FIND_LINC_ROUTINES(strLine, lineNr);			// remove comment as required
 				
 			}
 			// Close the input stream
