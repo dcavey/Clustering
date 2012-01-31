@@ -2,6 +2,7 @@ package structurer;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -69,7 +70,8 @@ public class ElementCreator {
 				/* index 
 				 * 	0 = Module Name
 				 */
-				TargetLogicalModule  targetModule = new TargetLogicalModule (output[0]);	lbbModules.add (targetModule);	
+				TargetLogicalModule  targetModule = new TargetLogicalModule (output[0]);	
+				lbbModules.add (targetModule);	
 			}
 			// Close the input stream
 			in.close();
@@ -95,7 +97,8 @@ public class ElementCreator {
 				/* index 
 				 * 	0 = Module Name
 				 */
-				TargetPhysicalModule  targetModule = new TargetPhysicalModule (output[0]);	ifsModules.add (targetModule);	
+				TargetPhysicalModule  targetModule = new TargetPhysicalModule (output[0]);	
+				ifsModules.add (targetModule);	
 			}
 			// Close the input stream
 			in.close();
@@ -108,7 +111,7 @@ public class ElementCreator {
 		//ArrayList<String> outputList = new ArrayList<String>();
 		try {
 			// Open the file
-			InputStream fstream = this.getClass().getResourceAsStream(Constants.PROGFILE);
+			InputStream fstream = new FileInputStream(Constants.PROGFILE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -125,7 +128,8 @@ public class ElementCreator {
 				 */
 				// if (output[0].equals("P"))  {	} else 
 				{
-					Program  programToAdd = new Program (output[1],output[0]);	programs.add (programToAdd);	
+					Program  programToAdd = new Program (output[1],output[0]);	
+					programs.add (programToAdd);	
 				}
 
 			}
@@ -151,21 +155,17 @@ public class ElementCreator {
 				
 				/*
 				 * index 
-				 * 	0 = Type of program (I, R, P, G) 
-				 * 	1 = Program Name
+				 * 	0 = Program Name 
+				 * 	1 = Interface Name
 				 * 
 				 */
-				// if (output[0].equals("P"))  {	} else 
-				{
-					Interface  interfaceToAdd;
-					if(output.length == 1){
-						interfaceToAdd = new Interface (" ", output[0]); 
-					} else {
-						interfaceToAdd = new Interface (output[1], output[0]);
-					}
-					interfaces.add (interfaceToAdd);	
+				Interface  interfaceToAdd;
+				if(output.length == 1){
+					interfaceToAdd = new Interface (" ", output[0]); 
+				} else {
+					interfaceToAdd = new Interface (output[1], output[0]);
 				}
-
+				interfaces.add (interfaceToAdd);	
 			}
 			// Close the input stream
 			in.close();
@@ -178,7 +178,7 @@ public class ElementCreator {
 	private void createBaseElementsTables(ArrayList<Table> tables) {
 		try {
 			// Open the file
-			InputStream fstream = this.getClass().getResourceAsStream(Constants.TABLEFILE);
+			InputStream fstream = new FileInputStream(Constants.TABLEFILE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -191,7 +191,8 @@ public class ElementCreator {
 				 * 	0 = Table Name
 				 * 
 				 */
-				Table  tableToAdd = new Table (output[0]);	tables.add (tableToAdd);	
+				Table  tableToAdd = new Table (output[0]);	
+				tables.add (tableToAdd);	
 
 			}
 			// Close the input stream

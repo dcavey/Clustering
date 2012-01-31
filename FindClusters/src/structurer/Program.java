@@ -9,6 +9,7 @@ public class Program {
 	private ArrayList<TableProgramXref> tableProgramXrefs;
 	private String name;
 	private String pgmType;
+	private TargetModule module;
 	
 	public Program(String name, String pType) {
 		super();
@@ -34,6 +35,9 @@ public class Program {
 		return name + " [" + pgmType + "]";
 	}
 	
+	public TargetModule getModule(){
+		return module;
+	}
 
 	public void addTable (Table table) {
 		tables.add(table);
@@ -60,6 +64,10 @@ public class Program {
 
 	public void addTableProgramXref(TableProgramXref xref) {
 		tableProgramXrefs.add(xref);
+	}
+
+	public void setModule(TargetModule module) {
+		this.module = module;
 	}
 
 }

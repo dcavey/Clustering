@@ -1,6 +1,7 @@
 package structurer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ObjectModel {
@@ -10,14 +11,15 @@ public class ObjectModel {
 	boolean physicalModel;
 	boolean logicalModel;
 	
-	private ArrayList<Program> 		programs;
-	private ArrayList<Table> 		tables;	
-	private ArrayList<Interface>	interfaces;
-	private ArrayList<TargetModule> ifsModules;
-	private ArrayList<TargetModule> lbbModules;
-	private ArrayList<TargetModule> targetModules;
-	private ElementCreator 			creator;
-	private ElementRelator 			relator;
+	private ArrayList<Program> 					programs;
+	private ArrayList<Table> 					tables;	
+	private ArrayList<Interface>				interfaces;
+	private ArrayList<TargetModule> 			ifsModules;
+	private ArrayList<TargetModule> 			lbbModules;
+	private ArrayList<TargetModule> 			targetModules;
+	private ElementCreator 						creator;
+	private ElementRelator 						relator;
+	private HashMap<Program, ArrayList<Program>> glPrograms;
 	
 	
 	public ObjectModel(boolean realModel) {
@@ -33,11 +35,13 @@ public class ObjectModel {
 		this.lbbModules = new ArrayList<TargetModule>();
 		this.creator = new ElementCreator(realModel);
 		this.relator = new ElementRelator(realModel);
+		this.glPrograms = new HashMap<Program, ArrayList<Program>>();
 	}
 
 	public void createImplementationModel () {
 		creator.createBaseElementsImplementation (tables,programs,interfaces);
 		relator.relateImplementationModelInternally(tables, programs);
+		glPrograms = relator.getGlobalLogicToPrograms(programs);
 	}
 	
 	public void CreatePhysicalModel() {
@@ -61,6 +65,10 @@ public class ObjectModel {
 	
 	public ArrayList<Interface> getInterfaces(){
 		return interfaces;
+	}
+	
+	public HashMap<Program, ArrayList<Program>> getGlPrograms(){
+		return glPrograms;
 	}
 	
 	public ArrayList<TargetModule> getTargetModules() {

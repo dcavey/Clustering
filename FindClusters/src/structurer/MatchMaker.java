@@ -1,6 +1,7 @@
 package structurer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 
@@ -15,7 +16,7 @@ public  class MatchMaker {
 		this.printUse = printUse;
 	}
 
-	public void findBestFittingModuleForProgram (Program program, ArrayList<TargetModule> modules, ArrayList<Interface> interfaces) {
+	public void findBestFittingModuleForProgram (Program program, ArrayList<TargetModule> modules, ArrayList<Interface> interfaces, HashMap<Program, ArrayList<Program>> glPrograms) {
 		
 		int	bestScoreSoFar = 0 ;
 		int	score = 0 ;
@@ -48,25 +49,67 @@ public  class MatchMaker {
 			}			
 		}
 		
-		// Assign program to best fitting module
-		if ((bestScoreSoFar > 0) && (bestScoreSoFar != 0 ) /* && (bestModuleSoFar != null) */ ) {
-			bestModuleSoFar.addProgramToModule(program);
-			int j = 0;
-			while(j < interfaces.size() && !interfaces.get(j).getProgramName().equals(program.getName())){
-				j++;
+		if(program.getPgmType().equals("G")) {
+			ArrayList<Program> glProgs = glPrograms.get(program);
+			ArrayList<TargetModule> glModules = new ArrayList<TargetModule>();
+			if(glProgs != null){
+				for(Program p : glProgs){
+					if(!glModules.contains(p.getModule()) && p.getModule() != null){
+						glModules.add(p.getModule());
+					}
+				}
+				for(TargetModule m : glModules){
+					if(Constants.SCOREGLPROGRAM >= bestScoreSoFar){
+						SignalScore (Constants.SCOREGLPROGRAM, "FIT=Y,SEL=Y", m.getType(), m.getName() , program );
+						m.addProgramToModule(program);
+						bestScoreSoFar = Constants.SCOREGLPROGRAM;
+						bestModuleSoFar = m;
+					} else {
+						SignalScore (Constants.SCOREGLPROGRAM, "FIT=Y,SEL=N", m.getType(), m.getName() , program );
+					}
+				}
 			}
-			if(j < interfaces.size()){
-				bestModuleSoFar.addInterfaceToModule(interfaces.get(j));
-			}
-			SignalScore (bestScoreSoFar, "FIT=Y,SEL=Y", bestModuleSoFar.getType(), bestModuleSoFar.getName(), program );
-			// System.out.printf ("%s Module-Program fit BEST     : <%s>-<%s> - Score<%d> \n\n",  bestModuleSoFar.getTypedName(), program.getName(), bestScoreSoFar ); 			
-		} else {
-			SignalScore (-1, "FIT=N,SEL=N", "N/A", "N/A", program );	// not classifiable at all		
 		}
 		
-		
+		if (bestScoreSoFar != Constants.SCOREGLPROGRAM ){
+			// Assign program to best fitting module
+			if (bestScoreSoFar > 0 /* && (bestModuleSoFar != null) */ ) {
+				program.setModule(bestModuleSoFar);
+				bestModuleSoFar.addProgramToModule(program);
+				int j = 0;
+				while(j < interfaces.size() && !interfaces.get(j).getProgramName().equals(program.getName())){
+					j++;
+				}
+				if(j < interfaces.size()){
+					bestModuleSoFar.addInterfaceToModule(interfaces.get(j));
+				}
+				SignalScore (bestScoreSoFar, "FIT=Y,SEL=Y", bestModuleSoFar.getType(), bestModuleSoFar.getName(), program );
+				// System.out.printf ("%s Module-Program fit BEST     : <%s>-<%s> - Score<%d> \n\n",  bestModuleSoFar.getTypedName(), program.getName(), bestScoreSoFar ); 			
+			} else {
+				SignalScore (-1, "FIT=N,SEL=N", "N/A", "N/A", program );	// not classifiable at all		
+			}
+		}
 	}	
+	
 
+	public void findBestFittingModuleForGLProgram(Program program, HashMap<Program, ArrayList<Program>> glPrograms) {
+		ArrayList<Program> glProgs = glPrograms.get(program);
+		ArrayList<TargetModule> glModules = new ArrayList<TargetModule>();
+		if(glProgs != null){
+			for(Program p : glProgs){
+				if(!glModules.contains(p.getModule()) && p.getModule() != null){
+					glModules.add(p.getModule());
+				}
+			}
+			for(TargetModule m : glModules){
+				SignalScore (Constants.SCOREGLPROGRAM, "FIT=Y,SEL=Y", m.getType(), m.getName() , program );
+				m.addProgram(program);
+			}
+		} else {
+			SignalScore (-1, "FIT=N,SEL=N", "N/A", "N/A", program );
+		}
+	}
+	
 	private boolean HandleNewScore ( int bestScoreSoFar, int newScore, TargetModule bestModuleSoFar, TargetModule newModule, Program program ) {
 		boolean update = false;
 		boolean signal = true;
