@@ -62,6 +62,13 @@ public  class MatchMaker {
 					if(Constants.SCOREGLPROGRAM >= bestScoreSoFar){
 						SignalScore (Constants.SCOREGLPROGRAM, "FIT=Y,SEL=Y", m.getType(), m.getName() , program );
 						m.addProgramToModule(program);
+						int j = 0;
+						while(j < interfaces.size() && !interfaces.get(j).getProgramName().equals(program.getName())){
+							j++;
+						}
+						if(j < interfaces.size()){
+							m.addInterfaceToModule(interfaces.get(j));
+						}
 						bestScoreSoFar = Constants.SCOREGLPROGRAM;
 						bestModuleSoFar = m;
 					} else {

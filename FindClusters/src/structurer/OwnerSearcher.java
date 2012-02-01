@@ -21,8 +21,8 @@ public class OwnerSearcher {
 	}
 	
 	private void fillInFiles(){
-		inputFileScore.put(Constants.PROGRAM2MODULE_CU_XREF,Constants.SCORETMP_SUGGESTEDOWNER);
-		inputFileScore.put(Constants.PROGRAM2MODULE_CLOG_XREF, Constants.SCORETMP_SUGGESTEDOWNER);
+		//inputFileScore.put(Constants.PROGRAM2MODULE_CU_XREF,Constants.SCORETMP_SUGGESTEDOWNER);
+		//inputFileScore.put(Constants.PROGRAM2MODULE_CLOG_XREF, Constants.SCORETMP_SUGGESTEDOWNER);
 		inputFileScore.put(Constants.PROGRAM2MODULE_EXPERT_XREF,Constants.SCORETMP_DEFINEDOWNER);
 	}
 	
@@ -53,8 +53,8 @@ public class OwnerSearcher {
 				while ((strLine = br.readLine()) != null) 
 				{
 					String[] output = strLine.split(";");
-					if (program.getName().equals(output[0]) && !output[1].isEmpty()) {
-						TargetModule tmpModule = findModule(modules, output[1]); 
+					if (program.getName().equals(output[0].trim()) && !output[1].trim().isEmpty()) {
+						TargetModule tmpModule = findModule(modules, output[1].trim()); 
 						SignalScore (inputFileScore.get(file), "FIT=Y,SEL=N", tmpModule.getType(), tmpModule.getName(), program );
 						if(inputFileScore.get(file) > score){
 							definedModule = tmpModule;
@@ -86,8 +86,8 @@ public class OwnerSearcher {
 				while ((strLine = br.readLine()) != null) 
 				{
 					String[] output = strLine.split(";");
-					if (program.getName().equals(output[0]) && !output[2].isEmpty()) {
-						TargetModule tmpModule = findModule(modules, output[2]); 
+					if (program.getName().equals(output[0].trim()) && !output[2].trim().isEmpty()) {
+						TargetModule tmpModule = findModule(modules, output[2].trim()); 
 						SignalScore (inputFileScore.get(file), "FIT=Y,SEL=N", tmpModule.getType(), tmpModule.getName(), program );
 						if(inputFileScore.get(file) > score){
 							definedModule = tmpModule;
