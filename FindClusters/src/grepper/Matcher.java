@@ -40,8 +40,8 @@ public class Matcher {
 			while ((strLine = br.readLine()) != null) {
 				lineNr ++;
 				// matchAndReport(strLine, lineNr);	
-				// matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(strLine, lineNr);	// remove comment as required
-				 matchAndReport_FIND_LINC_PROGRAMS(strLine, lineNr);			// remove comment as required
+				matchAndReport_FIND_LINC_MIDDLEWARE_USAGE(strLine, lineNr);	// remove comment as required
+				// matchAndReport_FIND_LINC_PROGRAMS(strLine, lineNr);			// remove comment as required
 				// matchAndReport_FIND_LINC_ROUTINES(strLine, lineNr);			// remove comment as required
 				
 			}
@@ -83,7 +83,7 @@ public class Matcher {
 		if ( (strLine.contains("BP-") ) && 
 			 (strLine.contains("INS") ) )	{			
 			int beginIndex = strLine.indexOf("BP-"); 
-			int endIndex = beginIndex + 12;
+			int endIndex = beginIndex + 18;
 			String callee= strLine.substring(beginIndex, endIndex);
 			
 			String tempString = strLine.substring(2,19); 
@@ -98,8 +98,8 @@ public class Matcher {
 				tacsyType = "EASY";
 			}
 			
-			// System.out.printf ("TACSY: CALLER=%s; CALLEE=%s LINE=%s\n", caller, callee, strLine );
-			//System.out.printf ("TACSY: CALLER=%s; CALLEE=%s, TACSYTYPE=%s \n", caller, callee, tacsyType );
+			//System.out.printf ("TACSY: CALLER=%s; CALLEE=%s; LINE=%s\n", caller, callee, strLine );
+			System.out.printf ("TACSY: CALLER=%s; CALLEE=%s; TACSYTYPE=%s \n", caller, callee, tacsyType );
 			
 		}
 		
