@@ -310,7 +310,7 @@ public class TargetModule {
 		}
 		if(tocsv){
 			CSVWriter writer = new CSVWriter();
-			String lineToWrite = this.getType() +  " module;" + moduleName + ";contains;["+ interfaceName + "+]interface;" + interfaceName;
+			String lineToWrite = this.getType() +  " module;" + moduleName + ";contains;["+ interfaceName + "+]interface;" + programName;
 			writer.writeLineToFile(Constants.CSV_CONTAINS, lineToWrite);
 		}
 	}

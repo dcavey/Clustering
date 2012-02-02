@@ -70,7 +70,7 @@ public class ElementCreator {
 				/* index 
 				 * 	0 = Module Name
 				 */
-				TargetLogicalModule  targetModule = new TargetLogicalModule (output[0]);	
+				TargetLogicalModule  targetModule = new TargetLogicalModule (output[0].trim());	
 				lbbModules.add (targetModule);	
 			}
 			// Close the input stream
@@ -97,7 +97,7 @@ public class ElementCreator {
 				/* index 
 				 * 	0 = Module Name
 				 */
-				TargetPhysicalModule  targetModule = new TargetPhysicalModule (output[0]);	
+				TargetPhysicalModule  targetModule = new TargetPhysicalModule (output[0].trim());	
 				ifsModules.add (targetModule);	
 			}
 			// Close the input stream
@@ -128,7 +128,7 @@ public class ElementCreator {
 				 */
 				// if (output[0].equals("P"))  {	} else 
 				{
-					Program  programToAdd = new Program (output[1],output[0]);	
+					Program  programToAdd = new Program (output[1].trim(),output[0].trim());	
 					programs.add (programToAdd);	
 				}
 
@@ -139,9 +139,8 @@ public class ElementCreator {
 			System.out.println("Error: " + e.getMessage());
 		}
 	}
-	
+
 	private void createBaseElementsInterfaces(ArrayList<Interface> interfaces) {
-		//ArrayList<String> outputList = new ArrayList<String>();
 		try {
 			// Open the file
 			InputStream fstream = this.getClass().getResourceAsStream(Constants.INTERFACEFILE);
@@ -161,11 +160,11 @@ public class ElementCreator {
 				 */
 				Interface  interfaceToAdd;
 				if(output.length == 1){
-					interfaceToAdd = new Interface (" ", output[0]); 
+					interfaceToAdd = new Interface ("DEFAULT", output[0].trim());
 				} else {
-					interfaceToAdd = new Interface (output[1], output[0]);
+					interfaceToAdd = new Interface (output[1].trim()	, output[0].trim());
 				}
-				interfaces.add (interfaceToAdd);	
+				interfaces.add(interfaceToAdd);	
 			}
 			// Close the input stream
 			in.close();
@@ -191,7 +190,7 @@ public class ElementCreator {
 				 * 	0 = Table Name
 				 * 
 				 */
-				Table  tableToAdd = new Table (output[0]);	
+				Table  tableToAdd = new Table (output[0].trim());	
 				tables.add (tableToAdd);	
 
 			}
