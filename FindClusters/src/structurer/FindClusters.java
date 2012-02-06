@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import reporter.CSVWriter;
 import reporter.Reporter;
 
 
@@ -124,12 +125,20 @@ public class FindClusters  {
 			if(!(new File(Constants.CSV_CONTAINS).delete())) {
 				System.err.println(ERROR_CLOSE_FILES);
 				System.exit(-1);
+			} else if(TOCSV && (PRINTCONTAINS == 1 || PRINTCONTAINS == 4)){
+				CSVWriter writer = new CSVWriter();
+				String lineToWrite = "Module_Type;Module_Name;Contains;Type;Name";
+				writer.writeLineToFile(Constants.CSV_CONTAINS, lineToWrite);
 			}
 		}
 		if(new File(Constants.CSV_USED).exists()){
 			if(!(new File(Constants.CSV_USED).delete())) {
 				System.err.println(ERROR_CLOSE_FILES);
 				System.exit(-1);
+			} else if(TOCSV && (PRINTCONTAINS == 3 || PRINTCONTAINS == 4)){
+				CSVWriter writer = new CSVWriter();
+				String line = "Module_Type;Module;Program;Module_Name;Program_Name;ProgramType;Uses;Module_Type;Usage_Type;Module;Table;Module_Name;Table_Name;For;CRUD";
+				writer.writeLineToFile(Constants.CSV_USED, line);
 			}
 		}
 	}
