@@ -1,7 +1,14 @@
 package structurer;
 
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -28,48 +35,39 @@ public class FindClusters  {
 	 * 			use PRINTSCORE=true; PRINTUSE=true; PRINTCONTAINS=3
 	 */
 
-	/* COMPLETE OUTPUT settings 
-	
-	private static boolean 	TEST = false; 			// true => test model, false => real model
-	private static boolean 	TOCSV = true;			// true => change output from console to csv (!delete old file first)
-	private static boolean 	TOSTDOUT = true;		// true => change output from console to std out
-	private static boolean 	PRINTSCORE = true;		// true => print score, false => no scores displayed
-	private static boolean 	PRINTUSE = true; 		// true => print use, false => no use displayed
-	private static int 		PRINTCONTAINS = 4;		// 0 => nothing displayed
-													// 1 => showModules
-													// 2 => ShowSharedTables
-													// 3 => showTableUsageAcrossModules
-													// 4 => showModules + showTableUsageAcrossModules
-	private static boolean	PHYSICAL_LEVEL=true;
-	private static boolean 	LOGICAL_LEVEL=true;
-	*/
-		
-	private static boolean 	TEST = false; 			
-	private static boolean 	TOCSV = true;			
-	private static boolean 	TOSTDOUT = false;		
-	private static boolean 	PRINTSCORE = false;	
-	private static boolean 	PRINTUSE = false; 	
-	private static int 		PRINTCONTAINS = 4;		
-	private static boolean	PHYSICAL_LEVEL=true;
-	private static boolean 	LOGICAL_LEVEL=false;
-
+	private static boolean 	test; 			
+	private static boolean 	toCsv ;			
+	private static boolean 	toStdOut;		
+	private static boolean 	printScore;	
+	private static boolean 	printUse; 	
+	private static int 		printContains;		
+	private static boolean	physicalLevel;
+	private static boolean 	logicalLevel;
 	
 	public FindClusters(){
 		super();
+		test = false; 			
+		toCsv = true;			
+		toStdOut = true;		
+		printScore = true;	
+		printUse = true; 	
+		printContains = 4;		
+		physicalLevel = true;
+		logicalLevel = true;
 	}
 
 	public void run() /* throws IOException */ {
 	
-		ObjectModel model = new ObjectModel(!TEST);		
+		ObjectModel model = new ObjectModel(!test);		
 
 		model.createImplementationModel();
 
-		if (PHYSICAL_LEVEL) { 
+		if (physicalLevel) { 
 			model.CreatePhysicalModel();
 			PlaceProgramInModules(model.getPrograms(), model.getPhysicalModules(), model.getInterfaces(), model.getGlPrograms());  
 		}
 		
-		if (LOGICAL_LEVEL) { 
+		if (logicalLevel) { 
 			model.CreateLogicalModel();
 			PlaceProgramInModules ( model.getPrograms(), model.getLogicalModules(), model.getInterfaces(), model.getGlPrograms());  
 		}
@@ -78,8 +76,8 @@ public class FindClusters  {
 	
 	private void PlaceProgramInModules (ArrayList<Program> programs, ArrayList<TargetModule> modules, ArrayList<Interface> interfaces, HashMap<Program, ArrayList<Program>> glPrograms)
 	{
-		MatchMaker matchMaker = new MatchMaker (PRINTSCORE, PRINTUSE);
-		Reporter reporter = new Reporter(TOCSV, TOSTDOUT);
+		MatchMaker matchMaker = new MatchMaker (printScore, printUse);
+		Reporter reporter = new Reporter(toCsv, toStdOut);
 				
 		Iterator<Program>  programIterator  = programs.iterator();
 		
@@ -99,7 +97,7 @@ public class FindClusters  {
 			}
 		}
 		
-		switch(PRINTCONTAINS){
+		switch(printContains){
 			case 1: reporter.showModules(modules);
 					break;
 			case 2: reporter.ShowSharedTables(modules);
@@ -114,32 +112,73 @@ public class FindClusters  {
 	}
 
 
-	public static void main(String[] args) {
-		clearFiles();
+	public static void main(String[] args) {	
 		FindClusters fc = new FindClusters();
+		if(args.length > 0){
+			readParams(args[0]);
+		}
+		clearFiles();
 		fc.run();
 	}
 	
-	private static void clearFiles(){
-		if(new File(Constants.CSV_CONTAINS).exists()){
-			if(!(new File(Constants.CSV_CONTAINS).delete())) {
-				System.err.println(ERROR_CLOSE_FILES);
-				System.exit(-1);
-			} else if(TOCSV && (PRINTCONTAINS == 1 || PRINTCONTAINS == 4)){
-				CSVWriter writer = new CSVWriter();
-				String lineToWrite = "Module_Type;Module_Name;Contains;Type;Name";
-				writer.writeLineToFile(Constants.CSV_CONTAINS, lineToWrite);
+	private static void readParams(String file){
+		// Open the file
+		InputStream fstream;
+		try {
+			fstream = new FileInputStream(file);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine;
+			while ((strLine = br.readLine()) != null){
+				if(strLine.matches("TEST *=.*")){
+					test = Boolean.parseBoolean(strLine.substring(strLine.indexOf("=")+1).trim());
+				} else if(strLine.toUpperCase().matches("TOCSV *=.*")){
+					toCsv = Boolean.parseBoolean(strLine.substring(strLine.indexOf("=")+1).trim());			
+				} else if(strLine.toUpperCase().matches("TOSTDOUT *=.*")){
+					toStdOut = Boolean.parseBoolean(strLine.substring(strLine.indexOf("=")+1).trim());
+				} else if(strLine.toUpperCase().matches("PRINTSCORE *=.*")){
+					printScore = Boolean.parseBoolean(strLine.substring(strLine.indexOf("=")+1).trim());	
+				} else if(strLine.toUpperCase().matches("PRINTUSE *=.*")){
+					printUse = Boolean.parseBoolean(strLine.substring(strLine.indexOf("=")+1).trim()); 	
+				} else if(strLine.toUpperCase().matches("PRINTCONTAINS *=.*")){
+					String value = strLine.substring(strLine.indexOf("=")+1).trim();
+					printContains = Integer.parseInt(value);		
+				} else if(strLine.toUpperCase().matches("PHYSICAL_LEVEL *=.*")){
+					physicalLevel = Boolean.parseBoolean(strLine.substring(strLine.indexOf("=")+1).trim());
+				} else if(strLine.toUpperCase().matches("LOGICAL_LEVEL *=.*")){
+					logicalLevel = Boolean.parseBoolean(strLine.substring(strLine.indexOf("=")+1).trim());
+				}
 			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		if(new File(Constants.CSV_USED).exists()){
-			if(!(new File(Constants.CSV_USED).delete())) {
-				System.err.println(ERROR_CLOSE_FILES);
-				System.exit(-1);
-			} else if(TOCSV && (PRINTCONTAINS == 3 || PRINTCONTAINS == 4)){
-				CSVWriter writer = new CSVWriter();
-				String line = "Module_Type;Module;Program;Module_Name;Program_Name;ProgramType;Uses;Module_Type;Usage_Type;Module;Table;Module_Name;Table_Name;For;CRUD";
-				writer.writeLineToFile(Constants.CSV_USED, line);
+	}
+	
+	private static void clearFiles(){
+		if(toCsv && (printContains == 1 || printContains == 4)){
+			if(new File(Constants.CSV_CONTAINS).exists()){
+				if(!(new File(Constants.CSV_CONTAINS).delete())) {
+					System.err.println(ERROR_CLOSE_FILES);
+					System.exit(-1);
+				}
 			}
+			CSVWriter writer = new CSVWriter();
+			String lineToWrite = "Module_Type;Module_Name;Contains;Type;Name";
+			writer.writeLineToFile(Constants.CSV_CONTAINS, lineToWrite);
+		}
+		if(toCsv && (printContains == 3 || printContains == 4)){
+			if(new File(Constants.CSV_USED).exists()){
+				if(!(new File(Constants.CSV_USED).delete())) {
+					System.err.println(ERROR_CLOSE_FILES);
+					System.exit(-1);
+				}
+			}
+			CSVWriter writer = new CSVWriter();
+			String line = "Module_Type;Module;Program;Module_Name;Program_Name;ProgramType;Uses;Module_Type;Usage_Type;Module;Table;Module_Name;Table_Name;For;CRUD";
+			writer.writeLineToFile(Constants.CSV_USED, line);
 		}
 	}
 }
