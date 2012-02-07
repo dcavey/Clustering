@@ -19,21 +19,7 @@ import reporter.Reporter;
 
 public class FindClusters  {
 	private static final String ERROR_CLOSE_FILES = "Please close all files!";
-	/**
-	 * If you want the output "out_TablesAndProgramsContainedInModules" (in console)
-	 * 			use PRINTSCORE=false; PRINTUSE=false; PRINTCONTAINS=1
-	 * 
-	 * If you want output "out_TablesAndProgramsUsedByModules" - ProgramModuleUsesTableModule (in console)
-	 * 			use PRINTSCORE=false; PRINTUSE=false; PRINTCONTAINS=3
-	 * 
-	 * If you want any of these two outputs in csv, put TOCSV = true, otherwise TOCSV = false
-	 * If you want any of these two outputs in std out, put TOSTDOUT = true, otherwise STDOUT = false
-	 * 
-	 * If you want to run it only with testdata, put TEST = true, otherwise TEST = false
-	 * 
-	 * @Tom: If you want complete output
-	 * 			use PRINTSCORE=true; PRINTUSE=true; PRINTCONTAINS=3
-	 */
+	private static final String ERROR_WRONG_INPUTFILE = "File not found! Default parameters are used.";
 
 	private static boolean 	test; 			
 	private static boolean 	toCsv ;			
@@ -151,7 +137,7 @@ public class FindClusters  {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			System.err.println("File not found! Default parameters are used.");
+			System.err.println(ERROR_WRONG_INPUTFILE);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
