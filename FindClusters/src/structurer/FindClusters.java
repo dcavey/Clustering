@@ -151,7 +151,7 @@ public class FindClusters  {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.err.println("File not found! Default parameters are used.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
