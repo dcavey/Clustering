@@ -333,9 +333,10 @@ public class TargetModule {
 			}
 // Output to csv-file  as well
 			if(tocsv){
-				String line = module.getType() + ";module;program;" 
+				String line = module.getType() + ";module;program;" + getModule4Name(module.getName()) + ";"
 							+ module.getName() + ";" + program.getName() +";" + program.getPgmType() 
-							+ ";uses;" + table.getAssignedModule().getType() + ";"+  usageType +";module;table;" + table.getAssignedModule().getName() 
+							+ ";uses;" + table.getAssignedModule().getType() + ";"+  usageType +";module;table;" + getModule4Name(table.getAssignedModule().getName()) +
+							";" + table.getAssignedModule().getName() 
 							+ ";" + table.getName() + ";for;" + program.getCRUDforTable (table);
 				CSVWriter writer = new CSVWriter();
 				writer.writeLineToFile(Constants.CSV_USED, line);
@@ -344,6 +345,16 @@ public class TargetModule {
 		} catch (Exception e) {// Catch exception if any
 			System.out.printf("Error to place table %s in a module \n", table.getName()   );
 		}
+	}
+
+	private String getModule4Name(String name) {
+		String cb = "Core_Banking";
+		if (name.equals("MDM_Management") ||
+				name.equals("Account_Management") ||
+				name.equals("TECHNICAL_KERNEL") ||
+				name.equals("Finance"))
+			return cb;
+		return name;
 	}
 	
 	
