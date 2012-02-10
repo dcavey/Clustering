@@ -61,7 +61,7 @@ AINIF;MDM_Management;Reference_Data_Manager;C___ + interest conditions per accou
 AINIO;Account_Management;;Direct link to DB table
 AINT1;Account_Management;Current_Account_Engine;Acc.Int. Cdt on Specified Date
 AINTL;TECHNICAL_KERNEL;;Direct link to DB table
-AINTS;TECHNICAL_KERNEL;;C___
+AINTS;Account_Management;;C___
 AISTO;Account_Management;;Direct link to DB table
 AJST1;Account_Management;Current_Account_Engine;Booking Entries Justif
 AJST5;Account_Management;Current_Account_Engine;Booking Entries Justif
@@ -195,7 +195,7 @@ AROTM;Finance;;C___
 AROTO;Finance;;Direct link to DB table
 ARPPO;MDM_Management;;Direct link to DB table
 ASELL;Financial_Markets;;Direct link to DB table
-ASELO;Financial_Markets;;Direct link to DB table
+ASELO;Account_Management;;Direct link to DB table
 ASPAL;Account_Management;;Direct link to DB table
 ASPAM;Account_Management;;C___
 ASPAS;Account_Management;;Direct link to DB table
@@ -203,7 +203,7 @@ ASPIF;Account_Management;;C___
 ASPIO;Account_Management;;Direct link to DB table
 ASTDM;Finance;;CRUD
 ASTDO;Finance;;Direct link to DB table
-ASTMO;MDM_Management;;Direct link to DB table
+ASTMO;Account_Management;;Direct link to DB table
 ATADL;Account_Management;;Direct link to DB table
 ATADO;Account_Management;;Direct link to DB table
 ATAHL;Account_Management;;Direct link to DB table
@@ -343,7 +343,7 @@ BLBISINV;Financial_Markets;Arrangement_Management;Bond Inventory Report
 BLDLL;Financial_Markets;Arrangement_Management;Download BDLGO (bond deals) to PC
 BLDLYFWD;Financial_Markets;Arrangement_Management;Forward Dated bond deals report
 BLGFIDL;Financial_Markets;Financial_Markets_Trade_engine;Download Bonds
-BLUSADL;TECHNICAL_KERNEL;;CR__
+BLUSADL;Financial_Markets;Financial_Markets_Trade_engine;Bonds
 BPOR5;Financial_Markets;;CRU_
 BPOTO;Financial_Markets;;Direct link to DB table
 BPRDA;Financial_Markets;;CRUD
@@ -494,7 +494,7 @@ CINOC;Lending;Business_Lending_Engine;Comm.loan outg. interest CHG
 CI-OUT-PAYM-CHECK;Financial_Markets;Financial_Markets_Trade_engine;Check outg.paym.instructions
 CI-OUT-PAYM-INQ;Lending;Instruction_and_Order_Management;outgoing paym.instr. inquiry 
 CITIA;Lending;;CRU_ + comm loans
-CITIC;Financial_Markets;;CRU_
+CITIC;Lending;Business_Lending_Engine;Follow up of CFACS (facilities)
 CI-UPD-CPTIO;Lending;Business_Lending_Engine;update cptio
 CLAUDCNF;Financial_Markets;Local_Regulatory_Reporting_Layer;External audit confirmation
 CLBANKLIM1;Lending;Business_Lending_Engine;Condensed Bank limit report 
@@ -1237,9 +1237,9 @@ GP-096-PMTEVT;Financial_Markets;;CRU_
 GP-097CHK-PMTINS;Financial_Markets;;CR__
 GP-097GET-ACCEVT;Financial_Markets;;CR__
 GP-098GET-NOSTRO;Financial_Markets;Financial_Markets_Trade_engine;Get default nostro for bonds
-GP-099BDL-INVMO;Financial_Markets;;C___
-GP-099BDL-OPINVMO;Financial_Markets;;CR__
-GP-099LIQ-INVMO;Financial_Markets;;C___
+GP-099BDL-INVMO;Account_Management;;C___
+GP-099BDL-OPINVMO;Account_Management;;CR__
+GP-099LIQ-INVMO;Account_Management;;C___
 GP-100-ACW001;Financial_Markets;Financial_Markets_Trade_engine;ACW001 Shn/City acquisition
 GP-109CRIIRSO;Financial_Markets;;C___
 GP-109UPDIIRSO;Financial_Markets;Financial_Markets_Trade_engine;UPDATE IIRSO RECORDS 
@@ -1348,7 +1348,7 @@ ICOSP;Payment_And_Cash_Management;;C___
 ICPDC;Financial_Markets;Clearing_and_Settlement_Engine;Complete payment instruction detail
 ICPIC;Financial_Markets;;CRU_
 ICVBS;Financial_Markets;Financial_Markets_Trade_engine;Maint.conv.broker ctp-IFS ctp (eg add address)
-IDPLO;Finance;;Direct link to DB table
+IDPLO;Lending;;Direct link to DB table
 IEBAM;MDM_Management;Party_Management;CRUD -> Clearing members
 IERB5;Financial_Markets;;CRUD
 IERBS;TECHNICAL_KERNEL;;C___
@@ -1442,6 +1442,7 @@ ILAFFLOADN;UNUSED;Financial_Markets_Trade_engine;AFF download NYC
 ILAUDIT;UNUSED;;
 ILAUDITFFT;Account_Management;Local_Reporting_Layer;audit report about cust
 ILAUDITLO3;Account_Management;Local_Reporting_Layer;audit report about cust
+ILAUDITLON;Account_Management;Local_Reporting_Layer;audit report about cust
 ILAUTDCSTA;UNUSED;TECHNICAL_KERNEL;Authorisation decision table
 ILBGEFOREX;Financial_Markets;Financial_Markets_Trade_engine;Bge foreign exchange
 ILBGEFRA;Financial_Markets;Financial_Markets_Trade_engine;Brokerage FRA  
@@ -1589,8 +1590,8 @@ INETM;Financial_Markets;;C___
 INETO;Financial_Markets;;Direct link to DB table
 INOSL;Financial_Markets;;Direct link to DB table
 INOSM;Financial_Markets;;C___
-INOSO;Financial_Markets;;Direct link to DB table
-INVMO;Financial_Markets;Current_Account_Engine;Nostro Value Movements?
+INOSO;Account_Management;;Direct link to DB table
+INVMO;Account_Management;Current_Account_Engine;Nostro Value Movements?
 IOASO;Financial_Markets;;Direct link to DB table
 IODU5;Financial_Markets;Reconciliation_Engine;Mult. inq. overdue settings
 IODUL;Financial_Markets;;Direct link to DB table
@@ -1607,10 +1608,10 @@ IOPTL;Financial_Markets;;Direct link to DB table
 IOPTS;Financial_Markets;;C___ + Currency options
 IOSTM;Payment_And_Cash_Management;;CRU_
 IP-005NOSTRO;Financial_Markets;Financial_Markets_Trade_engine; Look up relation nr in NOSTRO  
-IP-008AEINVMO;Financial_Markets;;CRU_
-IP-008ANNUNVM;Financial_Markets;;CRU_
-IP-008BONDNVM;Financial_Markets;Financial_Markets_Trade_engine;UPDATE NOSTRO BONDS 
-IP-008LDMMNVM;Financial_Markets;Financial_Markets_Trade_engine;Update nostro's LDMM  
+IP-008AEINVMO;Account_Management;;CRU_
+IP-008ANNUNVM;Account_Management;;CRU_
+IP-008BONDNVM;Financial_Markets;;UPDATE NOSTRO BONDS 
+IP-008LDMMNVM;Financial_Markets;;Update nostro's LDMM  
 IP-031CALAMTBGE;Financial_Markets;Financial_Markets_Trade_engine;Calculate amount-brokerage
 IPAPC;Financial_Markets;;C___ + change ccy param
 IPCOM;Financial_Markets;;CR__
@@ -1628,7 +1629,7 @@ IPTIL;Financial_Markets;;Direct link to DB table
 IPTIO;Financial_Markets;;Direct link to DB table
 IPWDL;Financial_Markets;;Direct link to DB table
 IPWDM;Financial_Markets;;C___
-IPWDO;Financial_Markets;;Direct link to DB table
+IPWDO;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Direct link to DB table
 IRCL5;Financial_Markets;Financial_Markets_Trade_engine;Mult. Inq. on confirmations 
 IRCVO;Financial_Markets;;Direct link to DB table
 IRFRL;Financial_Markets;;Direct link to DB table
@@ -1717,7 +1718,7 @@ IUFXCTPUPD;Financial_Markets;Arrangement_Management;Change Countrparty of FX Dea
 IUFXTRPTRA;Financial_Markets;;CRUD
 IUICVBSDEL;Financial_Markets;Financial_Markets_Trade_engine;Delete ICVBS Records 
 IUINIPMTDT;Financial_Markets;;CR_D
-IUINIWARDT;Financial_Markets;;C__D
+IUINIWARDT;TECHNICAL_KERNEL;TECHNICAL_KERNEL;warning dates
 IUINVFRA;Financial_Markets;;C___
 IUINVFX;Financial_Markets;;CR__
 IUINVIRF;Financial_Markets;;C___
@@ -1753,9 +1754,9 @@ IUMLYACCFF;Financial_Markets;;CR__
 IUMLYACCFR;Financial_Markets;;C___
 IUMLYACCIR;Financial_Markets;;C___
 IUMLYACCL3;Financial_Markets;;CR__
-IUNETCOPM;Financial_Markets;;C___
-IUNOSCHG;Financial_Markets;;C___
-IUNOSCHG2;Financial_Markets;;C___
+IUNETCOPM;Financial_Markets;;Change nostro
+IUNOSCHG;Payment_And_Cash_Management;;Change nostro
+IUNOSCHG2;Payment_And_Cash_Management;;C___
 IUNOSVALMT;Financial_Markets;;CR_D
 IUOPTRPTRA;Financial_Markets;;CRUD
 IUPAYLOAD;Financial_Markets;;CR__
@@ -1764,12 +1765,12 @@ IUSELCONPM;Financial_Markets;;CRUD
 IUSELDAYCN;Financial_Markets;;CRU_
 IUSELPM;Financial_Markets;Financial_Markets_Trade_engine;Extract FM payments for today
 IUSWFACK;Financial_Markets;;C___ + SWIFT ACK/REJ
-IWARL;Financial_Markets;;Direct link to DB table
-IWARM;Financial_Markets;;C___
-IWARO;Financial_Markets;;Direct link to DB table
-IWODL;Financial_Markets;;Direct link to DB table
-IWODM;Financial_Markets;;C___
-IWODO;Financial_Markets;;Direct link to DB table
+IWARL;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Direct link to DB table
+IWARM;TECHNICAL_KERNEL;TECHNICAL_KERNEL;C___
+IWARO;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Direct link to DB table
+IWODL;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Direct link to DB table
+IWODM;TECHNICAL_KERNEL;TECHNICAL_KERNEL;working days
+IWODO;TECHNICAL_KERNEL;TECHNICAL_KERNEL;
 IWSSO;Financial_Markets;;Direct link to DB table
 JAAUAHLBO;Account_Management;;CRU_
 JTDCNDO;Payment_And_Cash_Management;;CR_D
@@ -1784,7 +1785,7 @@ LBRC4;Financial_Markets;Arrangement_Management;brokerage commissions - mul. i
 LBRCL;Financial_Markets;;Direct link to DB table
 LBRCS;Financial_Markets;;C___
 LBROL;Account_Management;;Direct link to DB table
-LBROS;Account_Management;;C___
+LBROS;MDM_Management;;C___
 LBSKL;UNUSED;;Direct link to DB table
 LBSKM;MDM_Management;;Multi Update Basket Curr LBSKS
 LBSKS;UNUSED;;Direct link to DB table
@@ -2004,8 +2005,8 @@ PAHVBO101;Account_Management;;Direct link to DB table
 PAIBRO101;MDM_Management;;Direct link to DB table
 PAINIO101;Account_Management;;Direct link to DB table
 PAINIO102;Account_Management;;Direct link to DB table
-PAINTS101;MDM_Management;;Direct link to DB table
-PAINTSAMP;MDM_Management;;Direct link to DB table
+PAINTS101;Account_Management;;Direct link to DB table
+PAINTSAMP;Account_Management;;Direct link to DB table
 PAISTO101;Account_Management;;Direct link to DB table
 PAJSTO101;Finance;;Direct link to DB table
 PAJSTO102;Finance;;Direct link to DB table
@@ -2041,13 +2042,13 @@ PARETO101;Account_Management;;Direct link to DB table
 PAROTO101;Finance;;Direct link to DB table
 PARPPO101;MDM_Management;;Direct link to DB table
 PASCH;TECHNICAL_KERNEL;TECHNICAL_KERNEL;password change
-PASELO101;Financial_Markets;;Direct link to DB table
+PASELO101;Account_Management;;Direct link to DB table
 PASPAL101;Account_Management;;Direct link to DB table
 PASPAS101;Account_Management;;Direct link to DB table
 PASPIO101;Account_Management;;Direct link to DB table
 PASPIO102;Account_Management;;Direct link to DB table
 PASTDO101;Finance;;Direct link to DB table
-PASTMO101;MDM_Management;;Direct link to DB table
+PASTMO101;Account_Management;;Direct link to DB table
 PASTMSAMP;Account_Management;;Direct link to DB table
 PATADO101;Account_Management;;Direct link to DB table
 PATAHSAMP;Account_Management;;Direct link to DB table
@@ -2493,7 +2494,7 @@ PICOPO101;Payment_And_Cash_Management;;Direct link to DB table
 PICOPO102;Payment_And_Cash_Management;;Direct link to DB table
 PICOPO103;Payment_And_Cash_Management;;Direct link to DB table
 PICVBSAMP;Financial_Markets;;Direct link to DB table
-PIDPLO101;Finance;;Direct link to DB table
+PIDPLO101;Lending;;Direct link to DB table
 PIERBS101;Financial_Markets;;Direct link to DB table
 PIERMO101;UNUSED;;Direct link to DB table
 PIFASO101;Financial_Markets;;Direct link to DB table
@@ -2629,11 +2630,11 @@ PILNGSAMP;Financial_Markets;;Direct link to DB table
 PILPAO101;Financial_Markets;;Direct link to DB table
 PIMAGO101;UNUSED;;Direct link to DB table
 PINETO101;Financial_Markets;;Direct link to DB table
-PINOSO101;Financial_Markets;;Direct link to DB table
-PINOSO102;Financial_Markets;;Direct link to DB table
-PINVMO101;Financial_Markets;;Direct link to DB table
-PINVMO102;Financial_Markets;;Direct link to DB table
-PINVMO103;Financial_Markets;;Direct link to DB table
+PINOSO101;Account_Management;;Direct link to DB table
+PINOSO102;Account_Management;;Direct link to DB table
+PINVMO101;Account_Management;;Direct link to DB table
+PINVMO102;Account_Management;;Direct link to DB table
+PINVMO103;Account_Management;;Direct link to DB table
 PIOASO101;Financial_Markets;;Direct link to DB table
 PIODUSAMP;Financial_Markets;;Direct link to DB table
 PIOPCL101;Financial_Markets;;Direct link to DB table
@@ -2665,8 +2666,8 @@ PIPMTO102;Financial_Markets;;Direct link to DB table
 PIPTIL101;Financial_Markets;;Direct link to DB table
 PIPTIO101;Financial_Markets;;Direct link to DB table
 PIPTIO102;Financial_Markets;;Direct link to DB table
-PIPWDO101;Financial_Markets;;Direct link to DB table
-PIPWDO102;Financial_Markets;;Direct link to DB table
+PIPWDO101;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Direct link to DB table
+PIPWDO102;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Direct link to DB table
 PIRCVO101;Financial_Markets;;Direct link to DB table
 PIRCVO102;Financial_Markets;;Direct link to DB table
 PIRFRO102;Financial_Markets;;Direct link to DB table
@@ -2709,8 +2710,8 @@ PITITO101;Lending;;Direct link to DB table
 PITLDO101;Financial_Markets;;Direct link to DB table
 PITOLO101;Payment_And_Cash_Management;;Direct link to DB table
 PITXTO101;TECHNICAL_KERNEL;;Direct link to DB table
-PIWARO101;Financial_Markets;;Direct link to DB table
-PIWODO101;Financial_Markets;;Direct link to DB table
+PIWARO101;TECHNICAL_KERNEL;;Direct link to DB table
+PIWODO101;TECHNICAL_KERNEL;;Direct link to DB table
 PIWSSO101;Financial_Markets;;Direct link to DB table
 PIWSSO102;Financial_Markets;;Direct link to DB table
 PIWSSO103;Financial_Markets;;Direct link to DB table
@@ -2725,8 +2726,8 @@ PLBRAS101;MDM_Management;;Direct link to DB table
 PLBRAS102;MDM_Management;;Direct link to DB table
 PLBRASPAM;MDM_Management;;Direct link to DB table
 PLBRCS101;Financial_Markets;;Direct link to DB table
-PLBROS101;Account_Management;;Direct link to DB table
-PLBROSAMP;Account_Management;;Direct link to DB table
+PLBROS101;MDM_Management;;Direct link to DB table
+PLBROSAMP;MDM_Management;;Direct link to DB table
 PLBSKS101;UNUSED;;Direct link to DB table
 PLCBNL101;Account_Management;;Direct link to DB table
 PLCBNL102;Account_Management;;Direct link to DB table
@@ -2982,3 +2983,9 @@ XUGEXBAL;Finance;;CRU_
 XUGEXRUB;Finance;;CRUD
 XUGEXUPD;Finance;;CRUD
 XULOADMISC;Finance;;CR__
+AAFR5;Finance;Reference_Data_Manager;Advice default text input
+AADV1;Finance;Reference_Data_Manager;Advice default text input
+ADET5;Account_Management;;ADETS query
+ALDLLCRSGE;Finance;Risk_Reporting_Layer;report for credit risk
+ALUNUSEDRL;Account_Management;Local_Reporting_Layer;Download to Web Based First Application
+IUMAKERIS;Finance;Local_Regulatory_Reporting_Layer;audit ris
