@@ -705,7 +705,7 @@ CROCM;Lending;;C___
 CROCO;Lending;;Direct link to DB table
 CROIA;Financial_Markets;;CR__
 CROIC;Financial_Markets;;CRU_
-CRTRO;Lending;;Direct link to DB table
+CRTRO;Finance;;Direct link to DB table
 CRXMO;Financial_Markets;;Direct link to DB table
 CSC1M;Lending;;CRU_
 CSCOL;Lending;;Direct link to DB table
@@ -750,7 +750,7 @@ CSHTO;UNUSED;;Direct link to DB table
 CSHVO;UNUSED;;Direct link to DB table
 CSIM5;Lending;;Inq.simp.inventory Commercial
 CSIMS;Lending;Business_Lending_Engine;Simplified inv. Commercial 
-CSLFO;Lending;;Direct link to DB table
+CSLFO;Finance;;Direct link to DB table
 CSSHL;UNUSED;;Direct link to DB table
 CSSHM;UNUSED;;Security portfolio shares
 CSSHO;UNUSED;;Direct link to DB table
@@ -801,8 +801,8 @@ CUPBPORTF;Financial_Markets;;CRUD
 CUPDPFAC;Lending;;C___
 CUREUTIMP;Financial_Markets;;CRU_
 CURTRFAC;Lending;Arrangement_Management;Get facilities for a given contract
-CURTRFILL;Lending;Business_Lending_Engine;UPDATE STRUCURES IN CRTRO 
-CURTRRISCH;Lending;Product_Management;Update Product Info in CRTRO
+CURTRFILL;Finance;;UPDATE STRUCURES IN CRTRO 
+CURTRRISCH;Finance;;Update Product Info in CRTRO
 CURXMRECON;Financial_Markets;;RXM reconciliation
 CUSELPAYM;Lending;;CRU_
 CUSHRCUSTM;Account_Management;Current_Account_Engine;Share trading cust statements
@@ -1257,7 +1257,7 @@ GP-128-DCTRO;Account_Management;;CRU_
 GP-130INT-IILDO;Financial_Markets;Financial_Markets_Trade_engine;Auto ILLDO using IILDO data
 GP-133PRFILNM;TECHNICAL_KERNEL;;C_U_
 GP-145-CALC-CHRG;Account_Management;;CR_D
-GP-147ADJ-AMUNT;Lending;Risk_Reporting_Layer;Subtract CRTRO & ADETS 4 Facly
+GP-147ADJ-AMUNT;Finance;Risk_Reporting_Layer;Subtract CRTRO & ADETS 4 Facly
 GP-147GET-CFACS;Lending;Business_Lending_Engine;Read required CFACS for faclty
 GP-147GET-FACILTY;Lending;Business_Lending_Engine;Calc. intra-day avail Facility
 GP-148-103CHK;Payment_And_Cash_Management;Payments_Execution_Engine;Validate MT103 in Interim
@@ -2243,15 +2243,15 @@ PCRISO102;Lending;;Direct link to DB table
 PCRISO103;Lending;;Direct link to DB table
 PCRISO105;Lending;;Direct link to DB table
 PCROCO101;Lending;;Direct link to DB table
-PCRTRO101;Lending;;Direct link to DB table
-PCRTRO102;Lending;;Direct link to DB table
-PCRTRO103;Lending;;Direct link to DB table
-PCRTRO104;Lending;;Direct link to DB table
-PCRTRO105;Lending;;Direct link to DB table
-PCRTRO106;Lending;;Direct link to DB table
-PCRTRO107;Lending;;Direct link to DB table
-PCRTRO108;Lending;;Direct link to DB table
-PCRTRO109;Lending;;Direct link to DB table
+PCRTRO101;Finance;;Direct link to DB table
+PCRTRO102;Finance;;Direct link to DB table
+PCRTRO103;Finance;;Direct link to DB table
+PCRTRO104;Finance;;Direct link to DB table
+PCRTRO105;Finance;;Direct link to DB table
+PCRTRO106;Finance;;Direct link to DB table
+PCRTRO107;Finance;;Direct link to DB table
+PCRTRO108;Finance;;Direct link to DB table
+PCRTRO109;Finance;;Direct link to DB table
 PCRXMO101;Financial_Markets;;Direct link to DB table
 PCRXMO102;Financial_Markets;;Direct link to DB table
 PCSCOO101;Lending;;Direct link to DB table
@@ -2279,7 +2279,7 @@ PCSHTO104;UNUSED;;Direct link to DB table
 PCSIMS101;Lending;;Direct link to DB table
 PCSIMS102;Lending;;Direct link to DB table
 PCSIMSAMP;Lending;;Direct link to DB table
-PCSLFO101;Lending;;Direct link to DB table
+PCSLFO101;Finance;;Direct link to DB table
 PCSLFO102;Lending;;Direct link to DB table
 PCSSHO101;UNUSED;;Direct link to DB table
 PDBATO101;Payment_And_Cash_Management;;Direct link to DB table
@@ -2883,9 +2883,9 @@ RCOC5;Payment_And_Cash_Management;Payments_Execution_Engine;DOMESTIC CHEQUES INQ
 RCOCC;Financial_Markets;;C___
 RCOCS;Payment_And_Cash_Management;;CRUD / CHQ
 RCODS;Payment_And_Cash_Management;;CR_D / CHQ
-RCON6;Lending;Business_Lending_Engine;Real time risk  CRTRO
+RCON6;Finance;Risk_Reporting_Layer;Real time risk  CRTRO
 RCPV6;Financial_Markets;Financial_Markets_Trade_engine; Outst./Depos. per value date 
-RCUV6;Lending;Business_Lending_Engine;Risk Inq.per Ccy/Val.dte CRTRO
+RCUV6;Finance;Risk_Reporting_Layer;Risk Inq.per Ccy/Val.dte CRTRO
 RCYV6;Lending;Business_Lending_Engine;Risk inq.per country/value dte
 REFER;TECHNICAL_KERNEL;;C_U_
 REFFL;TECHNICAL_KERNEL;;Direct link to DB table
@@ -2901,7 +2901,7 @@ RMTRANUPD;Payment_And_Cash_Management;;updates of trs nbrs
 RMUPDFIDO;UNUSED;UNUSED;Robert Middlehorn
 RPSI5;TECHNICAL_KERNEL;TECHNICAL_KERNEL;Report Security Interim 
 RRSC5;Lending;Risk_Reporting_Layer;Relation Risk View   
-RRSC6;Lending;Risk_Reporting_Layer;Relation Risk View   based on CRTRO
+RRSC6;Finance;Risk_Reporting_Layer;Relation Risk View   based on CRTRO
 RSTRT;TECHNICAL_KERNEL;;Direct link to DB table
 RUCHQCLRMV;Payment_And_Cash_Management;Payments_Execution_Engine;Cheque Invent. Dly Trans & Cln
 RUCHQCLRSC;Account_Management;;C___

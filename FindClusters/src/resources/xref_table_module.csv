@@ -174,7 +174,7 @@ CREXO;Business_Lending_Engine;Lending
 CRISO;Business_Lending_Engine;Lending
 CROCL;Business_Lending_Engine;Lending
 CROCO;Party_Management;Lending
-CRTRO;Business_Lending_Engine;Lending
+CRTRO;Risk_Reporting_Layer;Finance
 CRXMO;Arrangement_Management;Financial_Markets
 CSCOL;Collateral_Management;Lending
 CSCOO;Collateral_Management;Lending
@@ -193,7 +193,7 @@ CSHTL;Financial_Markets_Trade_engine;UNUSED
 CSHTO;Financial_Markets_Trade_engine;UNUSED
 CSHVO;Financial_Markets_Trade_engine;UNUSED
 CSIMS;Arrangement_Management;Lending
-CSLFO;Business_Lending_Engine;Lending
+CSLFO;Risk_Reporting_Layer;Finance
 CSSHL;Financial_Markets_Trade_engine;UNUSED
 CSSHO;Financial_Markets_Trade_engine;UNUSED
 DBATO;Instruction_and_Order_Management;Payment_And_Cash_Management
