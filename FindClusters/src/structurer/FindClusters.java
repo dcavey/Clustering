@@ -29,6 +29,7 @@ public class FindClusters  {
 	private static int 		printContains;		
 	private static boolean	physicalLevel;
 	private static boolean 	logicalLevel;
+	ObjectModel model;
 	
 	public FindClusters(){
 		super();
@@ -41,10 +42,23 @@ public class FindClusters  {
 		physicalLevel = true;
 		logicalLevel = true;
 	}
+	
+	public FindClusters(  boolean forCountingOnly )  {
+		super();
+		test = false; 			
+		toCsv = false;			
+		toStdOut = false;		
+		printScore = false;	
+		printUse = false; 	
+		printContains = 0;		
+		physicalLevel = true;
+		logicalLevel = false;
+	}
+	
 
 	public void run() /* throws IOException */ {
 	
-		ObjectModel model = new ObjectModel(!test);		
+		model = new ObjectModel(!test);		
 
 		model.createImplementationModel();
 
@@ -59,6 +73,10 @@ public class FindClusters  {
 		}
 	}
 	
+	public void placeProgramsInModules (ArrayList<TargetModule> modules ) {
+		
+		PlaceProgramInModules (model.getPrograms(), modules, model.getInterfaces(), model.getGlPrograms());
+	}
 	
 	private void PlaceProgramInModules (ArrayList<Program> programs, ArrayList<TargetModule> modules, ArrayList<Interface> interfaces, HashMap<Program, ArrayList<Program>> glPrograms)
 	{
@@ -167,4 +185,10 @@ public class FindClusters  {
 			writer.writeLineToFile(Constants.CSV_USED, line);
 		}
 	}
+
+	public ObjectModel getModel() {
+		return model;
+	}
+	
+	
 }

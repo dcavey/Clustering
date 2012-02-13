@@ -270,6 +270,30 @@ public class TargetModule {
 		} 
 	}
 	
+	public boolean usesExternalTable (Table externalTable) {
+		boolean used = false;
+		String crud;
+		int countExternalUsage = 0;
+		Iterator<Program>  programIterator = this.getPrograms().iterator();
+		while (programIterator.hasNext()) 
+		{
+			Program moduleProgram = programIterator.next();
+			crud = moduleProgram.getCRUDforTable(externalTable);
+			if ( ! crud.equals(""))
+			{
+				 System.out.printf ("Table:%s from module:%s is used by module:%s through %s by program:%s \n",
+						 externalTable.getName(), externalTable.getAssignedModule().getName(), 
+						this.getName(), crud, moduleProgram.getPgmNameAndType());
+				
+				countExternalUsage++;
+			}
+		} 
+		if ( countExternalUsage > 0) {used = true; }
+		
+		return used;
+	}
+
+	
 	
 	
 	public void signalMatchingData (Program program, Table programTable, TargetModule module) 

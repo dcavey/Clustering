@@ -87,24 +87,6 @@ public class ObjectModel {
 		return lbbModules;
 	}	
 
-	/*
-	private void populateObjectModel(  ArrayList<Table> tables,  ArrayList<Program> programs,
-			ArrayList<TargetModule> ifsModules, ArrayList<TargetModule> lbbModules) 
-	{
-		ElementCreator creator = new ElementCreator(realModel);
-		//creator.createBaseElements(tables, programs, ifsModules, lbbModules);
-		creator.createBaseElementsImplementation (tables,programs);
-		creator.createBaseElementsPhysicalModel(ifsModules);
-		creator.createBaseElementsLogicalModel(lbbModules);
 
-		ElementRelator relator = new ElementRelator (realModel);
-		
-		relator.relateImplementationModelInternally(tables, programs);
-		relator.relateImplementationToPhysicalModel(tables, ifsModules);	
-		relator.relateImplementationToLogicalModel(tables, lbbModules);
-		
-	}
-	
-*/
 	
 }
