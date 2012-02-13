@@ -352,7 +352,8 @@ public class TargetModule {
 		if (name.equals("MDM_Management") ||
 				name.equals("Account_Management") ||
 				name.equals("TECHNICAL_KERNEL") ||
-				name.equals("Finance"))
+				name.equals("Finance") ||
+				name.equals("UNUSED"))
 			return cb;
 		return name;
 	}
