@@ -281,10 +281,10 @@ public class TargetModule {
 			crud = moduleProgram.getCRUDforTable(externalTable);
 			if ( ! crud.equals(""))
 			{
-				 System.out.printf ("Table:%s from module:%s is used by module:%s through %s by program:%s \n",
-						 externalTable.getName(), externalTable.getAssignedModule().getName(), 
-						this.getName(), crud, moduleProgram.getPgmNameAndType());
-				
+//				 System.out.printf ("Table:%s from module:%s is used by module:%s through %s by program:%s \n",
+//						 externalTable.getName(), externalTable.getAssignedModule().getName(), 
+//						this.getName(), crud, moduleProgram.getPgmNameAndType());
+//				
 				countExternalUsage++;
 			}
 		} 

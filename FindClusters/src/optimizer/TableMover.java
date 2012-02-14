@@ -27,13 +27,14 @@ public class TableMover {
 		this.newModel = this.oldModel;
 		
 		score = findTableUsageAcrossTwoModules(oldModel.getPhysicalModules(), "Lending", "Financial_Markets", tables);
+//		score = findTableUsageAcrossTwoModules(oldModel.getPhysicalModules(), "TECHNICAL_KERNEL", "Financial_Markets", tables);
 		score = score + findTableUsageAcrossTwoModules(oldModel.getPhysicalModules(), "Financial_Markets", "Lending", tables);
 		score = score + findTableUsageAcrossTwoModules(oldModel.getPhysicalModules(), "Payment_And_Cash_Management", "Lending", tables);
 		score = score + findTableUsageAcrossTwoModules(oldModel.getPhysicalModules(), "Lending", "Payment_And_Cash_Management", tables);
 		score = score + findTableUsageAcrossTwoModules(oldModel.getPhysicalModules(), "Payment_And_Cash_Management", "Financial_Markets", tables);
 		score = score + findTableUsageAcrossTwoModules(oldModel.getPhysicalModules(), "Financial_Markets", "Payment_And_Cash_Management", tables);
 		
-		System.out.printf ("Count of tables usages across all modules %s \n", score );
+//		System.out.printf ("Count of tables usages across all modules %s \n", score );
 		
 		return score;
 		
@@ -55,13 +56,15 @@ public class TableMover {
 
 			if (moduleB.usesExternalTable(table))
 			{
-				counter++;
-				outTables.add(table);
-//				System.out.printf ("Table:%s from module:%s is used by module:%s \n", table.getName(), nameModuleA, nameModuleB, table.getName() );
+				if(!outTables.contains(table)){
+					counter++;
+					outTables.add(table);
+				}
+				System.out.printf ("Table;%s;from;%s;used by;%s \n", table.getName(), nameModuleA, nameModuleB, table.getName() );
 			}
 		}		
 		
-		System.out.printf ("Count of tables usages across module:%s & module:%s = %s \n", nameModuleA, nameModuleB, counter );
+		//System.out.printf ("Count of tables usages across module:%s & module:%s = %s \n", nameModuleA, nameModuleB, counter );
 
 		return counter;
 		
@@ -74,14 +77,14 @@ public class TableMover {
 	}
 
 	public void moveTableToModule(String tableName, String moduleName) {
-		System.out.printf("About to move table %s to module %s \n", tableName, moduleName);
+		//System.out.printf("About to move table %s to module %s \n", tableName, moduleName);
 		
 		TargetModule oldModule;
 		TargetModule module = findModule (oldModel.getPhysicalModules(), moduleName);
 		Table table = findTable (oldModel.getTables(), tableName);
 		
 		oldModule = table.getAssignedModule();
-		
+		oldModule.getAssignedTables().remove(table);
 		module.addAssignedTable(table);
 		
 		table.setAssignedModule(module);

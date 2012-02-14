@@ -57,7 +57,7 @@ public class FindClusters  {
 	
 
 	public void run() /* throws IOException */ {
-	
+		clearFiles();
 		model = new ObjectModel(!test);		
 
 		model.createImplementationModel();
@@ -121,7 +121,6 @@ public class FindClusters  {
 		if(args.length > 0){
 			readParams(args[0]);
 		}
-		clearFiles();
 		fc.run();
 	}
 	
