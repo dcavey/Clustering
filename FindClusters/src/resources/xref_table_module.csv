@@ -156,7 +156,7 @@ CMHIO;Arrangement_Management;Lending
 CMRGL;Business_Lending_Engine;Lending
 CMRGO;Business_Lending_Engine;Lending
 CMTBL;Business_Lending_Engine;Lending
-CMTBO;Business_Lending_Engine;Lending
+CMTBO;Financial_Markets_Trade_engine;Financial_Markets
 CMTCO;Arrangement_Management;Financial_Markets
 CMTCS;Party_Management;Financial_Markets
 CMTIO;Arrangement_Management;Lending
@@ -380,10 +380,10 @@ ISTLO;Reconciliation_Engine;Payment_And_Cash_Management
 ISTMO;Reconciliation_Engine;Payment_And_Cash_Management
 ISWCO;Party_Management;MDM_Management
 ITCFO;Reconciliation_Engine;Payment_And_Cash_Management
-ITECO;Party_Management;Financial_Markets
+ITECO;UNUSED;UNUSED
 ITIRO;Arrangement_Management;Financial_Markets
-ITITL;Business_Lending_Engine;Lending
-ITITO;Business_Lending_Engine;Lending
+ITITL;UNUSED;UNUSED
+ITITO;UNUSED;UNUSED
 ITLDO;Arrangement_Management;Financial_Markets
 ITOLL;Reconciliation_Engine;UNUSED
 ITOLO;Reconciliation_Engine;Payment_And_Cash_Management
