@@ -1,6 +1,6 @@
 IS-LBB;IS-Service;InformationObject;IFS-Table
 thisLBB;thisService;thisInformationObject;thisTable
-thisLBB;thisService;thisInformationObject;thisTable
+someLBB;someService;someInformationObject;someTable
 thisLBB;thisService;thisInformationObject;thisTable
 thisLBB;thisService;thisInformationObject;thisTable
 thatLBB;thatService;thatInformationObject;thatTable
