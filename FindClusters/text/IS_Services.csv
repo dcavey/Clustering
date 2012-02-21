@@ -1,7 +1,7 @@
-IS-LBB	IS-Service	InformationObject	IFS-Table
-thisLBB	thisService	thisInformationObject	thisTable
-thisLBB	thisService	thisInformationObject	thisTable
-thatLBB	thatService	thatInformationObject	thatTable
-thatLBB	thatService	thatInformationObject	thatTable
-thatLBB	thatService	thatInformationObject	thatTable
-thatLBB	thatService	thatInformationObject	thatTable
+IS-LBB;IS-Service;InformationObject;IFS-Table
+thisLBB;thisService;thisInformationObject;thisTable
+thisLBB;thisService;thisInformationObject;thisTable
+thisLBB;thisService;thisInformationObject;thisTable
+thisLBB;thisService;thisInformationObject;thisTable
+thatLBB;thatService;thatInformationObject;thatTable
+thatLBB;thatService;thatInformationObject;thatTable
