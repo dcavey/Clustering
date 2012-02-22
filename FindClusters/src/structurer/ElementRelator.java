@@ -69,7 +69,7 @@ public class ElementRelator {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return glProgs;
 	}
@@ -224,7 +224,7 @@ public class ElementRelator {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return outputList;
 	}
@@ -250,7 +250,7 @@ public class ElementRelator {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return outputList;
 	}
@@ -276,7 +276,7 @@ public class ElementRelator {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return outputList;
 	}

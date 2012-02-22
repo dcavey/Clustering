@@ -48,7 +48,7 @@ public class Matcher {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.err.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return outputList;
 	}
@@ -142,7 +142,7 @@ public class Matcher {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.err.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return outputList;
 	}

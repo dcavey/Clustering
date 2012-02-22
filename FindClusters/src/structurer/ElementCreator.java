@@ -136,7 +136,7 @@ public class ElementCreator {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 
@@ -169,7 +169,7 @@ public class ElementCreator {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	
@@ -197,7 +197,7 @@ public class ElementCreator {
 			// Close the input stream
 			in.close();
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	

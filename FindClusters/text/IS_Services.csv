@@ -1,9 +1,21 @@
 IS-LBB;IS-Service;InformationObject;IFS-Table
-Cash_Management_Engine;thisService;thisInformationObject;thisTable
-Cash_Management_Engine;someService;someInformationObject;someTable
-Party_Management;thisService;partyInformationObject;thisTable
-Party_Management;thisService;thisInformationObject;thisTable
-Party_Management;thatService;thatInformationObject;thatTable
-Current_Account_Engine;thatService;thatInformationObject;thatTable
-Current_Account_Engine;thatService;thatInformationObject;thatTable
-Current_Account_Engine;thatService;thatInformationObject;thatTable
+Party Management;Provide party information;Broker;
+Party Management;Provide party information;Customer;
+Party Management;Provide party information;Counterparty bank;
+Party Management;Provide party information;Supplier;
+Party Management;Synchronize BIREL directory;Counterparty bank;
+Party Management;Update party information;Broker;
+Party Management;Update party information;Customer;
+Party Management;Update party information;Counterparty bank;
+Party Management;Update party information;Supplier;
+Arrangement Management;Provide mandate;Mandate;
+Arrangement Management;Check mandate;Mandate;
+Arrangement Management;Update mandate;Mandate;
+Arrangement Management;Provide agreement information;Interest condition;
+Arrangement Management;Update agreement information;Interest condition;
+Arrangement Management;Provide agreement information;Lending Agreement;
+Arrangement Management;Update agreement information;Lending Agreement;
+Arrangement Management;Provide agreement information;Money Market Deal;
+Arrangement Management;Update agreement information;Money Market Deal;
+Arrangement Management;Provide agreement information;Settlement Contract;
+Arrangement Management;Update agreement information;Settlement Contract;
