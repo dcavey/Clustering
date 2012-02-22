@@ -1,9 +1,6 @@
-IS-LBB;IS-Service;InformationObject;IFS-Table
-Cash_Management_Engine;thisService;thisInformationObject;thisTable
-Cash_Management_Engine;someService;someInformationObject;someTable
-Party_Management;thisService;partyInformationObject;thisTable
-Party_Management;thisService;thisInformationObject;thisTable
-Party_Management;thatService;thatInformationObject;thatTable
-Current_Account_Engine;thatService;thatInformationObject;thatTable
-Current_Account_Engine;thatService;thatInformationObject;thatTable
-Current_Account_Engine;thatService;thatInformationObject;thatTable
+LBB;IS_Service;InformationObject;IFS_Table
+Payment_And_Cash_Management;Accept Payment Instruction;Payment Instruction;
+Payment_And_Cash_Management;Execute Domestic Payment Order;Payment Order;
+Payment_And_Cash_Management;Route Payment Order;Payment Order;
+Payment_And_Cash_Management;Request Execution XBR Payment Order;Payment Order;
+Payment_And_Cash_Management;Request Execution SEPA Payment Order;Payment Order;
