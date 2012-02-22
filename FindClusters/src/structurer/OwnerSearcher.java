@@ -66,7 +66,7 @@ public class OwnerSearcher {
 				in.close();
 			}
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return definedModule;
 	}
@@ -98,7 +98,7 @@ public class OwnerSearcher {
 				in.close();
 			}
 		} catch (Exception e) {// Catch exception if any
-			System.out.println("Error: " + e.getMessage());
+			e.printStackTrace();
 		}
 		return definedModule;
 	}
