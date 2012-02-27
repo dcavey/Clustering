@@ -41,6 +41,7 @@ Payments_Execution_Engine;Request Execution XBR Payment Order;Payment Order
 Payments_Execution_Engine;Request Execution SEPA Payment Order;Payment Order
 Procurement;N/A;
 Product_Management;Maintain product;Product Definition
+Product_Management;Provide product;Product Definition
 Reconciliation_Engine;Reconcile payment ;Payment Transaction
 Reference_Data_Manager;pppppHHHHH;
 Risk_Reporting_Layer;pppppHHHHH;
