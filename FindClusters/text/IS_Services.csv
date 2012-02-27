@@ -1,23 +1,45 @@
-LBB;IS_Service;InformationObject;IFS_Table
-Payment_And_Cash_Management;Accept Payment Instruction;Payment Instruction;
-Payment_And_Cash_Management;Execute Domestic Payment Order;Payment Order;
-Payment_And_Cash_Management;Route Payment Order;Payment Order;
-Payment_And_Cash_Management;Request Execution XBR Payment Order;Payment Order;
-Payment_And_Cash_Management;Request Execution SEPA Payment Order;Payment Order;
-Party Management;Upload party information;Broker;
-Party Management;Provide party information;Broker;
-Party Management;Provide party information;Customer;
-Party Management;Upload party information;Customer;
-Party Management;Download party information;Customer;
-Party Management;Download party information;Counterparty bank;
-Party Management;Provide party information;Counterparty bank;
-Party Management;Upload party information;Counterparty bank;
-Party Management;Provide party information;Supplier;
-Arrangement Management;Upload agreement information;Payments Arrangement;
-Arrangement Management;Provide agreement information;Account Arrangement;
-Arrangement Management;Provide agreement information;Financial Markets Arrangement;
-Arrangement Management;Upload agreement information;Financial Markets Arrangement;
-Arrangement Management;Provide agreement information;Lending Arrangement;
-Arrangement Management;Upload agreement information;Lending Arrangement;
-Arrangement Management;Download agreement information;Settlement Arrangement;
-Arrangement Management;Upload agreement information;Settlement Arrangement;
+LBB;IS_Service;InformationObject
+Accounting_Rule_Engine;Maintain accounting rules;Accounting Rule
+Accounting_Rule_Engine;Handle accounting event;Accounting Rule, Accounting Event
+Arrangement Management;Import agreement information;Payments Arrangement
+Arrangement Management;Provide agreement information;Account Arrangement
+Arrangement Management;Provide agreement information;Financial Markets Arrangement
+Arrangement Management;Import agreement information;Financial Markets Arrangement
+Arrangement Management;Provide agreement information;Lending Arrangement
+Arrangement Management;Import agreement information;Lending Arrangement
+Arrangement Management;Export agreement information;Settlement Arrangement
+Arrangement Management;Import agreement information;Settlement Arrangement
+Business_Lending_Engine;Handle lending lifecycle event;Lending event
+Cash_Management_Engine;Maintain pooling structure;Account pooling structure
+Clearing_and_Settlement_Engine;Settle payments for period;Payment
+Collateral_Management;pppppHHHHH;
+Current_Account_Engine;Maintain current account;Current account
+Current_Account_Engine;Provide account balance;Current account
+Current_Account_Engine;Provide account transactions;Current account
+Customer_Billing;Handle billing event;Billing event
+Customer_Reporting;Create Balance & Transaction report ;Current account
+Financial_Markets_Trade_engine;Handle Financial Markets Arrangement;Financial Markets Arrangement
+General_Ledger;Post transaction;General Ledger Post
+Local_Regulatory_Reporting_Layer;pppppHHHHH;
+Local_Reporting_Layer;pppppHHHHH;
+Market_Data_Management;pppppHHHHH;
+Party Management;Import party information;Broker
+Party Management;Provide party information;Broker
+Party Management;Provide party information;Customer
+Party Management;Import party information;Customer
+Party Management;Export party information;Customer
+Party Management;Export party information;Counterparty bank
+Party Management;Provide party information;Counterparty bank
+Party Management;Import party information;Counterparty bank
+Party Management;Provide party information;Supplier
+Instruction_and_Order_Management;Accept Payment Instruction;Payment Instruction
+Payments_Execution_Engine;Accept Payment Order;Payment Order
+Payments_Execution_Engine;Execute Domestic Payment Order;Payment Order
+Payments_Execution_Engine;Route Payment Order;Payment Order
+Payments_Execution_Engine;Request Execution XBR Payment Order;Payment Order
+Payments_Execution_Engine;Request Execution SEPA Payment Order;Payment Order
+Procurement;N/A;
+Product_Management;Maintain product;Product Definition
+Reconciliation_Engine;Reconcile payment ;Payment Transaction
+Reference_Data_Manager;pppppHHHHH;
+Risk_Reporting_Layer;pppppHHHHH;
