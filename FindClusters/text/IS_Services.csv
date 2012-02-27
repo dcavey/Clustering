@@ -2,6 +2,7 @@ LBB;IS_Service;InformationObject
 Accounting_Rule_Engine;Maintain accounting rules;Accounting Rule
 Accounting_Rule_Engine;Handle accounting event;Accounting Rule, Accounting Event
 Arrangement Management;Import agreement information;Payments Arrangement
+Arrangement Management;Provide agreement information;Payments Arrangement
 Arrangement Management;Provide agreement information;Account Arrangement
 Arrangement Management;Provide agreement information;Financial Markets Arrangement
 Arrangement Management;Import agreement information;Financial Markets Arrangement
