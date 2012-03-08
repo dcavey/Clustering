@@ -1,45 +1,61 @@
-LBB;IS_Service;InformationObject
-Accounting_Rule_Engine;Maintain accounting rules;Accounting Rule
-Accounting_Rule_Engine;Handle accounting event;Accounting Rule, Accounting Event
-Arrangement Management;Import agreement information;Payments Arrangement
-Arrangement Management;Provide agreement information;Account Arrangement
-Arrangement Management;Provide agreement information;Financial Markets Arrangement
-Arrangement Management;Import agreement information;Financial Markets Arrangement
-Arrangement Management;Provide agreement information;Lending Arrangement
-Arrangement Management;Import agreement information;Lending Arrangement
-Arrangement Management;Export agreement information;Settlement Arrangement
-Arrangement Management;Import agreement information;Settlement Arrangement
-Business_Lending_Engine;Handle lending lifecycle event;Lending event
-Cash_Management_Engine;Maintain pooling structure;Account pooling structure
-Clearing_and_Settlement_Engine;Settle payments for period;Payment
-Collateral_Management;pppppHHHHH;
-Current_Account_Engine;Maintain current account;Current account
-Current_Account_Engine;Provide account balance;Current account
-Current_Account_Engine;Provide account transactions;Current account
-Customer_Billing;Handle billing event;Billing event
-Customer_Reporting;Create Balance & Transaction report ;Current account
-Financial_Markets_Trade_engine;Handle Financial Markets Arrangement;Financial Markets Arrangement
-General_Ledger;Post transaction;General Ledger Post
-Local_Regulatory_Reporting_Layer;pppppHHHHH;
-Local_Reporting_Layer;pppppHHHHH;
-Market_Data_Management;pppppHHHHH;
-Party Management;Import party information;Broker
-Party Management;Provide party information;Broker
-Party Management;Provide party information;Customer
-Party Management;Import party information;Customer
-Party Management;Export party information;Customer
-Party Management;Export party information;Counterparty bank
-Party Management;Provide party information;Counterparty bank
-Party Management;Import party information;Counterparty bank
-Party Management;Provide party information;Supplier
-Instruction_and_Order_Management;Accept Payment Instruction;Payment Instruction
-Payments_Execution_Engine;Accept Payment Order;Payment Order
-Payments_Execution_Engine;Execute Domestic Payment Order;Payment Order
-Payments_Execution_Engine;Route Payment Order;Payment Order
-Payments_Execution_Engine;Request Execution XBR Payment Order;Payment Order
-Payments_Execution_Engine;Request Execution SEPA Payment Order;Payment Order
-Procurement;N/A;
-Product_Management;Maintain product;Product Definition
-Reconciliation_Engine;Reconcile payment ;Payment Transaction
-Reference_Data_Manager;pppppHHHHH;
-Risk_Reporting_Layer;pppppHHHHH;
+IFS;IFS Module;LBB;user_intf/app_intf;SC01;SC02;SC03;Justification;IS_Service;InformationObject (1);InformationObject (2);InformationObject (3);InformationObject (4);InformationObject (5);InformationObject (5)
+IFS;Cash_Management;Arrangement Management;user_intf;;-;-;;Maintain arrangement;CM Arrangement;;;;;
+IFS;Cash_Management;Arrangement Management;app_intf;;NO;NO;;Maintain arrangement;CM Arrangement;;;;;
+IFS;Cash_Management;Arrangement Management;app_intf;;NO;NO;;Inquire arrangement;CM Arrangement;;;;;
+IFS;Cash_Management;Arrangement Management;app_intf;;YES;NO;;Import arrangement;CM Arrangement;;;;;
+IFS;Cash_Management;Arrangement Management;app_intf;;YES;NO;;Export arrangement;CM Arrangement;;;;;
+IFS;Cash_Management;Cash_Management_Engine;user_intf;;;;;Manage cash position;CM Arrangement;;;;;
+IFS;Core_Banking;Accounting_Rule_Engine;user_intf;;;;;Maintain accounting rules;Accounting Rule;;;;;
+IFS;Core_Banking;Accounting_Rule_Engine;app_intf;;NO;NO;;Handle accounting event;Accounting Rule;Accounting Event;;;;
+IFS;Core_Banking;Arrangement Management;user_intf;;-;-;;Maintain arrangement;Account Arrangement;;;;;
+IFS;Core_Banking;Arrangement Management;app_intf;;NO;YES;;Maintain arrangement;Account Arrangement;;;;;
+IFS;Core_Banking;Arrangement Management;app_intf;;NO;NO;;Inquire arrangement;Account Arrangement;;;;;
+IFS;Core_Banking;Arrangement Management;app_intf;;YES;YES;;Import arrangement;Account Arrangement;;;;;
+IFS;Core_Banking;Arrangement Management;app_intf;;YES;YES;;Export arrangement;Account Arrangement;;;;;
+IFS;Core_Banking;Current_Account_Engine;app_intf;;YES;NO;;Provide account balance;Current account;;;;;
+IFS;Core_Banking;Current_Account_Engine;app_intf;;YES;NO;;Provide account transactions;Current account;;;;;
+IFS;Core_Banking;Current_Account_Engine;app_intf;;YES;YES;;Book amount on customer account;Current account;;;;;
+IFS;Core_Banking;Customer_Billing;;;;;;Handle billing event;Billing event;;;;;
+IFS;Core_Banking;Customer_Reporting;;;;;;Create Balance & Transaction report ;Current account;;;;;
+IFS;Core_Banking;General_Ledger;;;;;;Post transaction;General Ledger Post;;;;;
+IFS;Core_Banking;Local_Regulatory_Reporting_Layer;;;;;;Provide local regulatory report;Party;Arrangement;;;;
+IFS;Core_Banking;Local_Reporting_Layer;;;;;;Provide local report;Party;Arrangement;;;;
+IFS;Core_Banking;Market_Data_Management;;;;;;Import market data;Market data;;;;;
+IFS;Core_Banking;Market_Data_Management;;;;;;Provide market data;Market data;;;;;
+IFS;Core_Banking;Party Management;user_intf;;;;;Maintain party;Customer;Counterparty bank;Broker;Supplier;;
+IFS;Core_Banking;Party Management;;;;;;Provide party;Customer;Counterparty bank;Broker;;;
+IFS;Core_Banking;Party Management;;;;;;Import party;Customer;Counterparty bank;Broker;;;
+IFS;Core_Banking;Party Management;;;;;;Export party;Customer;Counterparty bank;;;;
+IFS;Core_Banking;Party Management;;;;;;Provide party;Supplier;;;;;
+IFS;Core_Banking;Procurement;;;;;;N/A;;;;;;
+IFS;Core_Banking;Product_Management;user_intf;;;;;Maintain product;Product Definition;;;;;
+IFS;Core_Banking;Reference_Data_Manager;;;;;;Import Reference Data;Reference data;;;;;
+IFS;Core_Banking;Reference_Data_Manager;;;;;;Provide Reference Data;Reference data;;;;;
+IFS;Core_Banking;Risk_Reporting_Layer;;;;;;Provide risk report;Party;Arrangement;;;;
+IFS;Financial_Markets;Arrangement Management;user_intf;-;-;-;;Maintain arrangement;FM Arrangement;;;;;
+IFS;Financial_Markets;Arrangement Management;app_intf;NO;NO;NO;;Maintain arrangement;FM Arrangement;;;;;
+IFS;Financial_Markets;Arrangement Management;app_intf;NO;NO;NO;;Inquire arrangement;FM Arrangement;;;;;
+IFS;Financial_Markets;Arrangement Management;app_intf;YES;YES;NO;;Import arrangement;FM Arrangement;;;;;
+IFS;Financial_Markets;Arrangement Management;app_intf;YES;YES;NO;;Export arrangement;FM Arrangement;;;;;
+IFS;Financial_Markets;Financial_Markets_Trade_engine;;;;;;Handle Financial Markets Arrangement;Financial Markets Arrangement;;;;;
+IFS;Lending;Arrangement Management;user_intf;-;-;-;;Maintain arrangement;Lending Arrangement;;;;;
+IFS;Lending;Arrangement Management;app_intf;NO;NO;NO;;Maintain arrangement;Lending Arrangement;;;;;
+IFS;Lending;Arrangement Management;app_intf;NO;NO;NO;;Inquire arrangement;Lending Arrangement;;;;;
+IFS;Lending;Arrangement Management;app_intf;YES;YES;NO;;Import arrangement;Lending Arrangement;;;;;
+IFS;Lending;Arrangement Management;app_intf;YES;YES;NO;;Export arrangement;Lending Arrangement;;;;;
+IFS;Lending;Business_Lending_Engine;;;;;;Handle lending lifecycle event;Lending event;;;;;
+IFS;Lending;Collateral_Management;;;;;;Offer  as collateral;Arrangement;;;;;
+IFS;Lending;Collateral_Management;;;;;;Release  as collateral;Arrangement;;;;;
+IFS;Payment_Management;Arrangement Management;user_intf;-;-;-;;Maintain arrangement;Payments Arrangement;Settlement Arrangement;;;;
+IFS;Payment_Management;Arrangement Management;app_intf;NO;NO;NO;;Maintain arrangement;Payments Arrangement;Settlement Arrangement;;;;
+IFS;Payment_Management;Arrangement Management;app_intf;NO;NO;NO;;Inquire arrangement;Payments Arrangement;Settlement Arrangement;;;;
+IFS;Payment_Management;Arrangement Management;app_intf;YES;YES;NO;;Import arrangement;Payments Arrangement;Settlement Arrangement;;;;
+IFS;Payment_Management;Arrangement Management;app_intf;YES;YES;NO;;Export arrangement;Payments Arrangement;Settlement Arrangement;;;;
+IFS;Payment_Management;Clearing_and_Settlement_Engine;;;;;;Settle payments for period;Clearing transaction;;;;;
+IFS;Payment_Management;Instruction_and_Order_Management;;;;;;Accept Payment Instruction;Payment Instruction;;;;;
+IFS;Payment_Management;Payments_Execution_Engine;;;;;;Accept Payment Order;Payment Order;;;;;
+IFS;Payment_Management;Payments_Execution_Engine;;;;;;Execute Domestic Payment Order;Payment Order;;;;;
+IFS;Payment_Management;Payments_Execution_Engine;;;;;;Route Payment Order;Payment Order;;;;;
+IFS;Payment_Management;Payments_Execution_Engine;;;;;;Request Execution XBR Payment Order;Payment Order;;;;;
+IFS;Payment_Management;Payments_Execution_Engine;;;;;;Request Execution SEPA Payment Order;Payment Order;;;;;
+IFS;Payment_Management;Reconciliation_Engine;;;;;;Reconcile payment ;Payment Transaction;;;;;
