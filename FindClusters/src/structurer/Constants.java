@@ -13,8 +13,9 @@ public class Constants {
 	 * INPUT
 	 ****************************************/
 	public static final String SOURCECODE = "C:/WorkStorageIFS/input/sourcecode/ifsprd.mdl";
-	public static final String GL2PROGRAM_XREF = "C:/WorkStorageIFS/output/out_program_globallogic.csv";
-	public static final String TABLE2PROGRAM_XREF = "/resources/xref_table_program.csv";
+	public static final String GL2PROGRAM_XREF =    "C:/WorkStorageIFS/output/out_program_globallogic.csv";
+	public static final String TABLE2PROGRAM_XREF = "C:/WorkStorageIFS/output/out_table_program.csv";
+	//public static final String TABLE2PROGRAM_XREF = "/resources/xref_table_program.csv";
 	public static final String TABLE2MODULE_XREF = "/resources/xref_table_module.csv";
 	
 	// Lists of possible values

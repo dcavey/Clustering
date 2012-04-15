@@ -201,7 +201,7 @@ public class ElementRelator {
 		ArrayList<TableProgramXref> outputList = new ArrayList<TableProgramXref>();
 		try {
 			// Open the file
-			InputStream fstream =this.getClass().getResourceAsStream(Constants.TABLE2PROGRAM_XREF);
+			InputStream fstream = new FileInputStream(Constants.TABLE2PROGRAM_XREF);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
