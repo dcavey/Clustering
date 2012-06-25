@@ -357,9 +357,23 @@ public class TargetModule {
 			}
 // Output to csv-file  as well
 			if(tocsv){
+				String module4NameProgram;
+				String module4nameTable;
+				String newUsageType;
+				
+				module4NameProgram= getModule4Name(module.getName());
+				module4nameTable = getModule4Name(table.getAssignedModule().getName());
+				
+				if (module4NameProgram.equals(module4nameTable) ) {
+					newUsageType = usageType.concat("_equal_M4");
+				} else
+				{
+					newUsageType = usageType;
+				}
+				
 				String line = module.getType() + ";module;program;" + getModule4Name(module.getName()) + ";"
 							+ module.getName() + ";" + program.getName() +";" + program.getPgmType() 
-							+ ";uses;" + table.getAssignedModule().getType() + ";"+  usageType +";module;table;" + getModule4Name(table.getAssignedModule().getName()) +
+							+ ";uses;" + table.getAssignedModule().getType() + ";"+  newUsageType +";module;table;" + getModule4Name(table.getAssignedModule().getName()) +
 							";" + table.getAssignedModule().getName() 
 							+ ";" + table.getName() + ";for;" + program.getCRUDforTable (table);
 				CSVWriter writer = new CSVWriter();
