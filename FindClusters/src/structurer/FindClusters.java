@@ -40,7 +40,7 @@ public class FindClusters  {
 		printUse = true; 	
 		printContains = 4;		
 		physicalLevel = true;
-		logicalLevel = true;
+		logicalLevel = false;
 	}
 	
 	public FindClusters(  boolean forCountingOnly )  {
