@@ -180,7 +180,7 @@ public class FindClusters  {
 				}
 			}
 			CSVWriter writer = new CSVWriter();
-			String line = "Module_Type;Module;Program;M4_Program;Module_Name;Program_Name;ProgramType;Uses;Module_Type;Usage_Type;Module;Table;M4_Table;Module_Name;Table_Name;For;CRUD";
+			String line = "Module_Type;Module;Program;M4_Program;Module_Name;Program_Name;ProgramType;Uses;Module_Type;Usage_Type;Module;Table;M4_Table;Module_Name;Table_Name;for;C;R;U;D";
 			writer.writeLineToFile(Constants.CSV_USED, line);
 		}
 	}
