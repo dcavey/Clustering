@@ -32,7 +32,7 @@ public class Constants {
 	
 	// Defined|suggested owner scores
 	public static final int SCORETMP_DEFINEDOWNER = 400;
-	public static final int SCORETMP_SUGGESTEDOWNER = 100;
+	public static final int SCORETMP_SUGGESTEDOWNER = 7;      // downgrade importance of SUGGESTEDOWNER
 	public static final int SCOREFINALOWNER = 999;
 	public static final int SCOREGLPROGRAM = 800;
 	
