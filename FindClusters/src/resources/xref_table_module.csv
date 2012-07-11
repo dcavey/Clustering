@@ -1,4 +1,4 @@
-Table_Name;LBB;IFS_7_Module
+Table_Name;LBB;IFS_7T_Module
 AADVO;Customer_Reporting;Account_Management
 AAFRL;Customer_Reporting;Account_Management
 AAFRO;Reference_Data_Manager;Account_Management
@@ -133,11 +133,11 @@ CEXSO;Business_Lending_Engine;Lending
 CFACL;Business_Lending_Engine;Lending
 CFACO;Product_Management;Lending
 CFACS;Arrangement_Management;Lending
-CFAIO;arrangement_Management;Lending
+CFAIO;Arrangement_Management;Lending
 CFATO;Business_Lending_Engine;UNUSED
-CFCRO;arrangement_Management;Lending
+CFCRO;Arrangement_Management;Lending
 CFDDL;Business_Lending_Engine;Lending
-CFDDO;arrangement_Management;Lending
+CFDDO;Arrangement_Management;Lending
 CFFEO;Arrangement_Management;Lending
 CFRSL;Business_Lending_Engine;Lending
 CFRSO;Arrangement_Management;Lending
@@ -156,7 +156,7 @@ CMHIO;Arrangement_Management;Lending
 CMRGL;Business_Lending_Engine;Lending
 CMRGO;Business_Lending_Engine;Lending
 CMTBL;Business_Lending_Engine;Lending
-CMTBO;Financial_Markets_Trade_engine;Lending
+CMTBO;Arrangement_Management;Financial_Markets
 CMTCO;Arrangement_Management;Financial_Markets
 CMTCS;Party_Management;Financial_Markets
 CMTIO;Arrangement_Management;Lending
@@ -361,7 +361,7 @@ IPTIL;Financial_Markets_Trade_engine;Financial_Markets
 IPTIO;Financial_Markets_Trade_engine;Financial_Markets
 IPWDL;TECHNICAL_KERNEL;TECHNICAL_KERNEL
 IPWDO;TECHNICAL_KERNEL;TECHNICAL_KERNEL
-IRCVO;arrangement_Management;Financial_Markets
+IRCVO;Arrangement_Management;Financial_Markets
 IRFRL;Financial_Markets_Trade_engine;Financial_Markets
 IRFRO;Market_Data_Management;Financial_Markets
 IRSAO;Financial_Markets_Trade_engine;Financial_Markets
@@ -378,7 +378,7 @@ ISPIL;Financial_Markets_Trade_engine;Financial_Markets
 ISPIO;Financial_Markets_Trade_engine;Financial_Markets
 ISTLO;Reconciliation_Engine;Payment_And_Cash_Management
 ISTMO;Reconciliation_Engine;Payment_And_Cash_Management
-ISWCO;Party_Management;MDM_Management
+ISWCO;Product_Management;Financial_Markets
 ITCFO;Reconciliation_Engine;Payment_And_Cash_Management
 ITECO;UNUSED;Financial_Markets
 ITIRO;Arrangement_Management;Financial_Markets
@@ -466,7 +466,7 @@ PRSNL;TECHNICAL_KERNEL;TECHNICAL_KERNEL
 RCHDS;Payments_Execution_Engine;Payment_And_Cash_Management
 RCHQS;Payments_Execution_Engine;Payment_And_Cash_Management
 RCHRO;Payments_Execution_Engine;Payment_And_Cash_Management
-REFFL;TECHNICAL_KERNEL;TECHNICAL_KERNEL
+REFFL;Product_Management;MDM_Management
 RPDEF;TECHNICAL_KERNEL;TECHNICAL_KERNEL
 RPSCH;TECHNICAL_KERNEL;TECHNICAL_KERNEL
 RSTRT;TECHNICAL_KERNEL;TECHNICAL_KERNEL
