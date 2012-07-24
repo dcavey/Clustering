@@ -21,7 +21,7 @@ public class AccessGuardian {
 		int result;
 
 		if ((result = this.CheckAccessRule01_CompletePhaseOut(table, program, accessType)) 
-				!= Constants.FATAL_NON_AUTHORIZED_TABLE_ACCESS)
+				!= Constants.FATAL_TABLE_DOES_NOT_EXIST)
 		{
 			result = this.CheckAccessRule02_DataOwnership (table, program, accessType);
 		}

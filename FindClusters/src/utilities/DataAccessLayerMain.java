@@ -35,5 +35,26 @@ public class DataAccessLayerMain {
 		int result = accessGuardian.CheckAccessRules (args[0], args[1], args[2]);
 	}
 	
+	public void ManipulateData( String someSQLstring)
+	{
+		// formulate data access request
+		// get table and program information from the context and the data access request
+		// submit information to check if access if authorized
+		
+		
+		// formulate data access request
+			// decide what is the data provider (data schema)
+			// launch the data request to that data provider (data schema)
+		
+			// decide what is the data provider (data service)
+			// launch the data request to that service provider (... respect database semantics ???)
+		
+			// decide how the data can be obtained (reworking data available in two schemas ?)
+			// describe the pattern 
+		
+
+		
+	}
+	
 	
 }
