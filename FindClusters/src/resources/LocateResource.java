@@ -20,14 +20,14 @@ public class LocateResource {
 	 * @throws UnsupportedEncodingException 
 	 */
 	public static String getResource(String filename) throws UnsupportedEncodingException {
+		
 		URL resource = LocateResource.class.getResource(filename);
 		return URLDecoder.decode(resource.getPath(),"utf-8");
 		
 		/*
 		String x = "D:\\DVANDECA\\Desktop\\My Documents\\My LabsWork\\GitRepositories\\Clustering\\FindClusters\\src\\resources\\" + filename;
 		return x ;
-		*/		
-
+		*/
 		
 
 	}

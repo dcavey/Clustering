@@ -41,4 +41,19 @@ public class Constants {
 	 ****************************************/
 	public static final String CSV_CONTAINS = "C:/WorkStorageIFS/output/out_TablesAndProgramsContainedInModules.csv";
 	public static final String CSV_USED = "C:/WorkStorageIFS/output/out_TablesAndProgramsUsedByModules.csv";	
+	
+	// Define modularity access check - error codes
+	public static final int INFO_AUTHORIZED_TABLE_ACCESS = 10;
+	public static final int INFO_NON_AUTHORIZED_TABLE_ACCESS = -10;
+	public static final int WARNING_NON_AUTHORIZED_TABLE_ACCESS = -11;
+	public static final int FATAL_NON_AUTHORIZED_TABLE_ACCESS = -12;
+	public static final int FATAL_TABLE_DOES_NOT_EXIST = -20;
+	
+	
+	public static final String STATUS_MODULAR = "Modular";
+	public static final String STATUS_REMOVED = "Removed";
+	
+	public static final String ASSIGNED_PROGRAM2MODULE = "/resources/assigned_program2module.csv";
+	public static final String ASSIGNED_TABLE2MODULE = "/resources/assigned_table2module.csv";
+	
 }
