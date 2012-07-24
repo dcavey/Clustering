@@ -5,7 +5,7 @@ import structurer.ObjectModel;
 
 
 
-public class AccessGuardianMain {
+public class DataAccessLayerMain {
 
 	final int INFO_AUTHORIZED_TABLE_ACCESS = 10;
 	final int INFO_NON_AUTHORIZED_TABLE_ACCESS = -10;
@@ -21,10 +21,10 @@ public class AccessGuardianMain {
 	 */
 	public static void main(String[] args) {
 
-		AccessGuardianMain fc = new AccessGuardianMain();
+		DataAccessLayerMain fc = new DataAccessLayerMain();
 		if(args.length < 3){
 			System.out.println ("Not all required arguments are provided");
-		}
+		} 
 
 		fc.run(args);
 	}
