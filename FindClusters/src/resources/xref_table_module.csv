@@ -128,7 +128,7 @@ CDFAO;Arrangement_Management;Lending
 CDIAL;Business_Lending_Engine;Lending
 CDIAO;Business_Lending_Engine;Lending
 CEXPS;Arrangement_Management;Lending
-CEXRO;Financial_Markets_Trade_engine;Financial_Markets
+CEXRO;Arrangement_Management;MDM_Management
 CEXSO;Business_Lending_Engine;Lending
 CFACL;Business_Lending_Engine;Lending
 CFACO;Product_Management;Lending
@@ -153,8 +153,8 @@ CGURL;Business_Lending_Engine;Lending
 CGURO;Arrangement_Management;Lending
 CHFCO;Accounting_Rule_Engine;Lending
 CMHIO;Arrangement_Management;Lending
-CMRGL;Business_Lending_Engine;Lending
-CMRGO;Business_Lending_Engine;Lending
+CMRGL;Arrangement_Management;MDM_Management
+CMRGO;Arrangement_Management;MDM_Management
 CMTBL;Business_Lending_Engine;Lending
 CMTBO;Arrangement_Management;Financial_Markets
 CMTCO;Arrangement_Management;Financial_Markets
@@ -220,7 +220,7 @@ DEBFO;Instruction_and_Order_Management;Payment_And_Cash_Management
 DEFIN;TECHNICAL_KERNEL;TECHNICAL_KERNEL
 DFIDO;Clearing_and_Settlement_Engine;Payment_And_Cash_Management
 DFIMO;Clearing_and_Settlement_Engine;Payment_And_Cash_Management
-DFRTO;Reference_Data_Manager;Payment_And_Cash_Management
+DFRTO;Payments_Execution_Engine;Payment_And_Cash_Management
 DFSCI;Arrangement_Management;Payment_And_Cash_Management
 DFSCL;Payments_Execution_Engine;Payment_And_Cash_Management
 DFSCO;Arrangement_Management;Payment_And_Cash_Management
@@ -283,7 +283,7 @@ ICOPL;Reconciliation_Engine;Payment_And_Cash_Management
 ICOPO;Reconciliation_Engine;Payment_And_Cash_Management
 ICVBS;Party_Management;Financial_Markets
 IDPLO;Current_Account_Engine;Lending
-IERBS;Financial_Markets_Trade_engine;Financial_Markets
+IERBS;Reference_Data_Manager;MDM_Management
 IERMO;Financial_Markets_Trade_engine;UNUSED
 IFASO;Financial_Markets_Trade_engine;Financial_Markets
 IFCPO;Reference_Data_Manager;Financial_Markets
@@ -370,7 +370,7 @@ IRSCO;Financial_Markets_Trade_engine;Financial_Markets
 IRSPL;Financial_Markets_Trade_engine;Financial_Markets
 IRSPO;Financial_Markets_Trade_engine;Financial_Markets
 IRSWL;Financial_Markets_Trade_engine;Financial_Markets
-ISAVO;TECHNICAL_KERNEL;TECHNICAL_KERNEL
+ISAVO;Party_Management;TECHNICAL_KERNEL
 ISIFO;Financial_Markets_Trade_engine;Financial_Markets
 ISIML;Business_Lending_Engine;Lending
 ISIMO;Arrangement_Management;Lending
@@ -405,7 +405,7 @@ LBROS;Party_Management;MDM_Management
 LBSKL;UNUSED;UNUSED
 LBSKS;UNUSED;UNUSED
 LCBNL;Party_Management;Account_Management
-LCBNS;Party_Management;Account_Management
+LCBNS;Arrangement_Management;Account_Management
 LCCCL;Reference_Data_Manager;MDM_Management
 LCCCS;Reference_Data_Manager;MDM_Management
 LCCYL;Reference_Data_Manager;MDM_Management
@@ -462,7 +462,7 @@ MNDEF;TECHNICAL_KERNEL;TECHNICAL_KERNEL
 NWSMN;TECHNICAL_KERNEL;TECHNICAL_KERNEL
 PRNTR;TECHNICAL_KERNEL;TECHNICAL_KERNEL
 PRSIO;TECHNICAL_KERNEL;TECHNICAL_KERNEL
-PRSNL;TECHNICAL_KERNEL;TECHNICAL_KERNEL
+PRSNL;Party_Management;MDM_Management
 RCHDS;Payments_Execution_Engine;Payment_And_Cash_Management
 RCHQS;Payments_Execution_Engine;Payment_And_Cash_Management
 RCHRO;Payments_Execution_Engine;Payment_And_Cash_Management

@@ -13,8 +13,6 @@ public class AccessGuardian {
 	public AccessGuardian() {
 		super();
 	}
-	
-	
 
 	public Integer CheckAccessRules (String table, String program, String accessType) 
 	{
@@ -47,10 +45,13 @@ public class AccessGuardian {
 	{
 		int result;
 		String module_T = GetModuleOfTable(table, Constants.STATUS_MODULAR);
-		String module_P = GetModuleOfProgram(program, Constants.STATUS_MODULAR);
+		String module_P = GetModuleOfProgram(program);
 		
 		if (! module_T.equals(module_P)) {
-			if ((accessType.equals("C"))  ||  (accessType.equals("U")) 	||	(accessType.equals("D")) )   	
+			if (	(accessType.equals(Constants.DB_CREATE))  
+				||  (accessType.equals(Constants.DB_UPDATE))
+				||	(accessType.equals(Constants.DB_DELETE)) )   	
+				
 			{ 	result =  Constants.WARNING_NON_AUTHORIZED_TABLE_ACCESS;  	}
 			else
 			{	result =  Constants.INFO_AUTHORIZED_TABLE_ACCESS;			}
@@ -61,9 +62,10 @@ public class AccessGuardian {
 	}
 
 
-	public void SignalAccessCheck (String table, String program, String accessType, int result)
+	private void SignalAccessCheck (String table, String program, String accessType, int result)
 	{
 		String message;
+		String SqlStm = "";
 		
 		switch (result) {
 		case  Constants.INFO_AUTHORIZED_TABLE_ACCESS: message = "INFO_AUTHORIZED_TABLE_ACCESS";  break;
@@ -74,30 +76,78 @@ public class AccessGuardian {
 		default: message = "xxxxxxxxxxxxxxxxxxxxxx"; break;
 		}
 		
-		System.out.println(message + " of table " + table + " by program "+ program + " access type: " + accessType);
-	}
-	
-	
-	
-	private String GetModuleOfTable (String table, String action)
-	{
-		String result = GetModuleFromList(Constants.ASSIGNED_TABLE2MODULE, table, action);
-		return result;
-	}
+		if (accessType.equals(Constants.DB_CREATE)) SqlStm = "INSERT INTO " + table + " (columnP,...) VALUES (valueP,...) " ;
+		if (accessType.equals(Constants.DB_READ)) SqlStm   = "SELECT (columnP,...) FROM " + table + " WHERE columnX=valueX";
+		if (accessType.equals(Constants.DB_UPDATE)) SqlStm = "UPDATE " + table + " SET columnP=valueP WHERE columnX=valueX";
+		if (accessType.equals(Constants.DB_DELETE)) SqlStm = "DELETE FROM " + table + " WHERE columnX=valueX              ";
+		
 
-	private String GetModuleOfProgram (String table, String action)
-	{
-		String result = GetModuleFromList(Constants.ASSIGNED_PROGRAM2MODULE, table, action);
-		return result;
+		System.out.println("Program " + program + " requesting DB operation " + '"'+ SqlStm + '"' + " => STATUS=" + message);
+		
 	}
 	
-	private String GetModuleFromList (String filename, String program, String status) {
+	
+	private String GetModuleOfTable (String table, String action) {
 		
 		String result = null;
 		try {
 			// Open the file
-			//FileInputStream fstream = new FileInputStream(filename);
-			InputStream fstream = 	this.getClass().getResourceAsStream(filename);
+			InputStream fstream = 	this.getClass().getResourceAsStream(Constants.ASSIGNED_TABLE2MODULE);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");
+				if (table.equals(output[0])) {
+					if (action.equals(output[2]) ) {
+						result = output[1];
+						break;
+					}
+				}
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	private String GetAccessTypeOfTable (String table, String action) {
+		
+		String result = null;
+		try {
+			// Open the file
+			InputStream fstream = 	this.getClass().getResourceAsStream(Constants.ASSIGNED_TABLE2MODULE);
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			String strLine = br.readLine();
+			// Read File Line By Line
+			while ((strLine = br.readLine()) != null) {
+				String[] output = strLine.split(";");
+				if (table.equals(output[0])) {
+					if (action.equals(output[2]) ) {
+						result = output[1];
+						break;
+					}
+				}
+			}
+			// Close the input stream
+			in.close();
+		} catch (Exception e) {// Catch exception if any
+			e.printStackTrace();
+		}
+		return result;
+	}
+	private String GetModuleOfProgram (String program) {
+		
+		String result = null;
+		try {
+			// Open the file
+			InputStream fstream = 	this.getClass().getResourceAsStream(Constants.ASSIGNED_PROGRAM2MODULE);
 			// Get the object of DataInputStream
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -106,9 +156,7 @@ public class AccessGuardian {
 			while ((strLine = br.readLine()) != null) {
 				String[] output = strLine.split(";");
 				if (program.equals(output[0])) {
-					if (status.equals(output[2]) ) {
-						result = output[1];
-					}
+						break;
 				}
 			}
 			// Close the input stream
