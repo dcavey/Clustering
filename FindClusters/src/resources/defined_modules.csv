@@ -1,0 +1,5 @@
+Module;ModuleType
+Core_Banking;Core_Banking_Package
+Financial_Markets;Add_On_Business_Package
+Lending;Add_On_Business_Package
+Payment_And_Cash_Management;Add_On_Business_Package
