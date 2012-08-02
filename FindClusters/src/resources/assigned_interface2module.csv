@@ -1,0 +1,51 @@
+Interface;Module
+3: Send to StorQM;M1
+17: Send to Fircosoft;M2
+21: Send to ERASE;M3
+25: Send to GFRS;M1
+12: Send to SEPA/GFT ?;M2
+1: Send to CBR;M3
+4: Send to Local applications;M1
+9: Send to Clearing software;M2
+2: Send to StorQM;M3
+8: Send to INTELLIMATCH;M1
+17: Send to Fircosoft;M2
+18: Send to SDP;M3
+21: Send to ERASE;M4
+23: Send to GRID;M5
+26: Send to VORTEX;M6
+28: Send to DWH;M7
+29: Send to TRAX;M8
+30: Send to TRAX;M9
+31: Send to CCRS;M10
+12: Send to AIP/GFT;M11
+16: Send to KOC;M12
+24: Send to GAL;M13
+24: Send to GAL;M14
+24: Send to GAL;M15
+27: Send to RIS;M16
+40: Send to TLK;M17
+41: Send to TAT;M18
+19: Send to IRM;M19
+13: Receive from PTO;M20
+14: Receive from SEPA engine;M21
+10: Receive from Clearing software;M22
+35: Receive from GMDB;M23
+6: Receive from BCOR;M24
+27: Receive from RIS;M25
+27: Receive from RIS;M26
+7: Receive from Target2;M27
+11: Receive from SEPA/GFT;M28
+15: Receive from KIC;M29
+20: Receive from IRM;M30
+22: Receive from GRID;M31
+34: Send to ENS (PPE);M32
+5: Send to ANS;M33
+5: Send to ANS;M34
+32: Send to Archiving;M35
+33: Send to ENS (TTI/TMI/PPE);M36
+36: Receive from EB-Tandem EBW ;M37
+38: Receive from EB-Banking software;M38
+37: Send to EB-Tandem EBW;M39
+39: Send to EB-Banking software;M40
+41: Receive from ENS (CPC);M41
