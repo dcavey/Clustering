@@ -443,7 +443,7 @@ AUPURACPI;Finance;Core_Banking;R
 AURGRPOS;Finance;Core_Banking;R
 AURGRPOS2;Financial_Markets;Financial_Markets;R
 AURGRPOS4;Financial_Markets;Financial_Markets;R
-AURNDDET;Financial_Markets;Financial_Markets;R
+AURNDDET;Account_Management;Core_Banking;R
 AURVMVT;Finance;Core_Banking;R
 AUSAVTAB;Finance;Core_Banking;R
 AUSHFBAL;Finance;Core_Banking;R
@@ -881,9 +881,9 @@ CMHIA;Lending;Lending;I
 CMHIC;Lending;Lending;I
 CMHIF;Lending;Lending;I
 CMHIO;Lending;Lending;I
-CMRGL;Lending;Lending;I
-CMRGM;Lending;Lending;I
-CMRGO;Lending;Lending;I
+CMRGL;MDM_Management;Core_Banking;I
+CMRGM;MDM_Management;Core_Banking;I
+CMRGO;MDM_Management;Core_Banking;I
 CMTBL;Lending;Lending;I
 CMTBO;Lending;Lending;I
 CMTC5;Financial_Markets;Financial_Markets;I
@@ -1021,7 +1021,7 @@ CUATCRLOVR;Lending;Lending;R
 CUBANKEXC1;Lending;Lending;R
 CUCCMHOUPD;Lending;Lending;R
 CUCEXRO;MDM_Management;Core_Banking;R
-CUCHGIPRD;Financial_Markets;Financial_Markets;R
+CUCHGIPRD;Lending;Lending;R
 CUCLEANCOM;Financial_Markets;Financial_Markets;R
 CUCLEANDIC;Financial_Markets;Financial_Markets;R
 CUCLEANRES;Lending;Lending;R
@@ -1065,7 +1065,7 @@ CUHKPFAC;Lending;Lending;R
 CUHLPDELCM;Lending;Lending;R
 CUICNFS;MDM_Management;Core_Banking;R
 CUIFLTRTE;Financial_Markets;Financial_Markets;R
-CUIPMM;Financial_Markets;Financial_Markets;R
+CUIPMM;Lending;Lending;R
 CUIPRDCHG;Financial_Markets;Financial_Markets;R
 CULDCRYRIS;TECHNICAL_KERNEL;Core_Banking;R
 CULOADCBFM;Finance;Core_Banking;R
