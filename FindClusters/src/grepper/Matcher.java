@@ -55,26 +55,34 @@ public class Matcher {
 	
 
 
-	public void matchAndReport_FIND_LINC_PROGRAMS(String strLine, int lineNr) {
-			
+	public boolean matchAndReport_FIND_LINC_PROGRAMS(String strLine, int lineNr) {
+		
+		boolean doOutput = false;
+		boolean thisIsALincProgram = false;
+		
 		if (strLine.startsWith("10") ) {
-			System.out.printf ("%d: ISPEC  : %1s \n", lineNr,strLine.substring(2,7));
+			if (doOutput) { System.out.printf ("%d: ISPEC  : %1s \n", lineNr,strLine.substring(2,7)); }
+			thisIsALincProgram = true;	
 		} else
 		{
 			if (strLine.startsWith("50") ) {
-				System.out.printf ("%d: REPORT : %1s \n", lineNr,strLine.substring(2,12));
+				if (doOutput) { System.out.printf ("%d: REPORT : %1s \n", lineNr,strLine.substring(2,12)); }
+				thisIsALincProgram = true;	
 			} else
 			{
 				if (strLine.startsWith("70") ) {
-					System.out.printf ("%d: LOGIC : %1s \n", lineNr, strLine.substring(2,19));
+					if (doOutput) { System.out.printf ("%d: LOGIC : %1s \n", lineNr, strLine.substring(2,19)); }
+					thisIsALincProgram = true;	
 				} else
 				{	
 					if (strLine.startsWith("60") ) {
-						System.out.printf ("%d: PROFILE: %1s \n", lineNr, strLine.substring(2,11));
+						if (doOutput) { System.out.printf ("%d: PROFILE: %1s \n", lineNr, strLine.substring(2,11)); }
+						thisIsALincProgram = true;	
 					} 
 				}
 			}
 		}
+		return thisIsALincProgram;
 	}
 	
 	
