@@ -1,13 +1,11 @@
 RuleID;Log Level 
-OFA;None
-CRA;None
-ARC;None
-XRA;Info
-XUA;Info
-XCA;Info
-XDA;Info
-XFA;Info
-RMV;Info
-C2T;Info
-C2S;Info
+OFA;Info
+CRA;Info
+ARC;Info
+XCA;Warning
+XRA;Warning
+XUA;Warning
+XDA;Warning
+XFA;Warning
+RMV;Error
 VLN;Warning

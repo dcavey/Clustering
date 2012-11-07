@@ -21,8 +21,10 @@ public class OwnerSearcher {
 	}
 	
 	private void fillInFiles(){
+		/* Stop using anithing but the real definitions
 		inputFileScore.put(Constants.PROGRAM2MODULE_CU_XREF,Constants.SCORETMP_SUGGESTEDOWNER);
 		inputFileScore.put(Constants.PROGRAM2MODULE_CLOG_XREF, Constants.SCORETMP_SUGGESTEDOWNER);
+		*/
 		inputFileScore.put(Constants.PROGRAM2MODULE_EXPERT_XREF,Constants.SCORETMP_DEFINEDOWNER);
 	}
 	
