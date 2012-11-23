@@ -1,0 +1,13 @@
+RuleID;RuleName;Data;Type_OwnerPackage;Type_AccessorPackage;C;R;U;D;Rule Description;Log Level 
+OFA;DataOwnerRule;*;[PackageX];[PackageX];C;R;U;D;Owner package can fully access its own data (owner=accessor);None
+CRA;CoreBankingPkgCanReadAll;*;Core_Banking_Package;Add_On_Business_Package;-;R;-;-;Core_Banking_Package can read all data from all packages;None
+ARC;AddOnPkgCanReadCoreBankingPkg;*;Add_On_Business_Package;Core_Banking_Package;-;R;-;-;Add_On_Business_Package can only read Core_Banking_Package data;None
+XFA;FullAccessExceptionOK;TABLE_XF;Add_On_Business_Package;Add_On_Business_Package;C;R;U;D;Full access exception between Add_On_Business_Packages is OK;None
+XCA;CreateAccessExceptionOK;TABLE_XC;Add_On_Business_Package;Add_On_Business_Package;C;-;;-;Create exception between Add_On_Business_Packages is OK;None
+XRA;ReadAccessExceptionOK;TABLE_XR;Add_On_Business_Package;Add_On_Business_Package;-;R;-;-;Read exception between Add_On_Business_Packages is OK;None
+XUA;UpdateAccessExceptionOK;TABLE_XU;Add_On_Business_Package;Add_On_Business_Package;-;-;U;-;Update exception between Add_On_Business_Packages is OK;None
+XDA;DeleteAccessExceptionOK;TABLE_XD;Add_On_Business_Package;Add_On_Business_Package;-;-;-;D;Delete exception between Add_On_Business_Packages is OK;None
+RMV;RemovedAccess;TABLE_RM;N/A;N/A;-;-;-;-;"Data that is ""removed"" can no longer be accessed";None
+C2T;ChangedToTables;TABLE_C2T;[PackageX];[PackageX];C;R;U;D;Data access is changed to use different table[s] in same package;None
+C2S;ChangedToService;TABLE_C2S;[PackageX];N/A;C;R;U;D;Data access is changed to new data provider service;None
+VLN;CatchViolations;*;N/A;N/A;C;R;U;D;No rules found for the requested access;None

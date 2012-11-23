@@ -35,13 +35,12 @@ public class AccessGuardian {
 	 		List<Integer> ruleTypes = GetRuleTypes();	
 	 		List<Integer> rules = GetRulesForTable (table);	
 	 		
-	 		
-			int moduleType_T = GetModuleType (module_T);
-			int moduleType_P = GetModuleType (module_P);
-			
-
-			for (int rt_i = 0; rt_i < ruleTypes.size(); rt_i++) 
-			{
+	 		for (int rt_i = 0; rt_i < ruleTypes.size(); rt_i++) 
+			{		
+	 			// placing these calls here to simulate a "bad implementation"
+				int moduleType_T = GetModuleType (module_T);
+				int moduleType_P = GetModuleType (module_P);
+				
 				for (int r_i = 0; r_i < rules.size(); r_i++) 
 				{
 					if (rules.get(r_i) == ruleTypes.get(rt_i) )		// Are we doing this ruleType now?
@@ -95,8 +94,9 @@ public class AccessGuardian {
 	}
 	
 
-	public void UseBulkTestData () {
+	public int UseBulkTestData () {
 		
+		int counter = 1;	// for testing
 		int result;
 		
 		try {
@@ -107,18 +107,26 @@ public class AccessGuardian {
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
 			String strLine = br.readLine();
 			// Read File Line By Line
+		
 			while ((strLine = br.readLine()) != null) {
+
 				String[] output = strLine.split(";");   				// Table	Program	  Action	Type
 		
 				result = CheckAccessRules (output[0], output[1], output[2]);
+
+				counter++;
 				
 			}
+			
+			
 			// Close the input stream
 			
 			in.close();
 		} catch (Exception e) {// Catch exception if any
 			e.printStackTrace();
 		}
+		
+		return counter;
 	}
 	
 
@@ -376,28 +384,5 @@ public class AccessGuardian {
 		//System.out.println(message);
 		return message;
 	}
-
-	
-	public String ConvertCodeToString (int result)
-	{
-		String message;
-		
-		switch (result) {
-		case  Constants.INFO_AUTHORIZED_TABLE_ACCESS: message = "INFO_AUTHORIZED_TABLE_ACCESS";  break;
-		case  Constants.INFO_NON_AUTHORIZED_TABLE_ACCESS: message = "INFO_NON_AUTHORIZED_TABLE_ACCESS";  break;
-		case  Constants.WARNING_NON_AUTHORIZED_TABLE_ACCESS: message = "WARNING_NON_AUTHORIZED_TABLE_ACCESS";  break;
-		case  Constants.FATAL_NON_AUTHORIZED_TABLE_ACCESS: message = "FATAL_NON_AUTHORIZED_TABLE_ACCESS";  break;
-		case  Constants.FATAL_TABLE_DOES_NOT_EXIST: message = "FATAL_TABLE_DOES_NOT_EXIST";  break;
-		case  Constants.MODULARITY_CHECK_NEGATIVE: message = "MODULARITY CHECK NEGATIVE";  break;
-		case  Constants.MODULARITY_CHECK_POSITIVE: message = "MODULARITY CHECK POSITIVE";  break;
-		case  Constants.MODULARITY_DECISION_AWAITED: message = "MODULARITY DECISION AWAITED";  break;
-		
-		default: message = "xxxxxxxxxxxxxxxxxxxxxx"; break;
-		}
-		
-		return message;
-	}
-	
-
 
 }

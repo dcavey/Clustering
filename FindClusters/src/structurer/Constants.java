@@ -83,9 +83,29 @@ public class Constants {
 	public static final String TABLES2MODULE = "/resources/Tables.csv";
 	public static final String MODULES = "/resources/Modules.csv";
 	public static final String MODULETYPE = "/resources/ModuleType.csv";
-	public static final String MODULARITY_RULE_TYPES = "/resources/Modularity_rule_types.csv";
-	public static final String MODULARITY_RULE_LOGLEVEL = "/resources/Modularity_rule_loglevel.csv";
-	public static final String MODULARITY_RULES = "/resources/Modularity_rules.csv";
+//	public static final String MODULARITY_RULE_LOGLEVEL = "/resources/Modularity_rule_loglevel.csv"; Stop using that
+	
+	
+	/* CASE DEFAULT */
+	public static final String MODULARITY_RULE_TYPES = "/resources/Modularity_rule_types_DEFAULT.csv";
+	public static final String MODULARITY_RULES = "/resources/Modularity_rules_DEFAULT.csv";
+	/* */
+
+	/* CASE DEFAULT WITH MIN_RULES_MAX_EXCEPS 
+	public static final String MODULARITY_RULE_TYPES = "/resources/Modularity_rule_types_ONLY_VIOLATIONS.csv";
+	public static final String MODULARITY_RULES = "/resources/Modularity_rules_MAX_EXCEPTIONS.csv";
+	*/
+	
+	/* CASE NO_RULE_TYPES 
+	public static final String MODULARITY_RULE_TYPES = "/resources/Modularity_rule_types_NO_RULE_TYPES.csv";
+	public static final String MODULARITY_RULES = "/resources/Modularity_rules_DEFAULT.csv";
+	/* */
+	
+	/* CASE ALL_LOG_NONE
+	public static final String MODULARITY_RULE_TYPES = "/resources/Modularity_rule_types_ALL_NONE.csv";
+	public static final String MODULARITY_RULES = "/resources/Modularity_rules_DEFAULT.csv";
+	/* */
+	
 	
 	public static final String DB_CREATE = "CREATE";
 	public static final String DB_UPDATE = "UPDATE";
